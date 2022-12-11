@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../constantes.dart';
 import '../size_config.dart';
 
@@ -15,7 +14,7 @@ class NextButton extends StatelessWidget{
       height: getProportionateScreenHeight(56),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: kPrimaryColor,
+          backgroundColor: kPrimaryColor,
           shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         ),
         onPressed: press  as void Function()?,

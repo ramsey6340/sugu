@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sugu/constantes.dart';
 import 'package:sugu/routes.dart';
-import 'package:sugu/screes/splash/splash_screen.dart';
+import 'package:sugu/screens/splash/splash_screen.dart';
 import 'package:sugu/theme.dart';
 
 void main() {

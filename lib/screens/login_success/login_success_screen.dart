@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'components/body.dart';
 
-class OTPScreen extends StatelessWidget {
-  static String routeName = 'otp_screen';
-  const OTPScreen({Key? key}) : super(key: key);
-
+class LoginSuccessScreen extends StatelessWidget
+{
+  static String routeName = '/login_success';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Vérification OTP"),
+        //leading: SizedBox(),
         centerTitle: true,
+        title: Text('Connexion réussie'),
       ),
       body: Body(),
     );

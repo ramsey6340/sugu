@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
 import 'custom_suffix_icon.dart';
 
-class LoginTools
+class FormTools
 {
 
   // Champ d'email
@@ -50,7 +50,10 @@ class LoginTools
         if(value.isNotEmpty && errors.contains(kPassNullError)){
           errors.remove(kPassNullError);
         }
-        else if(value.length>=6 && errors.contains(kShortPassError)){
+        else if(value.length<6 && !errors.contains(kShortPassError)){
+          errors.add(kShortPassError);
+        }
+        else{
           errors.remove(kShortPassError);
         }
         return null;
@@ -99,6 +102,98 @@ class LoginTools
         hintText: 'Confirmation',
         //floatingLabelBehavior: FloatingLabelBehavior.always,//permet d'avoir "Email" ecrit sur la bordure et "Entrer votre email" à l'interieur
         suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Lock.svg',),
+      ),
+    );
+  }
+
+  // Champ de Prenom
+  static TextFormField buildFirstNameFormField(String? first_name, List<String?> errors)
+  {
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      onSaved: (newValue) => first_name = newValue,
+      onChanged: (value){},
+      validator: (value){
+        if(value!.isEmpty && !errors.contains("Valeur incorrecte")){
+          errors.add("Valeur incorrecte");
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: 'Prénom',
+        hintText: 'Entrer votre prénom',
+        //floatingLabelBehavior: FloatingLabelBehavior.always,//permet d'avoir "Email" ecrit sur la bordure et "Entrer votre email" à l'interieur
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/User.svg',),
+      ),
+    );
+  }
+
+  // Champ de Nom
+  static TextFormField buildLastNameFormField(String? last_name, List<String?> errors)
+  {
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      onSaved: (newValue) => last_name = newValue,
+      onChanged: (value){},
+      validator: (value){
+        if(value!.isEmpty && !errors.contains("Valeur incorrecte")){
+          errors.add("Valeur incorrecte");
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: 'Nom',
+        hintText: 'Entrer votre Nom',
+        //floatingLabelBehavior: FloatingLabelBehavior.always,//permet d'avoir "Email" ecrit sur la bordure et "Entrer votre email" à l'interieur
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/User.svg',),
+      ),
+    );
+  }
+
+  // Champ de Numero de téléphone
+  static TextFormField buildPhoneNumberFormField(String? phone_number, List<String?> errors)
+  {
+    return TextFormField(
+      keyboardType: TextInputType.number,
+      onSaved: (newValue) => phone_number = newValue,
+      onChanged: (value){},
+      validator: (value){
+        if(value!.isEmpty && !errors.contains("Valeur incorrecte")){
+          errors.add("Valeur incorrecte");
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: 'Numero',
+        hintText: 'Entrer votre numero de téléphone',
+        //floatingLabelBehavior: FloatingLabelBehavior.always,//permet d'avoir "Email" ecrit sur la bordure et "Entrer votre email" à l'interieur
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Phone.svg',),
+      ),
+    );
+  }
+
+  // Champ de d'adresse
+  static TextFormField buildAddressFormField(String? address, List<String?> errors)
+  {
+    return TextFormField(
+      keyboardType: TextInputType.multiline,
+      onSaved: (newValue) => address = newValue,
+      onChanged: (value){},
+      validator: (value){
+        if(value!.isEmpty && !errors.contains("Valeur incorrecte")){
+          errors.add("Valeur incorrecte");
+          return "";
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        labelText: 'Adresse',
+        hintText: 'Entrer votre adresse',
+        //floatingLabelBehavior: FloatingLabelBehavior.always,//permet d'avoir "Email" ecrit sur la bordure et "Entrer votre email" à l'interieur
+        suffixIcon: CustomSuffixIcon(svgIcon: 'assets/icons/Location point.svg',),
       ),
     );
   }
