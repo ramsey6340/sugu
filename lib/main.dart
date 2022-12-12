@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:sugu/constantes.dart';
 import 'package:sugu/routes.dart';
+import 'package:sugu/screens/home/home_screen.dart';
 import 'package:sugu/screens/splash/splash_screen.dart';
+import 'package:sugu/size_config.dart';
 import 'package:sugu/theme.dart';
 
 void main() {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: theme(),
       //home: SplashScreen(),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: HomeScreen.routeName,
       routes: routes,
     );
   }

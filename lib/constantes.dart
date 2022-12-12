@@ -38,6 +38,18 @@ final otpFieldDecoration = InputDecoration(
   ),
 );
 
+// Decoration correspondant à la barre de recherche
+final searchBarDecoration = InputDecoration(
+    enabledBorder: InputBorder.none,
+    focusedBorder: InputBorder.none,
+    hintText: "Rechercher",
+    prefixIcon: Icon(Icons.search, color: Colors.black54,),
+    contentPadding: EdgeInsets.symmetric(
+        vertical: getProportionateScreenHeight(10),
+        horizontal: getProportionateScreenWidth(20)
+    )
+);
+
 // Form Error
 final RegExp emailValidatorRegExp =
 RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
