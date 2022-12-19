@@ -3,6 +3,7 @@ import 'package:sugu/components/product_card.dart';
 import 'package:sugu/components/section_title.dart';
 import '../datas/products_data.dart';
 import '../size_config.dart';
+import '../screens/details/details_screen.dart';
 
 
 class Popularproducts extends StatelessWidget {
@@ -22,7 +23,15 @@ class Popularproducts extends StatelessWidget {
           child: Row(
             children: List.generate(
                 products.length,
-                    (index) => ProductCard(product: products[index], press: (){},)),
+                    (index) => ProductCard(
+                      product: products[index],
+                      press: () => Navigator.pushNamed(
+                        context,
+                        DetailsScreen.routeName,
+                        arguments: products[index]
+                      ),
+                    )
+            ),
           ),
         )
       ],

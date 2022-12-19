@@ -20,7 +20,7 @@ List<Product> products = [
       Colors.white,
     ],
     price: 50000,
-    rating: 4.8,
+    nb_star: 4.5,
     is_favourite: true,
     is_popular: true,
   ),
@@ -37,7 +37,7 @@ List<Product> products = [
       Colors.white,
     ],
     price: 10000,
-    rating: 4.1,
+    nb_star: 4,
     is_popular: true,
   ),
   Product(
@@ -53,7 +53,7 @@ List<Product> products = [
       Colors.white,
     ],
     price: 7500,
-    rating: 4.1,
+    nb_star: 4,
     //is_favourite: true,
   ),
   Product(
@@ -69,6 +69,6 @@ List<Product> products = [
       Colors.white,
     ],
     price: 5000,
-    rating: 4.1,
+    nb_star: 3,
   ),
 ];
