@@ -23,7 +23,7 @@ class DetailsScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.transparent,
       ),
-       body: Body(),
+       body: Body(product: product,),
     );
   }
 }

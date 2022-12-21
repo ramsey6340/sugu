@@ -1,12 +1,14 @@
 // Exemple de produit
-
 import 'package:flutter/material.dart';
 import '../models/product.dart';
+
+
+String description = "Wireless Controler for PS4 vous donne une experience inoubliable. Vous aurez le sentiment de vraiment maitriser votre jeu video, votre avatar, votre monde.\nN'entendez plus, sinon votre plays station risque de vous portez une pleinte de lui avoir priver de cet experience extra ordinaire";
 
 List<Product> products = [
   Product(
     title: "Wireless Controler for PS4",
-    description: "description",
+    description: description,
     images: [
       "assets/images/ps4_console_blue_1.png",
       "assets/images/ps4_console_blue_2.png",
@@ -26,7 +28,7 @@ List<Product> products = [
   ),
   Product(
     title: "Nike Sport White - Man Pant",
-    description: "description",
+    description: description,
     images: [
       "assets/images/Image Popular Product 2.png"
     ],
@@ -42,7 +44,7 @@ List<Product> products = [
   ),
   Product(
     title: "Logitech Head",
-    description: "description",
+    description: description,
     images: [
       "assets/images/wireless headset.png"
     ],
@@ -58,7 +60,7 @@ List<Product> products = [
   ),
   Product(
     title: "Glove XC Omega - Polygon",
-    description: "description",
+    description: description,
     images: [
       "assets/images/glap.png"
     ],
