@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../datas/cart_data.dart';
+import '../../cart/cart_screen.dart';
 import 'notification_btn.dart';
 import 'search_field.dart';
 
@@ -14,7 +16,7 @@ class HomeHeader extends StatelessWidget {
         NotificationBtn(
             nb_notification: 0,
             icon_notification: Icons.shopping_cart_outlined,
-            press: (){}
+            press: () => Navigator.pushNamed(context, CartScreen.routeName, arguments: carts)
         ),
         NotificationBtn(
             nb_notification: 3,

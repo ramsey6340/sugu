@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 
 
-String description = "Wireless Controler for PS4 vous donne une experience inoubliable. Vous aurez le sentiment de vraiment maitriser votre jeu video, votre avatar, votre monde.\nN'entendez plus, sinon votre plays station risque de vous portez une pleinte de lui avoir priver de cet experience extra ordinaire";
+String description = ""
+    "Wireless Controler for PS4 vous donne une experience inoubliable."
+    " Vous aurez le sentiment de vraiment maitriser votre jeu video,"
+    " votre avatar, votre monde."
+    " N'entendez plus, sinon votre plays station risque de vous portez une pleinte "
+    "de lui avoir priver de cet experience extra ordinaire.";
 
 List<Product> products = [
   Product(
+    id: 1,
     title: "Wireless Controler for PS4",
     description: description,
     images: [
@@ -23,10 +29,12 @@ List<Product> products = [
     ],
     price: 50000,
     nb_star: 4.5,
+    nb_like: 20,
     is_favourite: true,
     is_popular: true,
   ),
   Product(
+    id: 2,
     title: "Nike Sport White - Man Pant",
     description: description,
     images: [
@@ -40,9 +48,11 @@ List<Product> products = [
     ],
     price: 10000,
     nb_star: 4,
+    nb_like: 0,
     is_popular: true,
   ),
   Product(
+    id: 3,
     title: "Logitech Head",
     description: description,
     images: [
@@ -56,9 +66,11 @@ List<Product> products = [
     ],
     price: 7500,
     nb_star: 4,
+    nb_like: 31
     //is_favourite: true,
   ),
   Product(
+    id: 4,
     title: "Glove XC Omega - Polygon",
     description: description,
     images: [
@@ -72,5 +84,6 @@ List<Product> products = [
     ],
     price: 5000,
     nb_star: 3,
+    nb_like: 14,
   ),
 ];

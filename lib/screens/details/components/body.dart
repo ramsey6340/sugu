@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sugu/size_config.dart';
+import '../../../components/Next_button.dart';
+import '../../../components/color_palette.dart';
+import '../../../components/product_description.dart';
+import '../../../components/top_rounded_container.dart';
 import '../../../models/product.dart';
+import '../../cart/cart_screen.dart';
 import 'product_detail_view.dart';
 
 
@@ -11,51 +15,50 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ProductDetailView(product: product),
-        Container(
-          margin: EdgeInsets.only(top: getProportionateScreenWidth(10)),
-          padding: EdgeInsets.only(top: getProportionateScreenWidth(10)),
-          width: double.infinity,
-          decoration: BoxDecoration(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ProductDetailView(product: product),
+          TopRoundedContainer(
             color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40),
-                topRight: Radius.circular(40)
+            child: Column(
+              children: [
+                ProductDescription(product: product, press_more_description: (){},),
+                TopRoundedContainer(
+                  color: Color(0xFFF6F7F9),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: ColorPalette(product: product),
+                      ),
+                      TopRoundedContainer(
+                          color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              top: getProportionateScreenWidth(15),
+                              left: SizeConfig.screenWidth * 0.15,
+                              right: SizeConfig.screenWidth * 0.15,
+                              bottom: getProportionateScreenWidth(40),
+                            ),
+                            child: NextButton(
+                              text: 'Contacter le vendeur',
+                              press: () {},
+                            ),
+                          )
+                      )
+                    ],
+                  ),
+                ),
+              ],
             )
           ),
-          child: Column(
-            children: [
-              Text("${product.title}", style: Theme.of(context).textTheme.headline6,),
-              Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-                  width: getProportionateScreenWidth(64),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFE6E6),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    )
-                  ),
-                  child: SvgPicture.asset((product.is_favourite)?"assets/icons/Heart Icon_2.svg":"assets/icons/Heart Icon.svg", color: Colors.red,),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 8.0),
-                child: Text(
-                  "${product.description}",
-                  maxLines: 3,overflow: TextOverflow.ellipsis,),
-              )
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
+
 
 
 

@@ -3,9 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import '../size_config.dart';
 
 
-class NbStar extends StatelessWidget {
-  const NbStar({Key? key, required this.nb_star,}) : super(key: key);
+class NbAppreciation extends StatelessWidget {
+  const NbAppreciation({Key? key, required this.nb_star, required this.icon}) : super(key: key);
   final String nb_star;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class NbStar extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
             ),
-            SvgPicture.asset("assets/icons/Star Icon.svg")
+            icon,
           ],
         ),
       ),
