@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/routes.dart';
 import 'package:sugu/screens/home/home_screen.dart';
+import 'package:sugu/screens/profile/profile_screen.dart';
 import 'package:sugu/screens/splash/splash_screen.dart';
 import 'package:sugu/size_config.dart';
 import 'package:sugu/theme.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: theme(),
       //home: SplashScreen(),
-      initialRoute: HomeScreen.routeName,
+      initialRoute: ProfileScreen.routeName,
       routes: routes,
     );
   }
