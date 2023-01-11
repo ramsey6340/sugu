@@ -4,17 +4,17 @@ import '../../../../models/product.dart';
 import '../../../../size_config.dart';
 
 
-class ProductDetailView extends StatefulWidget {
-  const ProductDetailView({Key? key, required this.product,}) : super(key: key);
+class OtherProductImage extends StatefulWidget {
+  const OtherProductImage({Key? key, required this.product,}) : super(key: key);
 
   final Product product;
 
   @override
-  State<ProductDetailView> createState() => _ProductDetailViewState();
+  State<OtherProductImage> createState() => _OtherProductImageState();
 }
 
-class _ProductDetailViewState extends State<ProductDetailView> {
-  int selected_image = 0;
+class _OtherProductImageState extends State<OtherProductImage> {
+  int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +23,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
           width: getProportionateScreenWidth(240),
           child: AspectRatio(
             aspectRatio: 1,
-            child: Image.asset('${widget.product.images[selected_image]}'),
+            child: Image.asset('${widget.product.images[selectedImage]}'),
           ),
         ),
         Row(
@@ -42,7 +42,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
     return GestureDetector(
       onTap: (){
         setState(() {
-          selected_image = index;
+          selectedImage = index;
         });
       },
       child: Container(
@@ -53,7 +53,7 @@ class _ProductDetailViewState extends State<ProductDetailView> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: (selected_image == index) ? kPrimaryColor: Colors.transparent),
+          border: Border.all(color: (selectedImage == index) ? kPrimaryColor: Colors.transparent),
         ),
         child: Image.asset('${widget.product.images[index]}'),
       ),

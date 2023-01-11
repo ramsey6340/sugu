@@ -18,7 +18,7 @@ class NextButton extends StatelessWidget{
           shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         ),
         onPressed: press  as void Function()?,
-        child: Text(text),
+        child: Text(text, style: TextStyle(fontSize: 18),),
       ),
     );
   }

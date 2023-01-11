@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sugu/components/Next_button.dart';
 import 'package:sugu/components/form_error.dart';
 import 'package:sugu/size_config.dart';
-
-import '../../../components/form_tools.dart';
-import '../../../components/social_card.dart';
+import '../../../../components/form_tools.dart';
+import '../../../../components/social_card.dart';
 import '../../complete_profile/complete_profile_screen.dart';
 
 class SignUpForm extends StatefulWidget {

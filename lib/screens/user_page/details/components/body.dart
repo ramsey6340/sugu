@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/size_config.dart';
-import '../../../components/Next_button.dart';
-import '../../../components/color_palette.dart';
-import '../../../components/product_description.dart';
-import '../../../components/top_rounded_container.dart';
-import '../../../models/product.dart';
-import '../../cart/cart_screen.dart';
-import 'product_detail_view.dart';
+import 'package:sugu/screens/user_page/details/components/product_details.dart';
+import '../../../../CRUD/read.dart';
+import '../../../../components/Next_button.dart';
+import '../../../../components/next_page.dart';
+import '../../../../datas/store_data.dart';
+import '../../../../models/product.dart';
+import 'other_product_image.dart';
 
 
 class Body extends StatelessWidget {
@@ -15,48 +14,27 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Read read = Read();
+
     return SingleChildScrollView(
       child: Column(
         children: [
-          ProductDetailView(product: product),
-          TopRoundedContainer(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ProductDescription(product: product, press_more_description: (){},),
-                TopRoundedContainer(
-                  color: Color(0xFFF6F7F9),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15),
-                        child: ColorPalette(product: product),
-                      ),
-                      TopRoundedContainer(
-                          color: Colors.white,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              top: getProportionateScreenWidth(15),
-                              left: SizeConfig.screenWidth * 0.15,
-                              right: SizeConfig.screenWidth * 0.15,
-                              bottom: getProportionateScreenWidth(40),
-                            ),
-                            child: NextButton(
-                              text: 'Contacter le vendeur',
-                              press: () {},
-                            ),
-                          )
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            )
+          OtherProductImage(product: product),
+          NextPage(
+            name: read.getStoreName(storeId: product.storeId),
+            press: (){},
+            leading: CircleAvatar(child: Image.asset(read.getStoreImg(storeId: product.storeId))),
           ),
+          ProductDetails(product: product),
+          Center(
+            child: NextButton(text: "Discuter", press: (){}),
+          ),
+          const SizedBox(height: 30,),
         ],
       ),
     );
   }
+
 }
 
 

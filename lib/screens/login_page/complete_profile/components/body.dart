@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/size_config.dart';
-import '../../../constantes.dart';
+import '../../../../constantes.dart';
 import 'complete_profile_form.dart';
 
 class Body extends StatelessWidget {

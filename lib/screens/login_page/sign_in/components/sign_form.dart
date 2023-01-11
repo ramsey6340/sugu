@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/screens/forgot_password/forgot_password_screen.dart';
-import '../../../components/next_button.dart';
-import '../../../components/custom_suffix_icon.dart';
-import '../../../components/form_error.dart';
-import '../../../constantes.dart';
-import '../../../size_config.dart';
+import '../../../../components/Next_button.dart';
+import '../../../../components/custom_suffix_icon.dart';
+import '../../../../components/form_error.dart';
+import '../../../../constantes.dart';
+import '../../../../size_config.dart';
+import '../../forgot_password/forgot_password_screen.dart';
 import '../../login_success/login_success_screen.dart';
 
 

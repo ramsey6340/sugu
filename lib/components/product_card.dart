@@ -1,51 +1,83 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/models/product.dart';
-import '../constantes.dart';
-import '../size_config.dart';
+
+import '../models/product.dart';
 
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key, required this.product, required this.press}) : super(key: key);
+  const ProductCard({Key? key, required this.shopImg, required this.shopName, required this.nbAvailable, required this.nbFollowers, required this.product, required this.press,}) : super(key: key);
   final Product product;
+  final String shopImg;
+  final String shopName;
+  final int nbAvailable;
+  final int nbFollowers;
   final Function press;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
-      child: GestureDetector(
-        onTap: press as void Function(),
-        child: SizedBox(
-          width: getProportionateScreenWidth(130),
-          child: Column(
-            children: [
-              AspectRatio(
-                aspectRatio: 1.02,
-                child: Container(
-                  padding: EdgeInsets.all(getProportionateScreenWidth(10)),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: kSecondaryColor.withOpacity(0.1),
+    return GestureDetector(
+      onTap: press as void Function(),
+      child: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10)
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('${shopImg}'),
+                ),
+                const SizedBox(width: 10,),
+                Text('${shopName}')
+              ],
+            ),
+            const SizedBox(height: 5,),
+            Flexible(
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: AssetImage(
+                        product.images[0],
+                      ),
+                      fit: BoxFit.fill,
+                    )
+                ),
+              ),
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('${product.price} f', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),),
+                      Row(
+                        children: [
+                          GestureDetector(
+                              onTap: (){},
+                              child: (product.isFavourite)?Icon(Icons.favorite, color: Colors.red,):Icon(Icons.favorite_border),
+                          ),
+                          Text('${product.nbLike}')
+                        ],
+                      )
+                    ],
                   ),
-                  child: Image.asset(product.images[0]),
-                ),
+                  Text('${product.name}', overflow: TextOverflow.ellipsis,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('$nbAvailable/${product.nbTotalProduct}',),
+                      Text("$nbFollowers followers")
+                    ],
+                  )
+                ],
               ),
-              Text(
-                product.title,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.black),
-                textAlign: TextAlign.center,
-              ),
-              Text(
-                '${product.price} fcfa',
-                style: TextStyle(
-                    fontSize: getProportionateScreenWidth(16),
-                    fontWeight: FontWeight.w600,
-                    color: kPrimaryColor
-                ),
-              ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );

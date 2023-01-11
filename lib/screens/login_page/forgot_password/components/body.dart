@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sugu/components/next_button.dart';
 import 'package:sugu/size_config.dart';
+import '../../../../components/custom_suffix_icon.dart';
+import '../../../../components/form_error.dart';
+import '../../../../components/no_account_text.dart';
+import '../../../../constantes.dart';
 
-import '../../../components/custom_suffix_icon.dart';
-import '../../../components/form_error.dart';
-import '../../../components/no_account_text.dart';
-import '../../../constantes.dart';
 
 class Body extends StatelessWidget
 {

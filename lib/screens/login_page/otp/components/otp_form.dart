@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/components/next_button.dart';
-import '../../../constantes.dart';
-import '../../../size_config.dart';
+import '../../../../constantes.dart';
+import '../../../../size_config.dart';
 import '../../login_success/login_success_screen.dart';
+
 
 class OTPForm extends StatefulWidget {
   const OTPForm({Key? key}) : super(key: key);

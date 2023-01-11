@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/routes.dart';
-import 'package:sugu/screens/home/home_screen.dart';
-import 'package:sugu/screens/profile/profile_screen.dart';
+import 'package:sugu/screens/main_screen.dart';
 import 'package:sugu/screens/splash/splash_screen.dart';
+import 'package:sugu/screens/user_page/my_shop/my_shop_screen.dart';
 import 'package:sugu/size_config.dart';
 import 'package:sugu/theme.dart';
+
+import 'components/test_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,8 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      //home: SplashScreen(),
-      initialRoute: ProfileScreen.routeName,
+      //home: MyShopScreen(),
+      initialRoute: MainScreen.routeName,
       routes: routes,
     );
   }

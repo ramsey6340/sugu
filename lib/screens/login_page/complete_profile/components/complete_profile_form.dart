@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/size_config.dart';
-
-import '../../../components/Next_button.dart';
-import '../../../components/form_tools.dart';
+import '../../../../components/Next_button.dart';
+import '../../../../components/form_tools.dart';
 import '../../otp/otp_screen.dart';
+
 
 class CompleteProfileForm extends StatefulWidget {
   const CompleteProfileForm({Key? key}) : super(key: key);

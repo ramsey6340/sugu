@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/screens/home/components/categories.dart';
-import 'package:sugu/size_config.dart';
-import '../../../components/popular_products.dart';
-import 'home_header.dart';
-import 'promo_banner.dart';
-import '../../../components/special_offers.dart';
+import '../../../../CRUD/read.dart';
+import '../../../../components/product_card.dart';
+import '../../../../components/test_widget.dart';
+import '../../../../constantes.dart';
+import '../../../../datas/product_data.dart';
+import '../../../../datas/seller_data.dart';
+import '../../../../datas/store_data.dart';
+import '../../details/details_screen.dart';
 
 
 class Body extends StatelessWidget {
@@ -12,27 +14,34 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-            child: Column(
-              children: [
-                SizedBox(height: getProportionateScreenHeight(20),),
-                HomeHeader(),
-                SizedBox(height: getProportionateScreenHeight(20),),
-                PromoBanner(),
-                SizedBox(height: getProportionateScreenHeight(20),),
-                Categories(),
-                SizedBox(height: getProportionateScreenHeight(20),),
-                SpecialOffers(),
-                SizedBox(height: getProportionateScreenHeight(20),),
-                Popularproducts(),
-                SizedBox(height: getProportionateScreenHeight(20),),
-              ],
-            ),
+    Read read = Read();
+
+    return Container(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.55,
           ),
-        )
+          itemCount: products.length,
+          itemBuilder: (context, index){
+            final item = products[index];
+            return ProductCard(
+              shopImg: read.getStoreImg(storeId: item.storeId),
+              shopName: read.getStoreName(storeId: item.storeId),
+              nbAvailable: 10,
+              nbFollowers: read.getNbFollowers(storeId: item.storeId),
+              product: item,
+              press: () => Navigator.pushNamed(context, DetailsScreen.routeName, arguments: item),
+            );
+          },
+        ),
+      ),
     );
   }
+
+
 }

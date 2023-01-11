@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components/body.dart';
 
 
 class ChatScreen extends StatelessWidget {
@@ -6,6 +7,13 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 1,
+        centerTitle: true,
+        title: const Text("Messages", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black87),),
+      ),
+      body: Body(),
+    );
   }
 }

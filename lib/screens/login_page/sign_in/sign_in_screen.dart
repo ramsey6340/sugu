@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/screens/sign_in/components/body.dart';
+import 'components/body.dart';
 
 class SignInScreen extends StatelessWidget{
   static String routeName = "/sign_in";

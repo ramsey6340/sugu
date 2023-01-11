@@ -14,13 +14,12 @@ class NbAppreciation extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: Container(
         width: getProportionateScreenWidth(50),
-        padding: EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20)
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("$nb_star", style: TextStyle(
               color: Colors.black,

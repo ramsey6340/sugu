@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sugu/screens/sign_in/components/sign_form.dart';
+import 'package:sugu/screens/login_page/sign_in/components/sign_form.dart';
 import 'package:sugu/size_config.dart';
-import '../../../components/no_account_text.dart';
-import '../../../components/social_card.dart';
+import '../../../../components/no_account_text.dart';
+import '../../../../components/social_card.dart';
+
 
 class Body extends StatelessWidget{
   @override

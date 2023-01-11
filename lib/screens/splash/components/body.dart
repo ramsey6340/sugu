@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
-import 'package:sugu/screens/sign_in/sign_in_screen.dart';
-import 'package:sugu/size_config.dart';
 import '../../../components/next_button.dart';
+import '../../login_page/sign_in/sign_in_screen.dart';
 import 'splash_content.dart';
 class Body extends StatefulWidget{
   @override

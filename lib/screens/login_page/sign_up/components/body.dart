@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../../constantes.dart';
 import 'sign_up_form.dart';
-import '../../../constantes.dart';
+
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/components/next_button.dart';
+import 'package:sugu/screens/main_screen.dart';
 import 'package:sugu/size_config.dart';
+import '../../../user_page/home/home_screen.dart';
 
-import '../../home/home_screen.dart';
 
 class Body extends StatelessWidget
 {
@@ -23,7 +24,7 @@ class Body extends StatelessWidget
         NextButton(
             text: 'Continuer',
             press: (){
-              Navigator.pushNamed(context, HomeScreen.routeName);
+              Navigator.pushNamed(context, MainScreen.routeName);
             }
         ),
       ],

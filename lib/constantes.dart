@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/size_config.dart';
 
-const kPrimaryColor = Color(0xFFFF7643);
+const kPrimaryColor = Colors.deepPurple;//Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
@@ -20,6 +20,18 @@ final headingStyle = TextStyle(
   color: Colors.black,
   height: 1.5,
 );
+
+// Style appliqué lorsqu'on choisi une catégorie d'affichage dans la page Favoris par exemple
+const textChoosed = TextStyle(
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontSize: 18,
+  decoration: TextDecoration.underline,
+  decorationThickness: 2,
+);
+// Style appliqué lorsqu'on a pas choisi une catégorie d'affichage dans la page Favoris par exemple
+const textNotchoosed = TextStyle(fontSize: 18);
+
 
 // Style pour les texte sous l'en-tête des pages de login
 final subHeadingStyle = TextStyle(fontSize: 18);

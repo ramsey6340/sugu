@@ -14,6 +14,7 @@ class Body extends StatelessWidget {
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            const SizedBox(height: 10,),
             ProfileImg(profileImg: 'assets/images/Profile Image.png', pressShowImg: (){}, pressModifImg: (){},),
             const SizedBox(height: 50,),
             NextInteraction(icon: Icons.account_circle, text: 'Mon compte', press: (){},),

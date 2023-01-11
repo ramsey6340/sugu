@@ -4,8 +4,8 @@ import '../../../../datas/product_data.dart';
 import '../../details/details_screen.dart';
 
 
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+class ProductsBody extends StatelessWidget {
+  const ProductsBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../size_config.dart';
+import '../../../size_config.dart';
 import 'components/body.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,6 +10,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+      backgroundColor: Colors.black26.withOpacity(0.02),
+      appBar: AppBar(
+        elevation: 1,
+        centerTitle: true,
+        title: const Text("Produits", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black87),),
+      ),
       body: Body(),
     );
   }
