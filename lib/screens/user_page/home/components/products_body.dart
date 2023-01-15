@@ -6,7 +6,7 @@ import '../../../../constantes.dart';
 import '../../../../datas/product_data.dart';
 import '../../../../datas/seller_data.dart';
 import '../../../../datas/store_data.dart';
-import '../../details/details_screen.dart';
+import '../../details_product/details_product_screen.dart';
 
 
 class Body extends StatelessWidget {
@@ -30,12 +30,9 @@ class Body extends StatelessWidget {
           itemBuilder: (context, index){
             final item = products[index];
             return ProductCard(
-              shopImg: read.getStoreImg(storeId: item.storeId),
-              shopName: read.getStoreName(storeId: item.storeId),
               nbAvailable: 10,
-              nbFollowers: read.getNbFollowers(storeId: item.storeId),
               product: item,
-              press: () => Navigator.pushNamed(context, DetailsScreen.routeName, arguments: item),
+              press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
             );
           },
         ),

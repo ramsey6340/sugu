@@ -17,13 +17,13 @@ class Body extends StatelessWidget {
         final item = stores[index];
         return Column(
           children: [
-            NextPage(
+            (!read.getIsCurrentUser(sellerId: item.sellerId))?NextPage(
               name: item.name,
               press: (){},
               leading: CircleAvatar(
                 backgroundImage: AssetImage(read.getStoreImg(storeId: item.storeId))
               ),
-            ),
+            ): SizedBox(),
             const Divider(height: 0, color: Colors.black, indent: 50,),
           ],
         );

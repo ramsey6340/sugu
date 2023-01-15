@@ -5,6 +5,7 @@ import 'package:sugu/models/store.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../datas/store_data.dart';
 import '../../../size_config.dart';
+import '../details_store/details_store_screen.dart';
 import 'components/body.dart';
 
 
@@ -19,7 +20,7 @@ class MyShopScreen extends StatelessWidget {
           leading: IconButton(onPressed: (){}, icon: Icon(Icons.add_circle_outline_rounded)),
           title: '${stores[0].name}',
           actions: [
-            getLeadingShopPage(),
+            getLeadingShopPage(context, stores[0]),
             SizedBox(width: getProportionateScreenWidth(20),),
             Container(
               padding: EdgeInsets.all(3),
@@ -38,17 +39,20 @@ class MyShopScreen extends StatelessWidget {
 
 
   // le widget leading dans le App Bar de la page de magasin
-  Column getLeadingShopPage() {
+  GestureDetector getLeadingShopPage(BuildContext context, Store store) {
     Read read = Read();
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CircleAvatar(
-          radius: 10,
-          backgroundImage: AssetImage(read.getStoreImg(storeId: stores[0].storeId)),
-        ),
-        Text('${stores[0].nbFollowers}k', style: TextStyle(color: Colors.black),),
-      ],
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, DetailsStoreScreen.routeName, arguments: store),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            radius: 10,
+            backgroundImage: AssetImage(read.getStoreImg(storeId: stores[0].storeId)),
+          ),
+          Text('${stores[0].nbFollowers}k', style: TextStyle(color: Colors.black),),
+        ],
+      ),
     );
   }
 }
