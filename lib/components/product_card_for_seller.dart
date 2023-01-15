@@ -4,13 +4,14 @@ import '../models/product.dart';
 
 
 class ProductCardForSeller extends StatelessWidget {
-  const ProductCardForSeller({Key? key, required this.product, required this.nbAvailable,}) : super(key: key);
+  const ProductCardForSeller({Key? key, required this.product, required this.press,}) : super(key: key);
   final Product product;
-  final int nbAvailable;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: press as void Function(),
       child: Container(
         padding: EdgeInsets.all(5),
         height: MediaQuery.of(context).size.height/2.22,
@@ -50,7 +51,7 @@ class ProductCardForSeller extends StatelessWidget {
                   ],
                 ),
                 Text('${product.name}', overflow: TextOverflow.ellipsis,),
-                Text("$nbAvailable/${product.nbTotalProduct} disponible", overflow: TextOverflow.ellipsis,)
+                Text("${product.nbAvailableProduct} disponible", overflow: TextOverflow.ellipsis,)
               ],
             )
           ],

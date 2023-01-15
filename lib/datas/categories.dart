@@ -1,4 +1,5 @@
 enum Categories  {
+  all,
   vetement,
   homme,
   femme,

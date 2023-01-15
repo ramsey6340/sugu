@@ -26,8 +26,8 @@ List<Product> products = [
     nbLike: 21,
     isPopular: true,
     isFavourite: true,
-    nbTotalProduct: 30,
-    category: [Categories.chaussure, Categories.homme],
+    nbAvailableProduct: 30,
+    categories: [Categories.chaussure, Categories.homme],
     storeId: stores[0].storeId,
   ),
   Product(
@@ -42,7 +42,8 @@ List<Product> products = [
     nbLike: 10,
     isPopular: true,
     isFavourite: true,
-    nbTotalProduct: 20, category: [Categories.chaussure, Categories.homme],
+    nbAvailableProduct: 20,
+    categories: [Categories.chaussure, Categories.homme],
     storeId: stores[1].storeId,
   ),
   Product(
@@ -56,7 +57,8 @@ List<Product> products = [
     nbStar: 4,
     nbLike: 100,
     isPopular: true,
-    nbTotalProduct: 100, category: [Categories.beaute, Categories.femme],
+    nbAvailableProduct: 10,
+    categories: [Categories.beaute, Categories.femme],
     storeId: stores[2].storeId,
   ),
   Product(
@@ -72,7 +74,8 @@ List<Product> products = [
     nbLike: 60,
     isPopular: true,
     isFavourite: true,
-    nbTotalProduct: 60, category: [Categories.beaute, Categories.femme],
+    nbAvailableProduct: 60,
+    categories: [Categories.beaute, Categories.femme],
     storeId: stores[0].storeId,
   ),
   Product(
@@ -86,7 +89,8 @@ List<Product> products = [
     nbStar: 4,
     nbLike: 5,
     isPopular: true,
-    nbTotalProduct: 30, category: [Categories.homme, Categories.accessoire],
+    nbAvailableProduct: 30,
+    categories: [Categories.homme, Categories.accessoire],
     storeId: stores[1].storeId,
   ),
   Product(
@@ -101,7 +105,8 @@ List<Product> products = [
     nbLike: 20,
     isPopular: true,
     isFavourite: true,
-    nbTotalProduct: 13, category: [Categories.homme, Categories.accessoire],
+    nbAvailableProduct: 13,
+    categories: [Categories.homme, Categories.accessoire],
     storeId: stores[2].storeId,
   ),
   Product(
@@ -115,7 +120,8 @@ List<Product> products = [
     nbStar: 4,
     nbLike: 34,
     isPopular: true,
-    nbTotalProduct: 1, category: [Categories.vetement, Categories.homme],
+    nbAvailableProduct: 1,
+    categories: [Categories.vetement, Categories.homme],
     storeId: stores[0].storeId,
   ),
   Product(
@@ -129,7 +135,8 @@ List<Product> products = [
     nbStar: 4,
     nbLike: 30,
     isPopular: true,
-    nbTotalProduct: 20, category: [Categories.electronique],
+    nbAvailableProduct: 20,
+    categories: [Categories.electronique],
     storeId: stores[1].storeId,
   ),
   Product(
@@ -144,7 +151,8 @@ List<Product> products = [
     nbLike: 56,
     isPopular: true,
     isFavourite: true,
-    nbTotalProduct: 30, category: [Categories.electronique],
+    nbAvailableProduct: 30,
+    categories: [Categories.electronique],
     storeId: stores[2].storeId,
   ),
 
@@ -163,7 +171,8 @@ List<Product> products = [
     nbLike: 20,
     isFavourite: true,
     isPopular: true,
-    nbTotalProduct: 40, category: [Categories.jeux],
+    nbAvailableProduct: 40,
+    categories: [Categories.jeux],
     storeId: stores[0].storeId,
   ),
   Product(
@@ -177,7 +186,8 @@ List<Product> products = [
     nbStar: 4,
     nbLike: 0,
     isPopular: true,
-    nbTotalProduct: 200, category: [Categories.sport],
+    nbAvailableProduct: 200,
+    categories: [Categories.sport],
     storeId: stores[1].storeId,
   ),
   Product(
@@ -190,7 +200,8 @@ List<Product> products = [
     price: 7500,
     nbStar: 4,
     nbLike: 31,
-    nbTotalProduct: 75, category: [Categories.electronique],
+    nbAvailableProduct: 75,
+    categories: [Categories.electronique],
     storeId: stores[2].storeId,
   ),
   Product(
@@ -203,7 +214,8 @@ List<Product> products = [
     price: 5000,
     nbStar: 3,
     nbLike: 14,
-    nbTotalProduct: 30, category: [Categories.beaute],
+    nbAvailableProduct: 30,
+    categories: [Categories.beaute],
     storeId: stores[0].storeId,
   ),
 ];

@@ -8,10 +8,11 @@ import 'package:sugu/screens/login_page/sign_in/sign_in_screen.dart';
 import 'package:sugu/screens/login_page/sign_up/sign_up_screen.dart';
 import 'package:sugu/screens/main_screen.dart';
 import 'package:sugu/screens/splash/splash_screen.dart';
-import 'package:sugu/screens/user_page/details/details_screen.dart';
+import 'package:sugu/screens/user_page/chat/components/chat/inbox.dart';
+import 'package:sugu/screens/user_page/details_product/details_product_screen.dart';
 import 'package:sugu/screens/user_page/home/home_screen.dart';
 import 'package:sugu/screens/user_page/profile/profile_screen.dart';
-import 'datas/product_data.dart';
+import 'datas/store_data.dart';
 
 
 final Map<String, WidgetBuilder> routes = {
@@ -23,8 +24,9 @@ final Map<String, WidgetBuilder> routes = {
   CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
   OTPScreen.routeName: (context) => OTPScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
-  DetailsScreen.routeName: (context) => DetailsScreen(),
+  DetailsProductScreen.routeName: (context) => DetailsProductScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
   MainScreen.routeName: (context) => MainScreen(),
-  TestWidget.routeName: (context) => TestWidget(product: products[0],),
+  Inbox.routeName: (context) => Inbox(),
+  TestWidget.routeName: (context) => TestWidget(store: stores[1]),
 };

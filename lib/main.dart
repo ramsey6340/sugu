@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sugu/routes.dart';
 import 'package:sugu/screens/main_screen.dart';
 import 'package:sugu/screens/splash/splash_screen.dart';
-import 'package:sugu/screens/user_page/my_shop/my_shop_screen.dart';
+import 'package:sugu/screens/user_page/store/store_screen.dart';
 import 'package:sugu/size_config.dart';
 import 'package:sugu/theme.dart';
 

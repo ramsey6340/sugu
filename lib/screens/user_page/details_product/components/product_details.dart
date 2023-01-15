@@ -19,7 +19,7 @@ class ProductDetails extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(product.name, style: const TextStyle(fontSize: 18, overflow: TextOverflow.ellipsis),),
-              Text('2/${product.nbTotalProduct} dispo', style: TextStyle(fontSize: 18),),
+              Text('${product.nbAvailableProduct} disponibles', style: TextStyle(fontSize: 18,),),
             ],
           ),
           Text('${product.price} f',style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 24),),

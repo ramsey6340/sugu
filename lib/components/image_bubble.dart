@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 ///message sender can be changed using [isSender]
 ///chat bubble [TextStyle] can be customized using [textStyle]
 
-class MessageBubble extends StatelessWidget {
+class ImageBubble extends StatelessWidget {
   final bool isSender;
   final String urlImage;
   final bool tail;
@@ -22,7 +22,7 @@ class MessageBubble extends StatelessWidget {
   final bool seen;
   final TextStyle textStyle;
 
-  const MessageBubble({
+  const ImageBubble({
     Key? key,
     this.isSender = true,
     required this.urlImage,

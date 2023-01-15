@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import '../../../../CRUD/read.dart';
 import '../../../../components/product_card.dart';
 import '../../../../datas/product_data.dart';
-import '../../details/details_screen.dart';
+import '../../details_product/details_product_screen.dart';
 
 
 class ProductsBody extends StatelessWidget {
@@ -9,6 +10,7 @@ class ProductsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
@@ -23,12 +25,8 @@ class ProductsBody extends StatelessWidget {
           itemBuilder: (context, index){
             final item = products[index];
             return ProductCard(
-              shopImg: 'assets/images/Profile Image.png',
-              shopName: 'Aoua Shop',
-              nbAvailable: 10,
-              nbFollowers: 10,
               product: item,
-              press: () => Navigator.pushNamed(context, DetailsScreen.routeName, arguments: item),
+              press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
             );
           },
         ),

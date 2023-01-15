@@ -6,15 +6,13 @@ class Seller {
   final String firstName;
   final String lastName;
   final String birthDay;
-  final String address;
-  final String image;
+  final bool isCurrentUser; // cet attribue sera supprimé à la fin du test
 
   Seller({
-        required this.sellerId,
-        required this.firstName,
-        required this.lastName,
-        required this.birthDay,
-        required this.address,
-        required this.image,
-      });
+    required this.sellerId,
+    required this.firstName,
+    required this.lastName,
+    required this.birthDay,
+    this.isCurrentUser = false,
+  });
 }

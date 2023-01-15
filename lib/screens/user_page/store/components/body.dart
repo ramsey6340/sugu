@@ -1,59 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/components/product_card.dart';
 import '../../../../components/product_card_for_seller.dart';
+import '../../../../datas/categories.dart';
 import '../../../../datas/product_data.dart';
 import '../../../../models/product.dart';
 import '../../../../models/store.dart';
+import '../../details_product/details_product_screen.dart';
 
 
-class Body extends StatelessWidget {
-  const Body({Key? key, required this.store}) : super(key: key);
+class Body extends StatefulWidget {
+  const Body({Key? key, required this.store, required this.category}) : super(key: key);
   final Store store;
+  final Categories category;
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+
+  late List<Product> productsOfStore;
+
+  // methode pour obtenir tous les produits d'un boutique
+  List<Product> getAllProducts({required String storeId, required Categories categorySelected}){
+    List<Product> productsForMe = [];
+    if(categorySelected == Categories.all){
+      for(int i=0; i<products.length; i++){
+        if(products[i].storeId == storeId){
+          productsForMe.add(products[i]);
+        }
+      }
+    }
+    else{
+      for(int i=0; i<products.length; i++){
+        if(products[i].storeId == storeId && products[i].categories.contains(categorySelected)){
+          productsForMe.add(products[i]);
+        }
+      }
+    }
+    return productsForMe;
+  }
+
+  @override
+  void initState() {
+    productsOfStore = getAllProducts(storeId: widget.store.storeId, categorySelected: widget.category);
+    print(widget.category.name);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<Product> productsOfStore = getAllProducts(store.storeId);
+
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: ListView.builder(
-          itemCount: store.categories.length,
-            itemBuilder: (context, index){
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('${store.categories[index].name.toUpperCase()}', style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold, ),),
-                  const Divider(color: Colors.black54, height: 1,),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                        children: List.generate(
-                          products.length,
-                              (index) => Padding(
-                            padding: EdgeInsets.all(5),
-                            child: ProductCardForSeller(product: products[index], nbAvailable: 20,),
-                          ),
-                        )
-                    ),
-                  ),
-                  const SizedBox(height: 20,),
-                ],
-              );
-            },
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+        child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            childAspectRatio: 0.55,
+          ),
+          itemCount: productsOfStore.length,
+          itemBuilder: (context, index){
+            final item = productsOfStore[index];
+            return ProductCardForSeller(
+              product: item,
+              press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
+            );
+          },
         ),
+      ),
     );
   }
-
-  // methode pour obtenir tous les produits d'un magasin
-  List<Product> getAllProducts(String storeId){
-    List<Product> products = [];
-    for(int i=0; i<products.length; i++){
-      if(products[i].storeId == storeId){
-        products.add(products[i]);
-      }
-    }
-    return products;
-  }
-
-
 
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../components/buttonRounded.dart';
 import '../../../constantes.dart';
+import '../../../size_config.dart';
 import 'components/products_body.dart';
 import 'components/stores_body.dart';
 
@@ -38,18 +40,29 @@ class _MyFavoriteProductScreenState extends State<MyFavoriteProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black26.withOpacity(0.02),
+      backgroundColor: kBackground,
       appBar: AppBar(
         //elevation: 1,
         centerTitle: true,
         title: const Text("Mes favoris", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black87),),
+        actions: [
+          IconButton(
+              onPressed: (){Scaffold.of(context).openEndDrawer();},
+              icon: Icon(Icons.filter_list)
+          ),
+        ],
         bottom: PreferredSize(
-            preferredSize: Size(10, 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(
-                  types.length,
-                   (index) => showType(index),
+            preferredSize: Size(getProportionateScreenWidth(10), getProportionateScreenHeight(50)),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(
+                    types.length,
+                     (index) => Container(
+                       margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+                         child:  showType(index)
+                     ),
+                ),
               ),
             )
         ),
@@ -57,35 +70,15 @@ class _MyFavoriteProductScreenState extends State<MyFavoriteProductScreen> {
       body: currentScreen,
     );
   }
-  
-  GestureDetector showType(int index) {
-    return GestureDetector(
-      onTap: (){
-        onItemTapped(index);
-      },
-      child: Text('${types[index]}', style: (selectedIndex == index)? textChoosed: textNotchoosed),
+
+  ButtonRounded showType(int index) {
+
+    return ButtonRounded(
+      press: (){onItemTapped(index);},
+      text: '${types[index]}',
+      textColor: (selectedIndex == index)? Colors.white:Colors.black,
+      backgroundColor: (selectedIndex == index)?Colors.black54:kBackground,
+      isBorder: (selectedIndex == index)?false:true,
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

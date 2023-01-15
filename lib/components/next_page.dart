@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 
 class NextPage extends StatelessWidget {
-  const NextPage({Key? key, required this.name, required this.press, required this.leading,}) : super(key: key);
+  const NextPage({Key? key, required this.name, required this.press, required this.leading, this.enable=true,}) : super(key: key);
   final String name;
-  final Widget leading;
+  final Widget? leading;
   final Function press;
+  final bool enable;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,8 @@ class NextPage extends StatelessWidget {
         onTap: press as void Function(),
         leading: leading,
         title: Text(name),
-        trailing: const Icon(Icons.navigate_next),
+        enabled: enable,
+        trailing: (enable)?const Icon(Icons.navigate_next): null,
       ),
     );
   }

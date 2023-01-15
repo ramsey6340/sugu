@@ -6,9 +6,9 @@ import '../../../models/product.dart';
 import 'components/body.dart';
 
 
-class DetailsScreen extends StatelessWidget {
-  static String routeName = "/details";
-  const DetailsScreen({Key? key}) : super(key: key);
+class DetailsProductScreen extends StatelessWidget {
+  static String routeName = "/details_product";
+  const DetailsProductScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Product product = ModalRoute.of(context)?.settings.arguments as Product;

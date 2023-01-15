@@ -6,7 +6,7 @@ import '../datas/categories.dart';
 class Product{
   final String productId;
   final String storeId;
-  final List<Categories> category;
+  final List<Categories> categories;
   final String name; // le titre
   final String description; // la description
   final List<String> images; // les images
@@ -15,17 +15,17 @@ class Product{
   final double price; // le prix
   final bool isFavourite;
   final bool isPopular;
-  final int nbTotalProduct;
+  final int nbAvailableProduct;
 
   Product({
     required this.productId,
     required this.storeId,
-    required this.nbTotalProduct,
+    required this.nbAvailableProduct,
     required this.name,
     required this.description,
     required this.images,
     required this.price,
-    required this.category,
+    required this.categories,
     this.nbStar = 0.0,
     this.nbLike = 0,
     this.isFavourite = false,

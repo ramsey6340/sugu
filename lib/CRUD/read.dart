@@ -15,30 +15,18 @@ class Read {
     return nbFollowers;
   }
   
-  // methode pour obtenir l'image du magasin (l'imaga du magasin est le même que l'image du vendeur)
+  // methode pour obtenir l'image du magasin (l'image du boutique est le même que l'image du vendeur)
   String getStoreImg({required String storeId}){
     String storeImg = '';
     for(int i=0; i<stores.length; i++){
       if(stores[i].storeId == storeId){
-        storeImg = getSellerImg(sellerId: stores[i].sellerId);
+        storeImg = stores[i].image;
       }
     }
     return storeImg;
   }
 
-  // methode pour obtenir l'image du vendeur
-  String getSellerImg({required String sellerId}){
-    String sellerImg = '';
-    for(int i=0; i<sellers.length; i++){
-      if(sellers[i].sellerId == sellerId){
-        sellerImg = sellers[i].image;
-        break;
-      }
-    }
-    return sellerImg;
-  }
-
-  // methode pour obtenir le nom du magasin
+  // methode pour obtenir le nom du boutique
   String getStoreName({required String storeId}){
     String storeName = '';
     for(int i=0; i<stores.length; i++){
@@ -48,6 +36,42 @@ class Read {
       }
     }
     return storeName;
+  }
+
+  // methode pour obtenir le prenom et nom du vendeur avec l'id du vendeur
+  String getSellerName({required String sellerId}){
+    String sellerName = '';
+    for(int i=0; i<sellers.length; i++){
+      if(sellers[i].sellerId == sellerId){
+        sellerName = '${sellers[i].firstName} ${sellers[i].lastName}';
+        break;
+      }
+    }
+    return sellerName;
+  }
+
+  // methode pour obtenir l'attribue isCurrentUser en utilisan l'id de la boutique
+  bool getIsCurrentUserWithStore({required String storeId}){
+    bool isCurrentUser = false;
+    for(int i=0; i<stores.length; i++){
+      if(stores[i].storeId == storeId){
+        isCurrentUser = getIsCurrentUser(sellerId: stores[i].sellerId);
+        break;
+      }
+    }
+    return isCurrentUser;
+  }
+
+  // methode pour obtenir l'attribue isCurrentUser
+  bool getIsCurrentUser({required String sellerId}){
+    bool isCurrentUser = false;
+    for(int i=0; i<sellers.length; i++){
+      if(sellers[i].sellerId == sellerId){
+        isCurrentUser = sellers[i].isCurrentUser;
+        break;
+      }
+    }
+    return isCurrentUser;
   }
 
 }

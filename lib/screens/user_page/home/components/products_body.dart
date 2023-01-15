@@ -9,8 +9,8 @@ import '../../../../datas/store_data.dart';
 import '../../details_product/details_product_screen.dart';
 
 
-class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+class ProductsBody extends StatelessWidget {
+  const ProductsBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,6 @@ class Body extends StatelessWidget {
           itemBuilder: (context, index){
             final item = products[index];
             return ProductCard(
-              nbAvailable: 10,
               product: item,
               press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
             );

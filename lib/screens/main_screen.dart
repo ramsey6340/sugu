@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
-import 'package:sugu/screens/user_page/chat/chat_screen.dart';
+import 'package:sugu/screens/user_page/chat/message_screen.dart';
 import 'package:sugu/screens/user_page/home/home_screen.dart';
 import 'package:sugu/screens/user_page/my_favorite_products/my_favorite_product_screen.dart';
-import 'package:sugu/screens/user_page/my_shop/my_shop_screen.dart';
+import 'package:sugu/screens/user_page/store/store_screen.dart';
 import 'package:sugu/screens/user_page/profile/profile_screen.dart';
 
+import '../datas/datas_current.dart';
 import '../datas/store_data.dart';
+import '../size_config.dart';
 
 
 class MainScreen extends StatefulWidget
@@ -33,8 +35,8 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     _homeScreen = HomeScreen();
     _myFavoriteProductScreen = MyFavoriteProductScreen();
-    _myShopScreen = MyShopScreen();
-    _chatScreen = ChatScreen();
+    _myShopScreen = StoreScreen(store: currentStore,);
+    _chatScreen = MessageScreen();
     _profileScreen = ProfileScreen();
     _screenList = [_homeScreen, _myFavoriteProductScreen, _myShopScreen, _chatScreen, _profileScreen];
     _currentScreen = _screenList[currentMenuIndex];
@@ -49,14 +51,25 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Scaffold(
+      backgroundColor: Colors.white54.withOpacity(1),
+      endDrawerEnableOpenDragGesture: false,
+      endDrawer: Drawer(
+        width: MediaQuery.of(context).size.width * 0.80,
+        child: Column(
+          children: [
+            DrawerHeader(child: Text("Filtrer par ..."),),
+          ],
+        ),
+      ),
       body: _currentScreen,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '',),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: '',),
-          BottomNavigationBarItem(icon: Icon(Icons.storefront,), label: '', ),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: '',),
+          BottomNavigationBarItem(icon: Icon(Icons.storefront), label: '', ),
+          BottomNavigationBarItem(icon: Icon(Icons.mail), label: '',),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp), label: '',),
         ],
         selectedItemColor: kPrimaryColor,

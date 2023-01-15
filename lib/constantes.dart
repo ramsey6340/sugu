@@ -3,6 +3,7 @@ import 'package:sugu/size_config.dart';
 
 const kPrimaryColor = Colors.deepPurple;//Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);
+const kBackground = Color(0xFFFCFCFC);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,

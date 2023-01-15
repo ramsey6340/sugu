@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../CRUD/read.dart';
 import '../models/product.dart';
 
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key, required this.shopImg, required this.shopName, required this.nbAvailable, required this.nbFollowers, required this.product, required this.press,}) : super(key: key);
+  const ProductCard({Key? key, required this.product, required this.press,}) : super(key: key);
   final Product product;
-  final String shopImg;
-  final String shopName;
-  final int nbAvailable;
-  final int nbFollowers;
   final Function press;
 
   @override
   Widget build(BuildContext context) {
+    Read read = Read();
     return GestureDetector(
       onTap: press as void Function(),
       child: Container(
@@ -27,10 +25,10 @@ class ProductCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('${shopImg}'),
+                  backgroundImage: AssetImage(read.getStoreImg(storeId: product.storeId)),
                 ),
                 const SizedBox(width: 10,),
-                Text('${shopName}')
+                Text(read.getStoreName(storeId: product.storeId))
               ],
             ),
             const SizedBox(height: 5,),
@@ -70,8 +68,8 @@ class ProductCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('$nbAvailable/${product.nbTotalProduct}',),
-                      Text("$nbFollowers followers")
+                      Text('${product.nbAvailableProduct} dispo',),
+                      Text("${read.getNbFollowers(storeId: product.storeId)} followers")
                     ],
                   )
                 ],
