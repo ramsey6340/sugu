@@ -13,14 +13,14 @@ import '../../details_product/details_product_screen.dart';
 import '../../details_store/details_store_screen.dart';
 
 
-class ProductsBody extends StatefulWidget {
-  const ProductsBody({Key? key}) : super(key: key);
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
 
   @override
-  State<ProductsBody> createState() => _ProductsBodyState();
+  State<Body> createState() => _BodyState();
 }
 
-class _ProductsBodyState extends State<ProductsBody> {
+class _BodyState extends State<Body> {
 
 
   late List<String> types;
@@ -100,7 +100,8 @@ class _ProductsBodyState extends State<ProductsBody> {
   ButtonRounded showType(int index) {
     return ButtonRounded(
       isBorder: false,
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
+      selectedBackground: kRoundedCategory,
       isSelected: selectedIndex == index,
       press: (){onItemTapped(index);},
       text: '${types[index]}',

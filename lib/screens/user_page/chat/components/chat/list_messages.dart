@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import '../../../../../CRUD/read.dart';
 import '../../../../../components/buttonRounded.dart';
 import '../../../../../components/next_page.dart';
+import '../../../../../constantes.dart';
 import '../../../../../datas/store_data.dart';
 import '../../../../../size_config.dart';
 import 'inbox.dart';
 
 
-class ListChats extends StatefulWidget {
-  const ListChats({Key? key, this.isBottomSheet=false}) : super(key: key);
+class ListMessages extends StatefulWidget {
+  const ListMessages({Key? key, this.isBottomSheet=false}) : super(key: key);
   final bool isBottomSheet;
 
   @override
-  State<ListChats> createState() => _ListChatsState();
+  State<ListMessages> createState() => _ListMessagesState();
 }
 
-class _ListChatsState extends State<ListChats> {
+class _ListMessagesState extends State<ListMessages> {
 
   late List<String> types;
 
@@ -99,6 +100,7 @@ class _ListChatsState extends State<ListChats> {
     return ButtonRounded(
       isBorder: false,
       backgroundColor: Colors.white,
+      selectedBackground: kRoundedCategory,
       isSelected: selectedIndex == index,
       press: (){onItemTapped(index);},
       text: '${types[index]}',

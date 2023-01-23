@@ -15,7 +15,8 @@ class MainScreen extends StatefulWidget
 {
   static String routeName = '/main_screen';
 
-  const MainScreen({Key? key}) : super(key: key);
+  const MainScreen({Key? key, this.index}) : super(key: key);
+  final int? index;
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -28,11 +29,17 @@ class _MainScreenState extends State<MainScreen> {
   late Widget _myShopScreen;
   late Widget _chatScreen;
   late Widget _profileScreen;
-  int currentMenuIndex = 0;
+  late int currentMenuIndex;
 
   @override
   initState() {
     super.initState();
+    if(widget.index != null){
+      currentMenuIndex = widget.index!;
+    }
+    else{
+      currentMenuIndex = 0;
+    }
     _homeScreen = HomeScreen();
     _myFavoriteProductScreen = MyFavoriteProductScreen();
     _myShopScreen = StoreScreen(store: currentStore,);
@@ -51,18 +58,16 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /*bool index = false;
+    index = ModalRoute.of(context)?.settings.arguments as bool;
+    if(index){
+      setState(() {
+        currentMenuIndex = 2;
+      });
+    }*/
     SizeConfig.init(context);
     return Scaffold(
       backgroundColor: Colors.white54.withOpacity(1),
-      endDrawerEnableOpenDragGesture: false,
-      endDrawer: Drawer(
-        width: MediaQuery.of(context).size.width * 0.80,
-        child: Column(
-          children: [
-            DrawerHeader(child: Text("Filtrer par ..."),),
-          ],
-        ),
-      ),
       body: _currentScreen,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

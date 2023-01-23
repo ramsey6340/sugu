@@ -29,7 +29,7 @@ class StoreCard extends StatelessWidget {
             ),
             Column(
               children: [
-                Text('${store.nbFollowers}k abonnés', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),),
+                Text('${read.getNbFollowers(storeId: store.storeId)}k abonnés', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),),
                 Text('${store.nbPostProduct} produits', style: TextStyle(color: Colors.black, fontSize: 18,))
               ],
             )

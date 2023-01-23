@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../constantes.dart';
-import '../../../../size_config.dart';
+import '../../../../../constantes.dart';
+import '../../../../../size_config.dart';
 
 
 class PriceFormFieldCustom extends StatelessWidget {

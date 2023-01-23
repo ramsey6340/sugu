@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/components/custom_app_bar.dart';
+import 'package:sugu/constantes.dart';
 import 'components/body.dart';
 import '../../../models/store.dart';
 
@@ -11,8 +11,12 @@ class DetailsStoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.customAppBar(
-        title: '${store.name}',
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: 1,
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: kAppBarColor,
+        title: Text('${store.name}', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),),
       ),
       body: Body(store: store,),
     );

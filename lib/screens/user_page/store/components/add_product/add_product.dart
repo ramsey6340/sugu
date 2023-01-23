@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
-import 'add_product_form.dart';
+import 'package:sugu/screens/main_screen.dart';
+import 'body.dart';
 
 
 class AddProduct extends StatelessWidget {
@@ -16,11 +17,19 @@ class AddProduct extends StatelessWidget {
         backgroundColor: kAppBarColor,
         iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,
+        leadingWidth: 100,
+        leading: IconButton(
+          icon: Text("Annuler", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),),
+          onPressed: (){
+            Navigator.pushAndRemoveUntil(
+                context, MaterialPageRoute(builder: (context) => MainScreen(index: 2,)), (route) => false);
+            },
+        ),
         title: const Text("Ajouter un produit",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
         ),
       ),
-      body: AddProductForm(),
+      body: Body(),
     );
   }
 }

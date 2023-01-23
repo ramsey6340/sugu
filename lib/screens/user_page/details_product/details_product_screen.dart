@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:sugu/constantes.dart';
 import '../../../components/nb_appreciation.dart';
 import '../../../components/rounded_icon_btn.dart';
 import '../../../models/product.dart';
@@ -16,19 +16,16 @@ class DetailsProductScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           NbAppreciation(
-            nb_star: '${product.nbStar}',
-            icon: SvgPicture.asset("assets/icons/Star Icon.svg"),
+            icon: (product.isPopular)?Icon(Icons.star, color: Colors.yellow,):Icon(Icons.star_border),
           ),
           NbAppreciation(
             nb_star: '${product.nbLike}',
-            icon: (product.isFavourite)? Icon(Icons.favorite, color: Colors.red,): Icon(Icons.favorite_border, size: 20,)
+            icon: (product.nbLike>0)?Icon(Icons.favorite, color: Colors.red,size: 20,):Icon(Icons.favorite_border, size: 20,)
     ),
         ],
-        leading: RoundedIconBtn(
-            icon_data: Icons.arrow_back_outlined,
-            press: () => Navigator.pop(context)
-        ),
-        backgroundColor: Colors.transparent,
+
+        backgroundColor: kAppBarColor,
+        iconTheme: IconThemeData(color: Colors.white),
       ),
        body: Body(product: product,),
     );

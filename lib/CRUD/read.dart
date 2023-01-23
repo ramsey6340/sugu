@@ -1,14 +1,27 @@
 import '../datas/seller_data.dart';
 import '../datas/store_data.dart';
+import '../models/store.dart';
 
 class Read {
 
-  // methode pour obtenir le nombre de followers
-  int getNbFollowers({required String storeId}){
-    int nbFollowers = 0;
+  // methode pour obtenir la boutique
+  Store getStore({required String storeId}){
+    late Store store;
     for(int i=0; i<stores.length; i++){
       if(stores[i].storeId == storeId){
-        nbFollowers = stores[i].nbFollowers;
+        store = stores[i];
+      }
+    }
+    return store;
+  }
+
+
+  // methode pour obtenir le nombre de followers
+  int? getNbFollowers({required String storeId}){
+    int? nbFollowers = 0;
+    for(int i=0; i<stores.length; i++){
+      if(stores[i].storeId == storeId){
+        //nbFollowers = stores[i].followerSellersList?.length;
         break;
       }
     }

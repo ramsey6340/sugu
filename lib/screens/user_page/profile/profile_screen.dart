@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sugu/constantes.dart';
 import 'components/body.dart';
 
 
@@ -12,7 +13,9 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         centerTitle: true,
-        title: const Text("Profile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black87),),
+        backgroundColor: kAppBarColor,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: const Text("Profile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
       ),
       body: Body(),
     );

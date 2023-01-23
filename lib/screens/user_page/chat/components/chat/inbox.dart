@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../../components/build_list_message.dart';
 import '../../../../../components/send_message_bar.dart';
+import '../../../../../constantes.dart';
 import '../../../../../models/store.dart';
 import '../../../details_store/details_store_screen.dart';
 
@@ -15,6 +16,8 @@ class Inbox extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
+        backgroundColor: kAppBarColor,
+        iconTheme: IconThemeData(color: Colors.white),
         title: GestureDetector(
           onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsStoreScreen(store: store,))),
           child: Row(
@@ -24,7 +27,7 @@ class Inbox extends StatelessWidget {
                 backgroundImage: AssetImage(store.image),
               ),
               SizedBox(width: 10,),
-              Text('${store.name}', style: TextStyle(color: Colors.black)),
+              Text('${store.name}', style: TextStyle(color: Colors.white)),
             ],
           ),
         ),

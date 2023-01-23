@@ -41,7 +41,7 @@ class ProductCardForSeller extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("${product.price} f", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                    Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-\n${product.maxPrice} f', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
                     Row(
                       children: [
                         Icon(Icons.favorite, color: Colors.red,),
@@ -51,7 +51,6 @@ class ProductCardForSeller extends StatelessWidget {
                   ],
                 ),
                 Text('${product.name}', overflow: TextOverflow.ellipsis,),
-                Text("${product.nbAvailableProduct} disponible", overflow: TextOverflow.ellipsis,)
               ],
             )
           ],

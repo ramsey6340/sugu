@@ -17,7 +17,7 @@ class NextPage extends StatelessWidget {
       child: ListTile(
         onTap: press as void Function(),
         leading: leading,
-        title: Text(name),
+        title: Text(name, style: TextStyle(color: Colors.black),),
         enabled: enable,
         trailing: (enable)?const Icon(Icons.navigate_next): null,
       ),

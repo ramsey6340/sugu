@@ -44,3 +44,15 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Les fichiers de Firebase Emilator Suite
+.firebaserc
+database-debug.log
+firebase.json
+firebase-debug.log
+firestore.indexes.json
+firestore.rules
+firestore-debug.log
+storage.rules
+ui-debug.log
+functions/

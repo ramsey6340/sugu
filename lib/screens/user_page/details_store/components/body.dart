@@ -7,7 +7,7 @@ import '../../../../constantes.dart';
 import '../../../../models/store.dart';
 import '../../../../size_config.dart';
 import '../../chat/components/chat/inbox.dart';
-import '../../chat/components/chat/list_chats.dart';
+import '../../chat/components/chat/list_messages.dart';
 import '../../store/store_screen.dart';
 
 
@@ -43,13 +43,13 @@ class Body extends StatelessWidget {
                 children: [
                   ButtonRounded(
                     press: (){
-                      showBottomSheetFollow(context: context, child: ListChats(isBottomSheet: true,));
+                      showBottomSheetFollow(context: context, child: ListMessages(isBottomSheet: true,));
                     },
                     text: '200k abonnés',),
                   ButtonRounded( press: (){
-                    showBottomSheetFollow(context: context, child: ListChats(isBottomSheet: true,));
+                    showBottomSheetFollow(context: context, child: ListMessages(isBottomSheet: true,));
                   }, text: '30 abonnements'),
-                  ButtonRounded( press: (){}, text: (isCurrentUser)?'${store.nbPostProduct}/${store.size} posts':'${store.nbPostProduct} posts', textColor: Colors.white, backgroundColor: kPrimaryColor, isBorder: false),
+                  ButtonRounded( press: (){}, text: (isCurrentUser)?'${store.nbPostProduct}/${store.size} posts':'${store.nbPostProduct} posts', textColor: Colors.white, backgroundColor: kPrimaryColor,),
                 ],
               ),
             ),
@@ -69,7 +69,7 @@ class Body extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  NextButton(text: 'Voir produits', press: () => Navigator.push(context, MaterialPageRoute(builder: (context) => StoreScreen(store: store))),),
+                  (!isCurrentUser)?NextButton(text: 'Voir produits', press: () => Navigator.push(context, MaterialPageRoute(builder: (context) => StoreScreen(store: store))),):SizedBox(),
                   const SizedBox(height: 30,),
                   (isCurrentUser)?NextButton(text: 'Modifier', press: (){}, color: Colors.purple,): NextButton(text: 'Discuter', press: (){Navigator.pushNamed(context, Inbox.routeName, arguments: store);}, color: Colors.purple,),
                 ],

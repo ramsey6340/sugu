@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/size_config.dart';
 
-const kPrimaryColor = Colors.deepPurple;//Color(0xFFFF7643);
-const kPrimaryLightColor = Color(0xFFFFECDF);
+const kAppBarColor = Color(0xFF1D334A);
+const kRoundedCategory = Colors.orange;
+const kPrimaryColor = Color(0xFF1D334A);//Colors.deepPurple;//Color(0xFFFF7643);
+const kSecondaryColor = Colors.deepPurple;
+const kButtonRoundedColor = Colors.black54;
 const kBackground = Color(0xFFFCFCFC);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
   colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
 );
-const kSecondaryColor = Color(0xFF979797);
+const kThirdColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
 
 const kAnimationDuration = Duration(milliseconds: 200);

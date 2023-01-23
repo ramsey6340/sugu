@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/datas/store_data.dart';
 import '../models/product.dart';
-import '../datas/categories.dart';
+import '../datas/sub_categories.dart';
 
 
 String description = ""
@@ -21,12 +21,10 @@ List<Product> products = [
     images: [
       "assets/images/chaussure1.jpg"
     ],
-    price: 5000,
-    nbStar: 4,
+    minPrice: 20000,
+    maxPrice: 50000,
     nbLike: 21,
     isPopular: true,
-    isFavourite: true,
-    nbAvailableProduct: 30,
     categories: [Categories.chaussure, Categories.homme],
     storeId: stores[0].storeId,
   ),
@@ -37,12 +35,10 @@ List<Product> products = [
     images: [
       "assets/images/chaussure3.jpg"
     ],
-    price: 75000,
-    nbStar: 4,
+    minPrice: 5000,
+    maxPrice: 75000,
     nbLike: 10,
     isPopular: true,
-    isFavourite: true,
-    nbAvailableProduct: 20,
     categories: [Categories.chaussure, Categories.homme],
     storeId: stores[1].storeId,
   ),
@@ -53,11 +49,10 @@ List<Product> products = [
     images: [
       "assets/images/foulard1.jpg"
     ],
-    price: 1000,
-    nbStar: 4,
+    minPrice: 750,
+    maxPrice: 1000,
     nbLike: 100,
     isPopular: true,
-    nbAvailableProduct: 10,
     categories: [Categories.beaute, Categories.femme],
     storeId: stores[2].storeId,
   ),
@@ -68,13 +63,10 @@ List<Product> products = [
     images: [
       "assets/images/foulard2.jpg"
     ],
-
-    price: 2000,
-    nbStar: 4,
+    minPrice: 1000,
+    maxPrice: 2000,
     nbLike: 60,
     isPopular: true,
-    isFavourite: true,
-    nbAvailableProduct: 60,
     categories: [Categories.beaute, Categories.femme],
     storeId: stores[0].storeId,
   ),
@@ -85,11 +77,10 @@ List<Product> products = [
     images: [
       "assets/images/montre1.jpg"
     ],
-    price: 5000,
-    nbStar: 4,
+    minPrice: 3000,
+    maxPrice: 5000,
     nbLike: 5,
     isPopular: true,
-    nbAvailableProduct: 30,
     categories: [Categories.homme, Categories.accessoire],
     storeId: stores[1].storeId,
   ),
@@ -100,12 +91,10 @@ List<Product> products = [
     images: [
       "assets/images/montre4.jpeg"
     ],
-    price: 2500,
-    nbStar: 4,
+    minPrice: 2000,
+    maxPrice: 2500,
     nbLike: 20,
     isPopular: true,
-    isFavourite: true,
-    nbAvailableProduct: 13,
     categories: [Categories.homme, Categories.accessoire],
     storeId: stores[2].storeId,
   ),
@@ -116,11 +105,10 @@ List<Product> products = [
     images: [
       "assets/images/pant1.jpg"
     ],
-    price: 5000,
-    nbStar: 4,
+    minPrice: 5000,
+    maxPrice: 5000,
     nbLike: 34,
     isPopular: true,
-    nbAvailableProduct: 1,
     categories: [Categories.vetement, Categories.homme],
     storeId: stores[0].storeId,
   ),
@@ -131,11 +119,10 @@ List<Product> products = [
     images: [
       "assets/images/pc1.jpg"
     ],
-    price: 100000,
-    nbStar: 4,
+    minPrice: 100000,
+    maxPrice: 100000,
     nbLike: 30,
     isPopular: true,
-    nbAvailableProduct: 20,
     categories: [Categories.electronique],
     storeId: stores[1].storeId,
   ),
@@ -146,12 +133,10 @@ List<Product> products = [
     images: [
       "assets/images/pc2.jpg"
     ],
-    price: 300000,
-    nbStar: 4,
+    minPrice: 250000,
+    maxPrice: 300000,
     nbLike: 56,
     isPopular: true,
-    isFavourite: true,
-    nbAvailableProduct: 30,
     categories: [Categories.electronique],
     storeId: stores[2].storeId,
   ),
@@ -166,12 +151,10 @@ List<Product> products = [
       "assets/images/ps4_console_blue_3.png",
       "assets/images/ps4_console_blue_4.png",
     ],
-    price: 50000,
-    nbStar: 4.5,
+    minPrice: 25000,
+    maxPrice: 50000,
     nbLike: 20,
-    isFavourite: true,
     isPopular: true,
-    nbAvailableProduct: 40,
     categories: [Categories.jeux],
     storeId: stores[0].storeId,
   ),
@@ -182,11 +165,10 @@ List<Product> products = [
     images: [
       "assets/images/Image Popular Product 2.png"
     ],
-    price: 10000,
-    nbStar: 4,
+    minPrice: 10000,
+    maxPrice: 10000,
     nbLike: 0,
     isPopular: true,
-    nbAvailableProduct: 200,
     categories: [Categories.sport],
     storeId: stores[1].storeId,
   ),
@@ -197,10 +179,9 @@ List<Product> products = [
     images: [
       "assets/images/wireless headset.png"
     ],
-    price: 7500,
-    nbStar: 4,
+    minPrice: 7000,
+    maxPrice: 7500,
     nbLike: 31,
-    nbAvailableProduct: 75,
     categories: [Categories.electronique],
     storeId: stores[2].storeId,
   ),
@@ -211,10 +192,9 @@ List<Product> products = [
     images: [
       "assets/images/glap.png"
     ],
-    price: 5000,
-    nbStar: 3,
+    minPrice: 4000,
+    maxPrice: 5000,
     nbLike: 14,
-    nbAvailableProduct: 30,
     categories: [Categories.beaute],
     storeId: stores[0].storeId,
   ),

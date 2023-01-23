@@ -52,12 +52,13 @@ class ProductCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('${product.price} f', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),),
+                      Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-\n${product.maxPrice} f',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),maxLines: 2,),
                       Row(
                         children: [
                           GestureDetector(
                               onTap: (){},
-                              child: (product.isFavourite)?Icon(Icons.favorite, color: Colors.red,):Icon(Icons.favorite_border),
+                              child: Icon(Icons.favorite_border),
                           ),
                           Text('${product.nbLike}')
                         ],
@@ -65,13 +66,8 @@ class ProductCard extends StatelessWidget {
                     ],
                   ),
                   Text('${product.name}', overflow: TextOverflow.ellipsis,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('${product.nbAvailableProduct} dispo',),
-                      Text("${read.getNbFollowers(storeId: product.storeId)} followers")
-                    ],
-                  )
+                  Text("${read.getNbFollowers(storeId: product.storeId)} followers")
+
                 ],
               ),
             )

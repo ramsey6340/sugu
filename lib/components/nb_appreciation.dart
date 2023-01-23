@@ -4,8 +4,8 @@ import '../size_config.dart';
 
 
 class NbAppreciation extends StatelessWidget {
-  const NbAppreciation({Key? key, required this.nb_star, required this.icon}) : super(key: key);
-  final String nb_star;
+  const NbAppreciation({Key? key, this.nb_star, required this.icon}) : super(key: key);
+  final String? nb_star;
   final Widget icon;
 
   @override
@@ -15,14 +15,14 @@ class NbAppreciation extends StatelessWidget {
       child: Container(
         width: getProportionateScreenWidth(50),
         decoration: BoxDecoration(
-            color: Colors.white,
+            //color: Colors.white,
             borderRadius: BorderRadius.circular(20)
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("$nb_star", style: TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
             ),

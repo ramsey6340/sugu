@@ -12,7 +12,7 @@ class RoundedIconBtn extends StatelessWidget {
       child: TextButton(
         onPressed: press,
         style: TextButton.styleFrom(
-          backgroundColor: Colors.white,
+          //backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50)
           ),

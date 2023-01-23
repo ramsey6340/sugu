@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../components/Next_button.dart';
-import '../../../../constantes.dart';
-import 'choose_categories.dart';
-import 'text_form_field_custom.dart';
-import 'price_form_field_custom.dart';
-import 'categories_form_field_custom.dart';
-import 'image_form_field_custom.dart';
+import '../../../../../components/Next_button.dart';
+import '../../../../../constantes.dart';
+import '../choose_categories/choose_categories.dart';
+import '../form_fields/text_form_field_custom.dart';
+import '../form_fields/price_form_field_custom.dart';
 
 
 class ProductAddForm extends StatefulWidget {
@@ -70,25 +68,6 @@ class _ProductAddFormState extends State<ProductAddForm> {
                 Navigator.push(context, MaterialPageRoute(builder: (contex)=> ChooseCategories()));
               },
           ),
-          /*
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("Images", style: TextStyle(color: Colors.black, fontSize: 18)),
-              const SizedBox(height: 10,),
-              ImageFormFieldCustom(press: (){}),
-            ],
-          ),
-          const SizedBox(height: 20,),
-          // 4
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text("Catégories",  style: TextStyle(color: Colors.black, fontSize: 18)),
-              SizedBox(height: 10,),
-              CategoriesFormFieldCustom(),
-            ],
-          ),*/
         ],
       ),
     );

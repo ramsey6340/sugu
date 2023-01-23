@@ -1,6 +1,6 @@
 // Exemple de magasin
 
-import 'package:sugu/datas/categories.dart';
+import 'package:sugu/datas/sub_categories.dart';
 import 'package:sugu/datas/product_data.dart';
 import 'package:sugu/datas/seller_data.dart';
 import '../models/store.dart';
@@ -25,37 +25,36 @@ List<Store> stores = [
     storeId: "1",
     sellerId: sellers[0].sellerId,
     name: "Hassan Tissu",
-    categories: [Categories.all, Categories.homme, Categories.vetement, Categories.chaussure,
+    categories: [Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure,
       Categories.beaute, Categories.vieillard, Categories.enfant,
       Categories.accessoire, Categories.couture],
-    nbFollowers: 10,
     nbPostProduct: 2,
     description: descriptions[0],
     address: "Daoudabougou",
     image: "assets/images/Profile Image.png",
     numTel1: '99235643',
     numTel2: '65342112',
-    email: 'hassan65@gmail.com'
+    email: 'hassan65@gmail.com',
+    //followerSellersList: [sellers[1].sellerId,sellers[2].sellerId,],
   ),
   Store(
     storeId: "2",
     sellerId: sellers[1].sellerId,
     name: "SankShop",
-    categories: [Categories.all, Categories.homme, Categories.vetement, Categories.chaussure],
-    nbFollowers: 20,
+    categories: [Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure],
     nbPostProduct: 5,
     description: descriptions[1],
     address: "Kabala",
     image: "assets/images/chaussure2.png",
     numTel1: '71896753',
     email: 'madousankare88@gmail.com',
+    //followerSellersList: [sellers[0].sellerId,sellers[2].sellerId,],
   ),
   Store(
     storeId: "3",
     sellerId: sellers[2].sellerId,
     name: "Lainy-Love Tissu",
-    categories: [Categories.all, Categories.femme, Categories.enfant],
-    nbFollowers: 30,
+    categories: [Categories.tout, Categories.femme, Categories.enfant],
     nbPostProduct: 4,
     description: descriptions[2],
     address: "Att-bougou",
@@ -63,5 +62,6 @@ List<Store> stores = [
     numTel1: '44789090',
     numTel2: '785633210',
     email: 'kadidiatou66@gmail.com',
+    //followerSellersList: [sellers[1].sellerId],
   ),
 ];
