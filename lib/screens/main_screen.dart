@@ -3,12 +3,14 @@ import 'package:sugu/constantes.dart';
 import 'package:sugu/screens/user_page/chat/message_screen.dart';
 import 'package:sugu/screens/user_page/home/home_screen.dart';
 import 'package:sugu/screens/user_page/my_favorite_products/my_favorite_product_screen.dart';
+import 'package:sugu/screens/user_page/store/create_store.dart';
 import 'package:sugu/screens/user_page/store/store_screen.dart';
 import 'package:sugu/screens/user_page/profile/profile_screen.dart';
-
+import '../CRUD/read.dart';
 import '../datas/datas_current.dart';
-import '../datas/store_data.dart';
+import '../models/store.dart';
 import '../size_config.dart';
+import 'package:badges/badges.dart';
 
 
 class MainScreen extends StatefulWidget
@@ -30,21 +32,32 @@ class _MainScreenState extends State<MainScreen> {
   late Widget _chatScreen;
   late Widget _profileScreen;
   late int currentMenuIndex;
+  Store? store;
+  bool storeIsNull = true;
+  Read read = Read();
 
   @override
   initState() {
     super.initState();
+    store = read.getStoreWithSeller(sellerId: currentSeller.sellerId);
+
+    if(store != null){
+      currentStore.setStore = store!;
+      oldStore.setStore = store!;
+      storeIsNull = false;
+    }
+
     if(widget.index != null){
       currentMenuIndex = widget.index!;
     }
     else{
       currentMenuIndex = 0;
     }
-    _homeScreen = HomeScreen();
-    _myFavoriteProductScreen = MyFavoriteProductScreen();
-    _myShopScreen = StoreScreen(store: currentStore,);
-    _chatScreen = MessageScreen();
-    _profileScreen = ProfileScreen();
+    _homeScreen = const HomeScreen();
+    _myFavoriteProductScreen = const MyFavoriteProductScreen();
+    _myShopScreen = (storeIsNull)?const CreateStore():StoreScreen(store: currentStore,);
+    _chatScreen = const MessageScreen();
+    _profileScreen = const ProfileScreen();
     _screenList = [_homeScreen, _myFavoriteProductScreen, _myShopScreen, _chatScreen, _profileScreen];
     _currentScreen = _screenList[currentMenuIndex];
   }
@@ -58,13 +71,6 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    /*bool index = false;
-    index = ModalRoute.of(context)?.settings.arguments as bool;
-    if(index){
-      setState(() {
-        currentMenuIndex = 2;
-      });
-    }*/
     SizeConfig.init(context);
     return Scaffold(
       backgroundColor: Colors.white54.withOpacity(1),
@@ -74,7 +80,17 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '',),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: '',),
           BottomNavigationBarItem(icon: Icon(Icons.storefront), label: '', ),
-          BottomNavigationBarItem(icon: Icon(Icons.mail), label: '',),
+          BottomNavigationBarItem(
+            icon: Badge(
+              badgeStyle: BadgeStyle(
+                padding: EdgeInsets.all(4)
+              ),
+              badgeContent: Text('12',style: TextStyle(color: Colors.white),),
+              badgeAnimation: BadgeAnimation.slide(toAnimate: false),
+              child: Icon(Icons.mail)
+            ),
+            label: '',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp), label: '',),
         ],
         selectedItemColor: kPrimaryColor,
@@ -88,6 +104,7 @@ class _MainScreenState extends State<MainScreen> {
         unselectedFontSize: 0.0,
         elevation: 0,
         type: BottomNavigationBarType.fixed,
+        enableFeedback: false,
       ),
     );
   }

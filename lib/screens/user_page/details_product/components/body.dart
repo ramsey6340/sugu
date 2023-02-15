@@ -28,7 +28,8 @@ class Body extends StatelessWidget {
           OtherProductImage(product: product),
           NextPage(
             enable: !isCurrentUser,
-            name: read.getStoreName(storeId: product.storeId),
+            title: read.getStoreName(storeId: product.storeId),
+            subTitle: read.getSellerNameWithStore(storeId: product.storeId),
             press: (){Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsStoreScreen(store: store,)));},
             leading: CircleAvatar(
               backgroundImage: AssetImage(read.getStoreImg(storeId: product.storeId)),

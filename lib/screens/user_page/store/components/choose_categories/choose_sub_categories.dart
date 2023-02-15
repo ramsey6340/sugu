@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../../components/buttonRounded.dart';
+import '../../../../../components/snack_bar_custom.dart';
 import '../../../../../constantes.dart';
 import '../../../../../datas/global_category.dart';
 import '../../../../../size_config.dart';
@@ -7,7 +8,7 @@ import '../add_product/add_product.dart';
 
 
 class ChooseSubCategories extends StatefulWidget {
-  const ChooseSubCategories({Key? key, required this.selectedGlobalCategories}) : super(key: key);
+  const ChooseSubCategories({Key? key, required this.selectedGlobalCategories,}) : super(key: key);
   final List<String> selectedGlobalCategories;
 
   @override
@@ -15,14 +16,13 @@ class ChooseSubCategories extends StatefulWidget {
 }
 
 class _ChooseSubCategoriesState extends State<ChooseSubCategories> {
-
   int selectedIndex = 0;
-
-  Map<String, List<String>> selectedSubCategories = Map();
-
+  Map<String, List<String>> selectedSubCategories = {};
+  bool subCatIsEmpty = false;
 
   @override
   void initState() {
+    // on affecte une liste vide à chaque catégorie
     for(int i=0; i<widget.selectedGlobalCategories.length; i++){
       selectedSubCategories[widget.selectedGlobalCategories[i]] = [];
     }
@@ -37,9 +37,7 @@ class _ChooseSubCategoriesState extends State<ChooseSubCategories> {
       else{
         selectedSubCategories[globalCat]?.remove(subCat);
       }
-      //choosedCategories.add(index);
     });
-    print(selectedSubCategories);
   }
 
   void onTapCategory(int index1) {
@@ -50,7 +48,7 @@ class _ChooseSubCategoriesState extends State<ChooseSubCategories> {
 
   @override
   Widget build(BuildContext context) {
-    final subCategiriesListOfCategory = categoriesData[widget.selectedGlobalCategories[selectedIndex]];
+    final subCategoriesListOfCategory = categoriesData[widget.selectedGlobalCategories[selectedIndex]];
     return Scaffold(
       backgroundColor: kBackground,
       appBar: AppBar(
@@ -79,20 +77,20 @@ class _ChooseSubCategoriesState extends State<ChooseSubCategories> {
           
           Expanded(
             child: ListView.builder(
-              itemCount: subCategiriesListOfCategory?.length,
+              itemCount: subCategoriesListOfCategory?.length,
               itemBuilder: (context, index2){
                 return Material(
                   elevation: 3,
                   child: CheckboxListTile(
                     tileColor: Colors.white,
-                    activeColor: kSecondaryColor,
-                    value: (selectedSubCategories[widget.selectedGlobalCategories[selectedIndex]]?.contains(subCategiriesListOfCategory![index2]))!?true:false,
+                    activeColor: kRoundedCategoryColor,
+                    value: (selectedSubCategories[widget.selectedGlobalCategories[selectedIndex]]?.contains(subCategoriesListOfCategory![index2]))!?true:false,
                     onChanged: (value){
                       setState(() {
-                        onTapSubCategory(value!, globalCat: widget.selectedGlobalCategories[selectedIndex], subCat: subCategiriesListOfCategory![index2]);
+                        onTapSubCategory(value!, globalCat: widget.selectedGlobalCategories[selectedIndex], subCat: subCategoriesListOfCategory![index2]);
                       });
                     },
-                    secondary: CircleAvatar(
+                    secondary: const CircleAvatar(
                       backgroundColor: kBackground,
                       backgroundImage: AssetImage('assets/images/chaussure1.jpg'),
                     ),
@@ -135,8 +133,26 @@ class _ChooseSubCategoriesState extends State<ChooseSubCategories> {
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, AddProduct.routeName, (route) => false);
+                for (var element in selectedSubCategories.values) {
+                  if(element.isEmpty){
+                    setState(() {
+                      subCatIsEmpty = true;
+                    });
+                    break;
+                  }
+                  else {
+                    setState(() {
+                      subCatIsEmpty = false;
+                    });
+                  }
+                }
+                if(!subCatIsEmpty) {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context, AddProduct.routeName, (route) => false,);
+                }
+                else {
+                  SnackBarCustom.showSnackBar(context, "Une catégorie n'a pas d'option sélectionné");
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -158,7 +174,7 @@ class _ChooseSubCategoriesState extends State<ChooseSubCategories> {
   ButtonRounded showType(int index1) {
     return ButtonRounded(
       isBorder: false,
-      selectedBackground: kRoundedCategory,
+      selectedBackground: kRoundedCategoryColor,
       isSelected: selectedIndex == index1,
       press: (){onTapCategory(index1);},
       text: '${widget.selectedGlobalCategories[index1]}',

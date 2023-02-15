@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sugu/datas/store_data.dart';
 import '../models/product.dart';
 import '../datas/sub_categories.dart';
+import 'global_category.dart';
 
 
 String description = ""
@@ -27,6 +28,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.chaussure, Categories.homme],
     storeId: stores[0].storeId,
+    categoriesData: {
+      GlobalCategory.maison: listMaison,
+      GlobalCategory.femme: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.enfant: [SubCategories.vetements, SubCategories.bijoux],
+      GlobalCategory.vieillard: listVieillard,
+    },
   ),
   Product(
     productId: "2",
@@ -41,6 +48,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.chaussure, Categories.homme],
     storeId: stores[1].storeId,
+    categoriesData: {
+      GlobalCategory.homme: [SubCategories.vetements, SubCategories.chaussures, SubCategories.montres],
+      GlobalCategory.maison: [SubCategories.meubles, SubCategories.accessoires],
+      GlobalCategory.sport: [SubCategories.vetements],
+      GlobalCategory.femme: listFemme,
+    }
   ),
   Product(
     productId: "3",
@@ -55,6 +68,13 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.beaute, Categories.femme],
     storeId: stores[2].storeId,
+    categoriesData: {
+      GlobalCategory.electronique: listElectronique,
+      GlobalCategory.electricite: listElectricite,
+      GlobalCategory.fille: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.garcon: listGarcon,
+      GlobalCategory.jeux: [SubCategories.playStations]
+    }
   ),
   Product(
     productId: "4",
@@ -69,6 +89,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.beaute, Categories.femme],
     storeId: stores[0].storeId,
+    categoriesData: {
+      GlobalCategory.homme: listHomme,
+      GlobalCategory.femme: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.enfant: [SubCategories.vetements, SubCategories.bijoux],
+      GlobalCategory.vieillard: listVieillard,
+    },
   ),
   Product(
     productId: "5",
@@ -83,6 +109,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.homme, Categories.accessoire],
     storeId: stores[1].storeId,
+    categoriesData: {
+      GlobalCategory.homme: [SubCategories.vetements, SubCategories.chaussures, SubCategories.montres],
+      GlobalCategory.maison: [SubCategories.meubles, SubCategories.accessoires],
+      GlobalCategory.sport: [SubCategories.vetements],
+      GlobalCategory.femme: listFemme,
+    }
   ),
   Product(
     productId: "6",
@@ -97,6 +129,13 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.homme, Categories.accessoire],
     storeId: stores[2].storeId,
+    categoriesData: {
+      GlobalCategory.electronique: listElectronique,
+      GlobalCategory.electricite: listElectricite,
+      GlobalCategory.fille: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.garcon: listGarcon,
+      GlobalCategory.jeux: [SubCategories.playStations]
+    }
   ),
   Product(
     productId: "7",
@@ -111,6 +150,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.vetement, Categories.homme],
     storeId: stores[0].storeId,
+    categoriesData: {
+      GlobalCategory.homme: listHomme,
+      GlobalCategory.femme: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.enfant: [SubCategories.vetements, SubCategories.bijoux],
+      GlobalCategory.vieillard: listVieillard,
+    },
   ),
   Product(
     productId: "8",
@@ -125,6 +170,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.electronique],
     storeId: stores[1].storeId,
+    categoriesData: {
+      GlobalCategory.homme: [SubCategories.vetements, SubCategories.chaussures, SubCategories.montres],
+      GlobalCategory.maison: [SubCategories.meubles, SubCategories.accessoires],
+      GlobalCategory.sport: [SubCategories.vetements],
+      GlobalCategory.femme: listFemme,
+    }
   ),
   Product(
     productId: "9",
@@ -139,6 +190,13 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.electronique],
     storeId: stores[2].storeId,
+    categoriesData: {
+      GlobalCategory.electronique: listElectronique,
+      GlobalCategory.electricite: listElectricite,
+      GlobalCategory.fille: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.garcon: listGarcon,
+      GlobalCategory.jeux: [SubCategories.playStations]
+    }
   ),
 
   Product(
@@ -157,6 +215,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.jeux],
     storeId: stores[0].storeId,
+    categoriesData: {
+      GlobalCategory.homme: listHomme,
+      GlobalCategory.femme: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.enfant: [SubCategories.vetements, SubCategories.bijoux],
+      GlobalCategory.vieillard: listVieillard,
+    },
   ),
   Product(
     productId: "11",
@@ -171,6 +235,12 @@ List<Product> products = [
     isPopular: true,
     categories: [Categories.sport],
     storeId: stores[1].storeId,
+    categoriesData: {
+      GlobalCategory.homme: [SubCategories.vetements, SubCategories.chaussures, SubCategories.montres],
+      GlobalCategory.maison: [SubCategories.meubles, SubCategories.accessoires],
+      GlobalCategory.sport: [SubCategories.vetements],
+      GlobalCategory.femme: listFemme,
+    }
   ),
   Product(
     productId: "12",
@@ -184,6 +254,13 @@ List<Product> products = [
     nbLike: 31,
     categories: [Categories.electronique],
     storeId: stores[2].storeId,
+    categoriesData: {
+      GlobalCategory.electronique: listElectronique,
+      GlobalCategory.electricite: listElectricite,
+      GlobalCategory.fille: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.garcon: listGarcon,
+      GlobalCategory.jeux: [SubCategories.playStations]
+    }
   ),
   Product(
     productId: "13",
@@ -197,5 +274,11 @@ List<Product> products = [
     nbLike: 14,
     categories: [Categories.beaute],
     storeId: stores[0].storeId,
+    categoriesData: {
+      GlobalCategory.homme: listHomme,
+      GlobalCategory.femme: [SubCategories.vetements, SubCategories.chaussures],
+      GlobalCategory.enfant: [SubCategories.vetements, SubCategories.bijoux],
+      GlobalCategory.vieillard: listVieillard,
+    },
   ),
 ];

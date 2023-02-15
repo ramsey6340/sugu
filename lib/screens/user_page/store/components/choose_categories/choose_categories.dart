@@ -1,35 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
+import 'package:sugu/datas/datas_current.dart';
 import '../../../../../components/category_card.dart';
+import '../../../../../components/snack_bar_custom.dart';
 import '../../../../../datas/global_category.dart';
-import 'categories_list.dart';
+import '../../../store_modification/store_modification_screen.dart';
 import 'choose_sub_categories.dart';
 
 
 class ChooseCategories extends StatefulWidget{
-  const ChooseCategories({Key? key}) : super(key: key);
+  const ChooseCategories({Key? key, required this.listGlobalCat, this.isStoreModification=false}) : super(key: key);
+  final List<String> listGlobalCat;
+  final bool isStoreModification; // pour verifier que c'est la page de modification du magasin qui l'appelle ou non
 
   @override
   State<ChooseCategories> createState() => _ChooseCategoriesState();
 }
 
 class _ChooseCategoriesState extends State<ChooseCategories> {
-  final categoriesName = categoriesImage.keys.toList();
-  final categoriesImg = categoriesImage.values.toList();
+  List<String> categoriesName = [];
+  List<String> categoriesImg = [];
+  List<String> selectedGlobalCategories = []; // liste qui va contenir la catégorie global
   bool isChecked = false;
-  List<String> selectedCategories = [];
+  bool isStoreNull = false;
+
+
+  @override
+  void initState() {
+    if(widget.isStoreModification){
+      categoriesName = categoriesImage.keys.toList();
+      categoriesImg = categoriesImage.values.toList();
+      selectedGlobalCategories = widget.listGlobalCat.toList();
+    }
+    else{
+      categoriesName = widget.listGlobalCat.toList();
+
+      for(int i=0; i<categoriesName.length; i++){
+       categoriesImg.add(categoriesImage[categoriesName[i]]!);
+      }
+    }
+    super.initState();
+  }
 
   void onTapCategory(String index, bool isAdd) {
     setState(() {
       if(isAdd){
-        selectedCategories.add(index);
+        selectedGlobalCategories.add(index);
       }
       else{
-        selectedCategories.remove(index);
+        selectedGlobalCategories.remove(index);
       }
-      //choosedCategories.add(index);
     });
-    print(selectedCategories);
   }
 
   @override
@@ -60,7 +81,7 @@ class _ChooseCategoriesState extends State<ChooseCategories> {
                     image: categoriesImg[index],
                     subText: categoriesName[index],
                     isCheckbox: true,
-                    checkboxValue: (selectedCategories.contains(categoriesName[index]))?true:false,
+                    checkboxValue: (selectedGlobalCategories.contains(categoriesName[index]))?true:false,
                     onChangedCheckbox: (value){
                       setState(() {
                         isChecked = value!;
@@ -68,7 +89,7 @@ class _ChooseCategoriesState extends State<ChooseCategories> {
                       });
                     },
                     press: (){
-                      if(selectedCategories.contains(categoriesName[index])){
+                      if(selectedGlobalCategories.contains(categoriesName[index])){
                         onTapCategory(categoriesName[index], false);
                       }
                       else{
@@ -93,16 +114,15 @@ class _ChooseCategoriesState extends State<ChooseCategories> {
               onPressed: () {Navigator.pop(context);},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const [
                   Icon(Icons.navigate_before, color: Colors.white,),
                   SizedBox(width: 20,),
-                  const Text("Retour", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),),
+                  Text("Retour", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),),
                 ],
               ),
-
             ),
           ),
-
 
           Container(
             width: MediaQuery.of(context).size.width/2,
@@ -111,23 +131,39 @@ class _ChooseCategoriesState extends State<ChooseCategories> {
             ),
             child: TextButton(
               onPressed: () {
-                Navigator.push(
-                    context, MaterialPageRoute(
+                // on met à jour l'attribue "globalCat" de oldStore en lui passant
+                // une copie de "selectedGlobalCategories", d'où on utilise la méthode toList()
+                oldStore.setGlobalCat = selectedGlobalCategories.toList();
+
+                if(selectedGlobalCategories.isNotEmpty) {
+                  (widget.isStoreModification)?
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    StoreModificationScreen.routeName,
+                        (route) => false,
+                    //arguments: selectedGlobalCategories
+                  ) :
+                  Navigator.push(
+                      context, MaterialPageRoute(
                     builder: (context) => ChooseSubCategories(
-                        selectedGlobalCategories: selectedCategories
-                    )
+                      selectedGlobalCategories: selectedGlobalCategories,
+                    ),
                   )
-                );
+                  );
+                }
+                else{
+                  SnackBarCustom.showSnackBar(context, "Veuillez choisir au moins une catégorie");
+                }
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const Text("Continuer", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),),
-                  SizedBox(width: 20,),
-                  Icon(Icons.navigate_next, color: Colors.white,)
+                  Text((widget.isStoreModification)?"Valider":"Continuer", style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 20,),
+                  Icon((widget.isStoreModification)?Icons.check:Icons.navigate_next, color: Colors.white,)
                 ],
               ),
-
             ),
           ),
         ],

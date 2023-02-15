@@ -39,7 +39,7 @@ class CategoryCard extends StatelessWidget {
                       right: 2,
                       child: Checkbox(
                         shape: CircleBorder(),
-                        activeColor: kRoundedCategory,
+                        activeColor: kRoundedCategoryColor,
                         //fillColor: MaterialStateProperty.all(kRoundedCategory),
                         value: checkboxValue,
                         onChanged: onChangedCheckbox,

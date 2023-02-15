@@ -5,7 +5,7 @@ import 'constantes.dart';
 ThemeData theme()
 {
   return ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: kBackground,//Colors.white,
     fontFamily: "Muli",
     appBarTheme: appBarTheme(),
     textTheme: textTheme(),
@@ -17,13 +17,12 @@ ThemeData theme()
 AppBarTheme appBarTheme()
 {
   return const AppBarTheme(
-    color: Colors.white,
+    color: kAppBarColor,//Colors.white,
     elevation: 0,
+    centerTitle: true,
     systemOverlayStyle: SystemUiOverlayStyle.light,
-    iconTheme:IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(
-      color: Color(0xFF8B8B8B), fontSize: 20,
-    ),
+    iconTheme: IconThemeData(color: Colors.white),//IconThemeData(color: Colors.black),
+    titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
   );
 }
 

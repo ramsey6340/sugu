@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import '../../../../../../components/buttonRounded.dart';
+import '../../../../../../components/product_card.dart';
 import '../../../../../../constantes.dart';
 import '../../../../../../datas/global_category.dart';
+import '../../../../../../datas/product_data.dart';
+import '../../../../../../models/product.dart';
 import '../../../../../../size_config.dart';
+import '../../../../details_product/details_product_screen.dart';
 
 
 class Body extends StatefulWidget {
@@ -15,11 +19,48 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
 
-  int selectedIndex = 0;
+  late List<Product> productsOfCategory;
+  int selectedSubIndex = 0;
+  late String selectedSubCat;
 
-  void onItemTapped(int index) {
+  @override
+  void initState() {
+    selectedSubCat = SubCategories.tout;
+
+    productsOfCategory = getAllProducts(
+        subCategorySelected: selectedSubCat,
+    );
+    super.initState();
+  }
+
+  // methode pour obtenir tous les produits d'un boutique
+  List<Product> getAllProducts({
+    required String subCategorySelected,
+  }){
+    List<Product> productsForMe = [];
+
+    for(int i=0; i<products.length; i++) {
+      if(products[i].categoriesData!.keys.toList().contains(widget.category) && subCategorySelected == SubCategories.tout){
+        productsForMe.add(products[i]);
+      }
+      else if(products[i].categoriesData!.keys.toList().contains(widget.category) && subCategorySelected != SubCategories.tout){
+        if(products[i].categoriesData![widget.category]!.contains(subCategorySelected)) {
+          productsForMe.add(products[i]);
+        }
+      }
+    }
+
+    return productsForMe;
+  }
+
+  void onItemTappedSubCat(int index) {
     setState(() {
-      selectedIndex = index;
+      selectedSubIndex = index;
+      selectedSubCat = categoriesData[widget.category]![index];
+
+      productsOfCategory = getAllProducts(
+          subCategorySelected: selectedSubCat
+      );
     });
   }
 
@@ -38,7 +79,29 @@ class _BodyState extends State<Body> {
               ),
             ),
           ),
-        )
+        ),
+
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 0.55,
+              ),
+              itemCount: productsOfCategory.length,
+              itemBuilder: (context, index){
+                final item = productsOfCategory[index];
+                return ProductCard(
+                  product: item,
+                  press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
+                );
+              },
+            )
+          ),
+        ),
       ],
     );
   }
@@ -47,9 +110,9 @@ class _BodyState extends State<Body> {
     return ButtonRounded(
       isBorder: false,
       backgroundColor: Colors.white,
-      selectedBackground: kRoundedCategory,
-      isSelected: selectedIndex == index,
-      press: (){onItemTapped(index);},
+      selectedBackground: kRoundedCategoryColor,
+      isSelected: selectedSubIndex == index,
+      press: (){onItemTappedSubCat(index);},
       text: '${categoriesData[widget.category]![index]}',
     );
   }

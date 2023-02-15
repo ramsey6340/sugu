@@ -4,6 +4,7 @@ import 'package:sugu/datas/sub_categories.dart';
 import 'package:sugu/datas/product_data.dart';
 import 'package:sugu/datas/seller_data.dart';
 import '../models/store.dart';
+import 'global_category.dart';
 
 
 List<String> descriptions = [
@@ -25,43 +26,70 @@ List<Store> stores = [
     storeId: "1",
     sellerId: sellers[0].sellerId,
     name: "Hassan Tissu",
-    categories: [Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure,
+    /*
+    categories: [
+      Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure,
       Categories.beaute, Categories.vieillard, Categories.enfant,
-      Categories.accessoire, Categories.couture],
+      Categories.accessoire, Categories.couture],*/
     nbPostProduct: 2,
     description: descriptions[0],
-    address: "Daoudabougou",
+    morePrecision: "A côté du status de Soundjata",
     image: "assets/images/Profile Image.png",
     numTel1: '99235643',
     numTel2: '65342112',
     email: 'hassan65@gmail.com',
-    //followerSellersList: [sellers[1].sellerId,sellers[2].sellerId,],
+    globalCat: [
+      GlobalCategory.maison,
+      GlobalCategory.femme,
+      GlobalCategory.enfant,
+      GlobalCategory.vieillard
+    ],
+    country: 'Mali',
+    state: 'Sikasso',
+    city: 'Sikasso ville'
   ),
   Store(
     storeId: "2",
     sellerId: sellers[1].sellerId,
     name: "SankShop",
-    categories: [Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure],
+    //categories: [Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure],
     nbPostProduct: 5,
     description: descriptions[1],
-    address: "Kabala",
+    morePrecision: "Près du super marché Hasard",
     image: "assets/images/chaussure2.png",
     numTel1: '71896753',
     email: 'madousankare88@gmail.com',
-    //followerSellersList: [sellers[0].sellerId,sellers[2].sellerId,],
+    globalCat: [
+      GlobalCategory.homme,
+      GlobalCategory.maison,
+      GlobalCategory.sport,
+      GlobalCategory.femme
+    ],
+    country: 'Mali',
+    state: 'Bamako',
+    city: 'Daouda Bougou'
   ),
   Store(
     storeId: "3",
     sellerId: sellers[2].sellerId,
     name: "Lainy-Love Tissu",
-    categories: [Categories.tout, Categories.femme, Categories.enfant],
+    //categories: [Categories.tout, Categories.femme, Categories.enfant],
     nbPostProduct: 4,
     description: descriptions[2],
-    address: "Att-bougou",
+    morePrecision: "Près de la Mosqué 759",
     image: "assets/images/chaussure3.jpg",
     numTel1: '44789090',
     numTel2: '785633210',
     email: 'kadidiatou66@gmail.com',
-    //followerSellersList: [sellers[1].sellerId],
+    globalCat: [
+      GlobalCategory.electronique,
+      GlobalCategory.electricite,
+      GlobalCategory.fille,
+      GlobalCategory.garcon,
+      GlobalCategory.jeux
+    ],
+    country: 'Mali',
+    state: 'Bamako',
+    city: 'Yirimadjo'
   ),
 ];

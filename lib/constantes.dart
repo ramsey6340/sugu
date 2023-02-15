@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:sugu/size_config.dart';
 
 const kAppBarColor = Color(0xFF1D334A);
-const kRoundedCategory = Colors.orange;
+const Color kRoundedCategoryColor = Color(0xFFFFA51E);
 const kPrimaryColor = Color(0xFF1D334A);//Colors.deepPurple;//Color(0xFFFF7643);
 const kSecondaryColor = Colors.deepPurple;
 const kButtonRoundedColor = Colors.black54;
 const kBackground = Color(0xFFFCFCFC);
+const Color kGreyColor = Color(0xffF3F3F3);
+Color kPopupMenuColor = Colors.black.withOpacity(0.8);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
@@ -14,8 +16,27 @@ const kPrimaryGradientColor = LinearGradient(
 );
 const kThirdColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
-
+const kFourColor = Color(0xFFF5F6F9);
+const kTextFieldOpacity = 0.7;
 const kAnimationDuration = Duration(milliseconds: 200);
+
+double buttonWidth = getProportionateScreenWidth(300);
+double buttonHeight = getProportionateScreenHeight(70);
+const int kPasswordMaxLength = 4;
+const int kFirstNameMinLength = 2;
+const int kLastNameMinLength = 2;
+// les différents type de notification
+enum NotificationType {
+  info,
+  promotion,
+  abonnement,
+}
+// les différents type d'inscription
+enum LogType {
+  phone,
+  email,
+  google,
+}
 
 // Style pour l'en-tête des pages de login
 final headingStyle = TextStyle(
@@ -65,6 +86,9 @@ final searchBarDecoration = InputDecoration(
         horizontal: getProportionateScreenWidth(20)
     )
 );
+
+
+final RegExp birthDayRegExp = RegExp(r"^[0-9]{2}\/[0-9]{2}\/[0-9]{4}");
 
 // Form Error
 final RegExp emailValidatorRegExp =

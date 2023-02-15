@@ -1,8 +1,5 @@
 // Exemple de vendeur
 
-import 'package:sugu/datas/product_data.dart';
-import 'package:sugu/datas/store_data.dart';
-
 import '../models/seller.dart';
 
 List<Seller> sellers = [
@@ -12,26 +9,49 @@ List<Seller> sellers = [
     lastName: "Sidibé",
     birthDay: "02/09/1999",
     isCurrentUser: true,
-    //likedProductsList: [products[1].productId,products[2].productId,],
-    //followingStoresList: [stores[0].storeId,stores[1].storeId,stores[2].storeId,],
-    //contactsList: [sellers[1].sellerId,sellers[2].sellerId,],
+    email: 'hassane10@icloud.com',
+    numTel: '76121290',
+    password: '781209',
+    country: 'Etats-Uni',
+    state: 'New-York',
+    city: 'Priston',
   ),
   Seller(
     sellerId: "2",
     firstName: "Mamadou",
     lastName: "Sankare",
     birthDay: "02/09/1999",
-    //likedProductsList: [products[0].productId,products[2].productId,products[3].productId,],
-    //followingStoresList: [stores[0].storeId,stores[1].storeId,],
-    //contactsList: [sellers[2].sellerId,],
+    email: 'madou89@gmail.com',
+    numTel: '98765423',
+    password: '8912',
+    country: 'Sénegal',
+    state: 'Dakar',
+    city: 'Djouta',
   ),
   Seller(
     sellerId: "3",
     firstName: "Kadiatou Aoua",
     lastName: "Traore",
     birthDay: "02/09/1996",
-    //likedProductsList: [products[4].productId,products[6].productId,products[7].productId,],
-    //followingStoresList: [stores[0].storeId,],
-    //contactsList: [],
+    email: 'batomakadi66@gmail.com',
+    numTel: '66782112',
+    password: 'kadi12',
+    country: 'Mali',
+    state: 'Bamako',
+    city: 'Att-bougou',
+  ),
+
+  Seller(
+    sellerId: "4",
+    firstName: "Djenba dite Baya",
+    lastName: "Traore",
+    birthDay: "17/09/1988",
+    email: 'djenebatraore75@gmail.com',
+    numTel: '75048442',
+    password: 'baya75',
+    country: 'Mali',
+    state: 'Bamako',
+    city: 'Att-bougou',
+
   ),
 ];

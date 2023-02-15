@@ -1,48 +1,148 @@
 // Modèle pour le magasin
 
-import '../datas/global_category.dart';
-import '../datas/sub_categories.dart';
-
 class Store {
-  final String storeId; // l'id du magasin
-  final String sellerId; // le vendeur
-  final String name; // le nom du magasin
-  final List<Categories> categories; // elle doit être supprimé pour laisser la place à globalCat et subCat
-  final List<GlobalCategory>? globalCat; // la liste des categories global du magasin
-  //final List<String>? followerSellersList; // liste des vendeurs qui se sont abonné au magasin
-  // cette valeur risque de générer une boucle avec l'attribut followingStoresList du model seller
-  // si ce cas arrive il faudra supprimer l'un des 2 attributs
+  String storeId; // l'id du magasin
+  String sellerId; // le vendeur
+  String name; // le nom du magasin
+  bool isOpen; // pour savoir si oui ou non le magasin est ouvert
+  bool isUpToData; // pour savoir si oui ou non le magasin est à jour dans son payement mentuel.
+  // S'il n'est pas à jour automatiquement le magasin sera fermé
+  List<String> globalCat; // la liste des categories global du magasin
+  int size; // la taille du magasin, le nombre de produit maximal que le magasin peut contenir.
+  // Cela varie en fonction de l'abonnement du vendeur
+  int nbPostProduct; // nombre de produit se trouvant dans le magasin actuellement
+  bool isPopular; // un magasin est concideré comme populaire si son nombre d'abonnée
+  // atteint un certain nombre
+  String description; // description du magasin
+  String morePrecision; // pour ajouter plus de precision de la par du vendeur
+  // pour localiser sont magasin. Par exemple: "Près de la grande mosquée de Bamako",
+  // "Près de l'hopital Gabriel Touré", etc.
 
-  final int size; // la taille du magasin, le nombre de produit maximal que le magasin peut contenir. Cela varie en fonction de l'abonnement du vendeur
-  final int nbPostProduct;
-  final bool isPopular; // un magasin est concideré comme populaire si son nombre d'abonnée atteint un certain nombre
-  //final int nbFollowers;
-  final String description;
-  final String address;
-  final String image;
-  final String numTel1;
-  final String? numTel2;
-  final String? email;
-  final String? geolocation;
+  String image; // profile image du magasin
+  String numTel1; // prémier numero de téléphone du magasin
+  String? numTel2; // second numero de téléphone du magasin
+  String? email; // email du magasin
+  String country; // pays du magasin
+  String state; // région ou etat du magasin
+  String city; // ville ou quartier du magasin
+  String? geolocation; // géolocalisation par Map du magasin
 
   Store({
     required this.storeId,
     required this.sellerId,
     required this.name,
-    required this.categories,
-    this.globalCat,
-    //this.followerSellersList,
+    required this.globalCat,
     required this.description,
-    this.size = 5,
     required this.nbPostProduct,
-    this.isPopular=false,
-    //required this.nbFollowers,
-    required this.address,
+    required this.morePrecision,
     required this.image,
     required this.numTel1,
+    required this.country,
+    required this.state,
+    required this.city,
+
     this.numTel2,
     this.email,
+    this.isPopular=false,
+    this.size = 5,
+    this.isOpen=true,
+    this.isUpToData=true,
     this.geolocation,
   });
+
+  // Constructeur nommé
+  Store.isEmpty({
+    this.storeId='',
+    this.sellerId='',
+    this.name='',
+    this.globalCat=const [],
+    this.description='',
+    this.nbPostProduct=0,
+    this.morePrecision='',
+    this.image='',
+    this.numTel1='',
+    this.country='',
+    this.state='',
+    this.city='',
+    this.numTel2='',
+    this.email='',
+    this.isPopular=false,
+    this.size = 5,
+    this.isOpen=true,
+    this.isUpToData=true,
+    this.geolocation='',
+  });
+
+  // setters
+  set setStore(Store value) {
+    storeId = value.storeId;
+    sellerId = value.sellerId;
+    name = value.name;
+    isOpen = value.isOpen;
+    isUpToData = value.isUpToData ;
+    globalCat = value.globalCat;
+    description = value.description;
+    size = value.size;
+    nbPostProduct = value.nbPostProduct;
+    isPopular = value.isPopular;
+    morePrecision = value.morePrecision;
+    image = value.image;
+    numTel1 = value.numTel1;
+    numTel2 = value.numTel2;
+    email = value.email;
+    country = value.country;
+    state = value.state;
+    city = value.city;
+    geolocation = value.geolocation;
+  }
+
+  set setGlobalCat(List<String> value) {
+    globalCat = value;
+  }
+  set setName(String value) {
+    name = value;
+  }
+  set setIsOpen(bool value) {
+    isOpen = value;
+  }
+  set setIsUpToData(bool value) {
+    isUpToData = value;
+  }
+  set setDescription(String value) {
+    description = value;
+  }
+  set setSize(int value) {
+    size = value;
+  }
+  set setNbPostProduct(int value) {
+    nbPostProduct = value;
+  }
+  set setMorePrecision(String value) {
+    morePrecision = value;
+  }
+  set setImage(String value) {
+    image = value;
+  }
+  set setNumTel1(String value) {
+    numTel1 = value;
+  }
+  set setNumTel2(String value) {
+    numTel1 = value;
+  }
+  set setEmail(String value) {
+    email = value;
+  }
+  set setCountry(String value) {
+    country = value;
+  }
+  set setState(String value) {
+    state = value;
+  }
+  set setCity(String value) {
+    city = value;
+  }
+  set setGeolocation(String value) {
+    geolocation = value;
+  }
 
 }

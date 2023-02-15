@@ -57,6 +57,7 @@ class SubCategories {
   static const String materielsConstruction = "Matériel de construction";
 }
 
+
 // les catégories global avec leur sous categories associé
 Map<String, List<String>> categoriesData = {
 

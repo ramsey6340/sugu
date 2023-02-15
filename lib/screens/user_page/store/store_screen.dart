@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sugu/CRUD/read.dart';
 import 'package:sugu/constantes.dart';
 import 'package:sugu/models/store.dart';
-import '../../../components/buttonRounded.dart';
-import '../../../datas/sub_categories.dart';
 import '../../../datas/datas_current.dart';
-import '../../../datas/store_data.dart';
 import '../../../size_config.dart';
 import '../details_store/details_store_screen.dart';
 import 'components/add_product/add_product.dart';
@@ -24,10 +21,7 @@ class StoreScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: kBackground,
       appBar: AppBar(
-        backgroundColor: kAppBarColor,
-        iconTheme: IconThemeData(color: Colors.white),
-        centerTitle: true,
-        leading: (isCurrentUser)?IconButton(onPressed: (){Navigator.pushNamed(context, AddProduct.routeName);}, icon: Icon(Icons.add_circle_outline_rounded)): null,
+        leading: (isCurrentUser)?IconButton(onPressed: (){Navigator.pushNamed(context, AddProduct.routeName, /*arguments: store*/);}, icon: const Icon(Icons.add_circle_outline_rounded)): null,
         title: Text('${store.name}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
         actions: [
           (isCurrentUser)? getLeadingShopPage(context, store):const SizedBox(),
@@ -39,7 +33,7 @@ class StoreScreen extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Center(
-                child: (isCurrentUser)?Text('${store.nbPostProduct}/${store.size}', style: TextStyle(fontWeight: FontWeight.bold),): Text('${store.nbPostProduct}', style: TextStyle(fontWeight: FontWeight.bold),)
+                child: (isCurrentUser)?Text('${store.nbPostProduct}/${store.size}', style: const TextStyle(fontWeight: FontWeight.bold),): Text('${store.nbPostProduct}', style: const TextStyle(fontWeight: FontWeight.bold),)
           ),
           ),
           SizedBox(width: getProportionateScreenWidth(5),)
@@ -63,7 +57,7 @@ class StoreScreen extends StatelessWidget {
             radius: 10,
             backgroundImage: AssetImage(currentStore.image),
           ),
-          Text('${read.getNbFollowers(storeId: store.storeId)}k', style: TextStyle(color: Colors.white),),
+          Text('${read.getNbFollowers(storeId: store.storeId)}k', style: const TextStyle(color: Colors.white),),
         ],
       ),
     );

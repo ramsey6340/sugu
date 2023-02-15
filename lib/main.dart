@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/routes.dart';
+import 'package:sugu/screens/login_page/sign_up/components/profile_additional_info.dart';
+import 'package:sugu/screens/login_page/sign_up/components/sign_up_additional_info.dart';
 import 'package:sugu/screens/main_screen.dart';
 import 'package:sugu/screens/splash/splash_screen.dart';
 import 'package:sugu/screens/user_page/store/store_screen.dart';

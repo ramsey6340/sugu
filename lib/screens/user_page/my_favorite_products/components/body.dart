@@ -98,7 +98,7 @@ class _BodyState extends State<Body> {
     return ButtonRounded(
       isBorder: false,
       //backgroundColor: Colors.white,
-      selectedBackground: kRoundedCategory,
+      selectedBackground: kRoundedCategoryColor,
       isSelected: selectedIndex == index,
       press: (){onItemTapped(index);},
       text: '${types[index]}',

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import '../../../../CRUD/read.dart';
 import '../../../../components/buttonRounded.dart';
 import '../../../../components/product_card_for_seller.dart';
 import '../../../../constantes.dart';
+import '../../../../datas/global_category.dart';
 import '../../../../datas/sub_categories.dart';
 import '../../../../datas/product_data.dart';
 import '../../../../models/product.dart';
@@ -21,46 +23,77 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
 
   late List<Product> productsOfStore;
+  late List<Product> productsOfCategory;
   int selectedIndex = 0;
-
+  int selectedSubIndex = 0;
+  late String selectedGlobalCat;
+  late String selectedSubCat;
 
   // methode pour obtenir tous les produits d'un boutique
-  List<Product> getAllProducts({required String storeId, required Categories categorySelected}){
+  List<Product> getAllProducts({
+    required String globalCategorySelected,
+    required String subCategorySelected,
+  }){
     List<Product> productsForMe = [];
-    if(categorySelected == Categories.tout){
-      for(int i=0; i<products.length; i++){
-        if(products[i].storeId == storeId){
-          productsForMe.add(products[i]);
+
+    for(int i=0; i<productsOfStore.length; i++) {
+      if(productsOfStore[i].categoriesData!.keys.toList().contains(globalCategorySelected) && subCategorySelected == SubCategories.tout){
+        productsForMe.add(productsOfStore[i]);
+      }
+      else if(productsOfStore[i].categoriesData!.keys.toList().contains(globalCategorySelected) && subCategorySelected != SubCategories.tout){
+        if(productsOfStore[i].categoriesData![globalCategorySelected]!.contains(subCategorySelected)) {
+          productsForMe.add(productsOfStore[i]);
         }
       }
     }
-    else{
-      for(int i=0; i<products.length; i++){
-        if(products[i].storeId == storeId && products[i].categories.contains(categorySelected)){
-          productsForMe.add(products[i]);
-        }
-      }
-    }
+
     return productsForMe;
   }
 
   @override
   void initState() {
-    productsOfStore = getAllProducts(
-        storeId: widget.store.storeId,
-        categorySelected: widget.store.categories[0]);
+    Read read = Read();
+    selectedGlobalCat = widget.store.globalCat[selectedIndex];
+    selectedSubCat = categoriesData[selectedGlobalCat]![selectedSubIndex];
+
+    productsOfStore = read.getAllProducts(storeId: widget.store.storeId);
+    productsOfCategory = getAllProducts(
+        globalCategorySelected: selectedGlobalCat,
+        subCategorySelected: selectedSubCat
+    );
+
     super.initState();
   }
 
 
-  void onItemTapped(int index, Categories categorySelected) {
+  void onItemTapped(int index) {
     setState(() {
-      productsOfStore = getAllProducts(
-          storeId: widget.store.storeId,
-          categorySelected: categorySelected
-      );
       selectedIndex = index;
+      selectedSubIndex = 0;
+      selectedGlobalCat = widget.store.globalCat[selectedIndex];
+
+      productsOfCategory = getAllProducts(
+          globalCategorySelected: selectedGlobalCat,
+          subCategorySelected: selectedSubCat
+      );
+
     });
+  }
+
+  void onItemTappedSubCat(int index) {
+    setState(() {
+      selectedSubIndex = index;
+      selectedSubCat = subCategories(selectedGlobalCat)[index];
+
+      productsOfCategory = getAllProducts(
+          globalCategorySelected: selectedGlobalCat,
+          subCategorySelected: selectedSubCat
+      );
+    });
+  }
+
+  List<String> subCategories(String index) {
+    return categoriesData[index]!;
   }
 
   @override
@@ -73,10 +106,23 @@ class _BodyState extends State<Body> {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(
-              widget.store.categories.length,
+              widget.store.globalCat.length,
+                  (index1) => Container(
+                  margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+                  child:  showType(index1)
+              ),
+            ),
+          ),
+        ),
+
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: List.generate(
+              subCategories(selectedGlobalCat).length,
                   (index) => Container(
                   margin: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-                  child:  showType(index)
+                  child:  showSubType(index)
               ),
             ),
           ),
@@ -92,9 +138,9 @@ class _BodyState extends State<Body> {
                 mainAxisSpacing: 10,
                 childAspectRatio: 0.55,
               ),
-              itemCount: productsOfStore.length,
+              itemCount: productsOfCategory.length,
               itemBuilder: (context, index){
-                final item = productsOfStore[index];
+                final item = productsOfCategory[index];
                 return ProductCardForSeller(
                   product: item,
                   press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
@@ -110,13 +156,21 @@ class _BodyState extends State<Body> {
   ButtonRounded showType(int index) {
     return ButtonRounded(
       isBorder: false,
-      //backgroundColor: Colors.white,
-      selectedBackground: kRoundedCategory,
+      selectedBackground: kRoundedCategoryColor,
       isSelected: selectedIndex == index,
-      press: (){onItemTapped(index, widget.store.categories[index]);},
-      text: '${widget.store.categories[index].name}',
-      //selectedLeading: const Icon(Icons.check, color: Colors.white),
+      press: (){onItemTapped(index);},
+      text: '${widget.store.globalCat[index]}',
 
+    );
+  }
+
+  ButtonRounded showSubType(int index) {
+    return ButtonRounded(
+      isBorder: false,
+      selectedBackground: kRoundedCategoryColor,
+      isSelected: selectedSubIndex == index,
+      press: (){onItemTappedSubCat(index);},
+      text: '${subCategories(selectedGlobalCat)[index]}',
     );
   }
 

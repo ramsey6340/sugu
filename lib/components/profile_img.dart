@@ -3,17 +3,18 @@ import 'package:flutter_svg/svg.dart';
 
 
 class ProfileImg extends StatelessWidget {
-  const ProfileImg({Key? key, required this.profileImg, required this.pressShowImg, required this.pressModifImg,}) : super(key: key);
+  const ProfileImg({Key? key, required this.profileImg, this.pressShowImg, this.pressModifImg, this.showIconModif=false,}) : super(key: key);
   final String profileImg;
-  final Function pressShowImg;
-  final Function pressModifImg;
+  final Function()? pressShowImg;
+  final Function()? pressModifImg;
+  final bool showIconModif;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
         children: [
           GestureDetector(
-            onTap: pressShowImg as void Function(),
+            onTap: pressShowImg,
             child: CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage(profileImg),
@@ -23,15 +24,15 @@ class ProfileImg extends StatelessWidget {
             bottom: 0,
             right: 0,
             child: GestureDetector(
-              onTap: pressModifImg as void Function(),
-              child: Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
+              onTap: pressModifImg,
+              child: (showIconModif)?Container(
+                padding: const EdgeInsets.all(5),
+                decoration: const BoxDecoration(
                   color: Color(0xFFF5F6F9),
                   shape: BoxShape.circle,
                 ),
                 child: SvgPicture.asset('assets/icons/Camera Icon.svg'),
-              ),
+              ):null,
             ),
           )
         ]

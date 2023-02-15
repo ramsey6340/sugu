@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../constantes.dart';
+
 
 class NextPage extends StatelessWidget {
-  const NextPage({Key? key, required this.name, required this.press, required this.leading, this.enable=true,}) : super(key: key);
-  final String name;
+  const NextPage({Key? key, required this.title, required this.press, required this.leading, this.enable=true, this.trailing=const Icon(Icons.navigate_next), this.subTitle='',}) : super(key: key);
+  final String title;
   final Widget? leading;
+  final Widget? trailing;
+  final String subTitle;
   final Function press;
   final bool enable;
 
@@ -12,14 +16,15 @@ class NextPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Color(0xFFF5F6F9),
+        color: kFourColor,
       ),
       child: ListTile(
         onTap: press as void Function(),
         leading: leading,
-        title: Text(name, style: TextStyle(color: Colors.black),),
+        title: Text(title, style: const TextStyle(color: Colors.black, overflow: TextOverflow.ellipsis),),
+        subtitle: Text(subTitle, style: const TextStyle( overflow: TextOverflow.ellipsis)),
         enabled: enable,
-        trailing: (enable)?const Icon(Icons.navigate_next): null,
+        trailing: (enable)? trailing : null,
       ),
     );
   }

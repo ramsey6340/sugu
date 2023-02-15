@@ -1,11 +1,12 @@
 import '../datas/sub_categories.dart';
 
 
-class Product{
+class Product {
   final String productId;
   final String storeId;
   final Map<String, List<String>>? categoriesData;
-  final List<Categories> categories; //doit être supprimé pour donner la place à globalCat et subcat
+  final List<
+      Categories> categories; //doit être supprimé pour donner la place à globalCat et subcat
   final String name; // le titre
   final String description; // la description
   final List<String> images; // les images
@@ -27,5 +28,6 @@ class Product{
     required this.categories,
     this.nbLike = 0,
     this.isPopular = false,
-    });
+  });
+
 }

@@ -5,7 +5,7 @@ import '../../../../../size_config.dart';
 import 'product_add_form.dart';
 
 class Body extends StatelessWidget {
-  const Body({Key? key}) : super(key: key);
+  const Body({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,10 @@ class Body extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
               children: [
-                ProductAddForm(),
-                SizedBox(height: getProportionateScreenHeight(80),),
-                NextButton(text: 'Ajouter', press: (){}, color: kRoundedCategory,),
+                const ProductAddForm(),
+                SizedBox(height: getProportionateScreenHeight(30),),
+                NextButton(text: 'Ajouter', press: (){}, color: kRoundedCategoryColor, textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                SizedBox(height: getProportionateScreenHeight(60),),
               ],
             ),
         ),

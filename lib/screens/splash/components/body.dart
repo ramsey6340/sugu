@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
 import '../../../components/next_button.dart';
 import '../../login_page/sign_in/sign_in_screen.dart';
+import '../sign_in_or_sign_up.dart';
 import 'splash_content.dart';
 class Body extends StatefulWidget{
   @override
@@ -59,7 +60,8 @@ class _BodyState extends State<Body>{
                     NextButton(
                         text: 'Continue',
                         press:(){
-                          Navigator.pushNamed(context, SignInScreen.routeName);
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, SignInOrSignUp.routeName, (route) => false);
                         }
                     ),
                     Spacer(),

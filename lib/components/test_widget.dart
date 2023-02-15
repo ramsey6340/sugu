@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sugu/components/product_card_for_seller.dart';
-import 'package:sugu/components/store_card.dart';
-import 'package:sugu/constantes.dart';
-import '../../../../components/Next_button.dart';
-import '../../../../models/product.dart';
-import '../CRUD/read.dart';
-import '../datas/product_data.dart';
 import '../models/store.dart';
-import '../size_config.dart';
-
 
 class TestWidget extends StatelessWidget {
   static String routeName = 'test_widget';
@@ -16,12 +7,29 @@ class TestWidget extends StatelessWidget {
   final Store store;
   @override
   Widget build(BuildContext context) {
-    Read read = Read();
     return Scaffold(
       backgroundColor: Colors.grey,
-      body: Center(
-        child: StoreCard(store: store, press: (){},),
-      ),
+      body: SizedBox(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              childAspectRatio: 0.55,
+            ),
+            itemCount: 10,
+            itemBuilder: (context, index){
+              final item = store.image;
+              return Container(
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(item)
+                    )
+                ),
+              );
+            },
+          ),
+        ),
     );
   }
 }

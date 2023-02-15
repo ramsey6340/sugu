@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sugu/components/next_button.dart';
 import '../../../../constantes.dart';
 import '../../../../size_config.dart';
-import '../../login_success/login_success_screen.dart';
+import '../../../main_screen.dart';
 
 
 class OTPForm extends StatefulWidget {
@@ -54,7 +54,7 @@ class _OTPFormState extends State<OTPForm> {
               text: "Continuer",
               press: (){
                 if(_formKey.currentState!.validate()){
-                  Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                  Navigator.pushNamed(context, MainScreen.routeName);
                 }
               }
           ),

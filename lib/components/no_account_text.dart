@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import '../constantes.dart';
 import '../screens/login_page/sign_up/sign_up_screen.dart';
+import '../screens/login_page/sign_up/sign_up_type.dart';
 import '../size_config.dart';
 
 class NoAccountText extends StatelessWidget
 {
-  NoAccountText({Key ? key}):super(key: key);
+  const NoAccountText({Key ? key}):super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text('Vous n\'avez pas de compte?', style: TextStyle(fontSize: getProportionateScreenWidth(16))),
         GestureDetector(
           onTap: (){
-            Navigator.pushNamed(context, SignUpScreen.routeName);
+            Navigator.pushNamedAndRemoveUntil(context, SignUpType.routeName, (route) => false);
           },
           child: Text('S\'inscrire', style: TextStyle(
-            fontSize: getProportionateScreenWidth(16),
-            color: kPrimaryColor,
+            fontSize: getProportionateScreenWidth(18),
+            color: Colors.blue,
+            decoration: TextDecoration.underline
           )
           ),
         ),

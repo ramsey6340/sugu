@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../CRUD/read.dart';
 import '../models/product.dart';
+import '../size_config.dart';
 
 
 class ProductCard extends StatelessWidget {
@@ -12,10 +13,11 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Read read = Read();
+    TextStyle priceStyle = const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black);
     return GestureDetector(
       onTap: press as void Function(),
       child: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10)
@@ -25,6 +27,7 @@ class ProductCard extends StatelessWidget {
             Row(
               children: [
                 CircleAvatar(
+                  radius: getProportionateScreenWidth(13),
                   backgroundImage: AssetImage(read.getStoreImg(storeId: product.storeId)),
                 ),
                 const SizedBox(width: 10,),
@@ -45,31 +48,41 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-\n${product.maxPrice} f',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),maxLines: 2,),
-                      Row(
+            const SizedBox(height: 5,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: getProportionateScreenWidth(130),
+                      child: Wrap(
                         children: [
-                          GestureDetector(
-                              onTap: (){},
-                              child: Icon(Icons.favorite_border),
-                          ),
-                          Text('${product.nbLike}')
+                          ('${product.minPrice}'!='${product.maxPrice}')?Text('${product.minPrice}-', style: priceStyle,):Text(''),
+                          Text('${product.maxPrice} f', style: priceStyle,)
                         ],
-                      )
-                    ],
-                  ),
-                  Text('${product.name}', overflow: TextOverflow.ellipsis,),
-                  Text("${read.getNbFollowers(storeId: product.storeId)} followers")
+                      ),
+                    ),
+                    //Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-\n${product.maxPrice} f',
+                      //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),maxLines: 2,),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                            onTap: (){},
+                            child: const Icon(Icons.favorite_border),
+                        ),
+                        Text('${product.nbLike}')
+                      ],
+                    )
+                  ],
+                ),
+                Text('${product.name}', overflow: TextOverflow.ellipsis,),
+                Text("${read.getNbFollowers(storeId: product.storeId)} followers")
 
-                ],
-              ),
+              ],
             )
           ],
         ),
