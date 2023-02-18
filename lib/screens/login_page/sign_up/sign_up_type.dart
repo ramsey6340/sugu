@@ -4,6 +4,7 @@ import 'package:sugu/constantes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sugu/screens/login_page/sign_up/sign_up_screen.dart';
 
+import '../../../components/form_image.dart';
 import '../../../size_config.dart';
 import '../../splash/sign_in_or_sign_up.dart';
 
@@ -24,7 +25,8 @@ class SignUpType extends StatelessWidget {
         width: double.infinity,
         child: Column(
           children: [
-            Image.asset("assets/images/Sign up-rafiki.png", width: getProportionateScreenWidth(320), height: getProportionateScreenHeight(320),),
+            FormImage(imageUrl: "assets/images/Sign up-rafiki.png",),
+            //Image.asset("assets/images/Sign up-rafiki.png", width: getProportionateScreenWidth(320), height: getProportionateScreenHeight(320),),
             const Text("Comment voulez-vous vous inscrire ?", style: TextStyle(fontSize: 20, color: Colors.white),),
             const SizedBox(height: 20,),
             NextButton(

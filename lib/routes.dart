@@ -25,6 +25,8 @@ import 'package:sugu/screens/user_page/profile/components/components/setting/com
 import 'package:sugu/screens/user_page/profile/components/components/setting/setting.dart';
 import 'package:sugu/screens/user_page/profile/profile_screen.dart';
 import 'package:sugu/screens/user_page/store/components/add_product/add_product.dart';
+import 'package:sugu/screens/user_page/store/create_store/create_store_screen.dart';
+import 'package:sugu/screens/user_page/store/create_store/success_create_store.dart';
 import 'package:sugu/screens/user_page/store_modification/store_modification_screen.dart';
 import 'datas/store_data.dart';
 
@@ -56,6 +58,7 @@ final Map<String, WidgetBuilder> routes = {
   FAQSugu.routeName: (context) => FAQSugu(),
   ContactedUs.routeName: (context) => ContactedUs(),
   ConditionAndPrivacyPolicy.routeName: (context) => ConditionAndPrivacyPolicy(),
+  SuccessCreateStore.routeName: (context) => SuccessCreateStore(),
 
   TestWidget.routeName: (context) => TestWidget(store: stores[1]),
 };

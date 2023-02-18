@@ -1,9 +1,7 @@
 import 'package:country_state_city_pro/country_state_city_pro.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../components/Next_button.dart';
 import '../../../../constantes.dart';
-import '../../../../datas/global_category.dart';
 import '../../../../size_config.dart';
 import '../../../main_screen.dart';
 

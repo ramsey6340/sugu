@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/components/next_button.dart';
 import 'package:sugu/constantes.dart';
+import '../../components/form_image.dart';
 import '../../size_config.dart';
 import '../login_page/sign_in/sign_in_type.dart';
 import '../login_page/sign_in/sign_in_screen.dart';
@@ -21,7 +22,8 @@ class SignInOrSignUp extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset('assets/images/show_products_orange.png', width: getProportionateScreenWidth(320), height: getProportionateScreenHeight(320),),
+              const FormImage(imageUrl: 'assets/images/show_products_orange.png',),
+              //Image.asset('assets/images/show_products_orange.png', width: getProportionateScreenWidth(320), height: getProportionateScreenHeight(320),),
               const SizedBox(height: 10,),
               const Text.rich(
                 TextSpan(text: "Aw bissimila ",style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),

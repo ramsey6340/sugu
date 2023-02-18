@@ -20,18 +20,33 @@ class StoreUnavailable extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    blurRadius: 10,
+                    offset: const Offset(0, 0)
+                  ),
+                ]
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    const Text("Boutique fermée", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),),
                     Text(
                       message,
-                      style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 18, color: Colors.black, fontWeight: FontWeight.normal),textAlign: TextAlign.center,
                     ),
                     SizedBox(height: getProportionateScreenHeight(30),),
-                    NextButton(text: "Ouvrir ma boutique", press: onPressed, color: kRoundedCategoryColor, textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                    NextButton(
+                      borderRadius: 5,
+                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                      text: "Ouvrir",
+                      press: onPressed,
+                      color: kRoundedCategoryColor,
+                      textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
                   ],
                 ),
               )

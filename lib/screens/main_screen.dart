@@ -3,7 +3,7 @@ import 'package:sugu/constantes.dart';
 import 'package:sugu/screens/user_page/chat/message_screen.dart';
 import 'package:sugu/screens/user_page/home/home_screen.dart';
 import 'package:sugu/screens/user_page/my_favorite_products/my_favorite_product_screen.dart';
-import 'package:sugu/screens/user_page/store/create_store.dart';
+import 'package:sugu/screens/user_page/store/create_store/store_unavailable_screen.dart';
 import 'package:sugu/screens/user_page/store/store_screen.dart';
 import 'package:sugu/screens/user_page/profile/profile_screen.dart';
 import '../CRUD/read.dart';
@@ -55,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
     }
     _homeScreen = const HomeScreen();
     _myFavoriteProductScreen = const MyFavoriteProductScreen();
-    _myShopScreen = (storeIsNull)?const CreateStore():StoreScreen(store: currentStore,);
+    _myShopScreen = (storeIsNull)?const StoreUnavalableScreen(typeUnavalableStore: TypeUnavalableStore.noStoreExist,):StoreScreen(store: currentStore,);
     _chatScreen = const MessageScreen();
     _profileScreen = const ProfileScreen();
     _screenList = [_homeScreen, _myFavoriteProductScreen, _myShopScreen, _chatScreen, _profileScreen];

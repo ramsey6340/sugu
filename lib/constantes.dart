@@ -38,6 +38,27 @@ enum LogType {
   google,
 }
 
+// Type de formulaire pour la création du magagin
+enum StoreFormType {
+  profile,
+  contact,
+  location
+}
+
+// les messages à afficher en cas de fermeture du magasin
+const String noStoreMessage = "Vous n'avez pas de boutique encore ouverte."
+    "\nCliquez sur « Ouvrir » pour ouvrir votre boutique";
+const String expiredSubscriptionMessage = "Vôtre boutique est fermé pour rétard de payment "
+    "dans vôtre abonnement.\nCliquer sur « Ouvrir » pour vous mettre à jour.";
+const String autoClosingStore = "Vous avez fermé vôtre boutique.\nCliquer sur « Ouvrir » pour l'ouvrir à nouveau.";
+
+// Typesd'inaccessibilité pour acceder à sa boutique
+enum TypeUnavalableStore {
+  noStoreExist,
+  expiredSubscription,
+  autoClosingStore
+}
+
 // Style pour l'en-tête des pages de login
 final headingStyle = TextStyle(
   fontSize: getProportionateScreenWidth(28),

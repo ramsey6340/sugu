@@ -315,7 +315,7 @@ void showInfo(BuildContext context, Store store) {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           margin: const EdgeInsets.only(top: 60, left: 12, right: 12, bottom: 60),
           decoration: BoxDecoration(
-            color: kBackground,
+            color: kFourColor,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
@@ -347,17 +347,6 @@ void showInfo(BuildContext context, Store store) {
                     ),
                 ),
               ),
-              /*Expanded(
-                child: Column(
-                  children: [
-                    buildInfo(infos: {'Adresses: ': store.morePrecision}, icon: const Icon(Icons.store_outlined, color: kAppBarColor,)),
-                    buildInfo(infos: {'Téléphone 1: ': store.numTel1}, icon: const Icon(Icons.phone_android, color: kAppBarColor)),
-                    buildInfo(infos: {'Téléphone 2: ': store.numTel2}, icon: const Icon(Icons.phone_android, color: kAppBarColor)),
-                    buildInfo(infos: {'Email: ': store.email}, isLink: true, icon: const Icon(Icons.mail_outline, color: kAppBarColor)),
-                    buildInfo(infos: {'Géolocalisation: ': store.geolocation}, isLink: true, icon: const Icon(Icons.location_on_outlined, color: kAppBarColor)),
-                  ],
-                ),
-              ),*/
               NextButton(
                 borderRadius: 5,
                 press: (){Navigator.pop(context);},

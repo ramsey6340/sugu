@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../components/form_image.dart';
 import '../../../../components/with_account_text.dart';
 import '../../../../constantes.dart';
 import '../../../../size_config.dart';
@@ -21,11 +22,13 @@ class Body extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                (logType == LogType.phone)?Image.asset(
+                (logType == LogType.phone)?
+                const FormImage(imageUrl: "assets/images/Mobile login-bro.png",)
+                /*Image.asset(
                   "assets/images/Mobile login-bro.png",
                   width: getProportionateScreenWidth(320),
                   height: getProportionateScreenHeight(320),
-                ):
+                )*/:
                 Image.asset(
                   "assets/images/Computer login-rafiki.png",
                   width: getProportionateScreenWidth(320),

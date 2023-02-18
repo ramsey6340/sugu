@@ -11,11 +11,7 @@ class MessageScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackground,
       appBar: AppBar(
-        elevation: 1,
-        centerTitle: true,
-        backgroundColor: kAppBarColor,
-        iconTheme: IconThemeData(color: Colors.white),
-        title: const Text("Inbox", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20,),),
+        title: const Text("Inbox"),
       ),
       body: ListMessages(),
     );
