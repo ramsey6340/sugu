@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../../../../CRUD/read.dart';
 import '../../../../components/next_button.dart';
 import '../../../../components/buttonRounded.dart';
-import '../../../../components/product_card.dart';
 import '../../../../constantes.dart';
+import '../../../../datas/product_data.dart';
+import '../../../../models/product.dart';
 import '../../../../models/store.dart';
 import '../../../../size_config.dart';
 import '../../chat/components/chat/inbox.dart';
@@ -11,6 +12,7 @@ import '../../store/store_screen.dart';
 import '../../store_modification/store_modification_screen.dart';
 import '../../subscription/subscription_screen.dart';
 import 'package:custom_pop_up_menu/custom_pop_up_menu.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class Body extends StatelessWidget {
@@ -28,48 +30,68 @@ class Body extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // #0
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                (store.isPopular)?const Icon(Icons.star, color: Colors.yellow,):const SizedBox(),
+                (store.isPopular)?const SizedBox(width: 10,):const SizedBox(),
+                ButtonRounded(
+                  press: (){},
+                  text: (isCurrentUser)?
+                  '${store.nbPostProduct}/${store.size} posts':
+                  '${store.nbPostProduct} posts', textColor: Colors.white, backgroundColor: kRoundedCategoryColor, isBorder: false,),
+              ],
+            ),
+            // #1
             Center(
               child: Column(
                 children: [
                   CircleAvatar(
-                    radius: getProportionateScreenWidth(50),
+                    radius: getProportionateScreenWidth(60),
                     backgroundImage: AssetImage(read.getStoreImg(storeId: store.storeId)),
                   ),
                   Text('${read.getSellerName(sellerId: store.sellerId)}', style: TextStyle(color: Colors.black),)
                 ],
               ),
             ),
+            // #2
             Container(
-              margin: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.symmetric(),
+              margin: const EdgeInsets.only(top: 5, left: 5, right: 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ButtonRounded(
-                    press: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SubscriptionScreen(title: "Abonnés",))
-                      );
-                      //showBottomSheetFollow(context: context, child: ListMessages(isBottomSheet: true,));
-                    },
-                    text: '200k abonnés',),
-                  ButtonRounded(
-                    press: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SubscriptionScreen(title: "Abonnements",))
-                      );
-                    //showBottomSheetFollow(context: context, child: ListMessages(isBottomSheet: true,));
-                    },
-                    text: '30 abonnements'),
-                  ButtonRounded(press: (){}, text: (isCurrentUser)?'${store.nbPostProduct}/${store.size} posts':'${store.nbPostProduct} posts', textColor: Colors.white, backgroundColor: kRoundedCategoryColor, isBorder: false,),
+                  Expanded(
+                    child: ButtonRounded(
+                      press: () {
+                        (isCurrentUser)? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SubscriptionScreen(title: "Abonnés",))
+                        ):null;
+                      },
+                      text: '200k abonnés',),
+                  ),
+                  Expanded(
+                    child: ButtonRounded(
+                      press: () {
+                        (isCurrentUser)?Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SubscriptionScreen(title: "Abonnements",))
+                        ):null;
+                      },
+                      text: '30 abonnements'),
+                  ),
                 ],
               ),
             ),
 
+            // #3
            StoreDescription(store: store),
+
+            // #4
            Row(
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
@@ -81,6 +103,7 @@ class Body extends StatelessWidget {
                    },
                    text: (isCurrentUser)?"Modifier":"S'abonné",
                    borderRadius: 5,
+                   padding: EdgeInsets.symmetric(horizontal: 0),
                    color: kRoundedCategoryColor,
                    textStyle: buttonStyle,
                  ),
@@ -93,6 +116,7 @@ class Body extends StatelessWidget {
                    },
                    text: (isCurrentUser)?"Statistique":"Message",
                    borderRadius: 5,
+                   padding: EdgeInsets.symmetric(horizontal: 0),
                    color: Colors.white,
                    borderColor: Colors.black,
                    textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
@@ -107,6 +131,7 @@ class Body extends StatelessWidget {
                    },
                    text: "Contactes",
                    borderRadius: 5,
+                   padding: EdgeInsets.symmetric(horizontal: 0),
                    color: Colors.white,
                    borderColor: Colors.black,
                    textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black),
@@ -131,6 +156,43 @@ class Body extends StatelessWidget {
               )
             ],
            ),
+
+            // #5
+           // Affichage de quelque images
+            const SizedBox(height: 10,),
+            const Divider(thickness: 1.2, height: 10,),
+            SizedBox(
+              width: double.infinity,
+              child: Wrap(
+                children: List.generate(
+                  (products.length>=maxLengthOfExampleProduct)?maxLengthOfExampleProduct:products.length,
+                      (index) => InkWell(
+                        onTap: (){
+                          showProduct(context: context, product: products[index]);
+                        },
+                        child: Image.asset(
+                    products[index].images[0],
+                    fit: BoxFit.fill,
+                    width: getProportionateScreenWidth(118.3),
+                    height: getProportionateScreenHeight(120),
+                  ),
+                      ),
+
+                ),
+              ),
+            ),
+           const SizedBox(height: 5,),
+           Align(
+             child: NextButton(
+               borderRadius: 5,
+               padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(120),),
+               press: (){
+                 Navigator.push(context, MaterialPageRoute(builder: (context) => StoreScreen(store: store,)));
+               },
+               text: "Voir plus",
+               textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+             ),
+           ),
            const SizedBox(height: 30,),
           ],
         ),
@@ -150,19 +212,6 @@ class Body extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            GestureDetector(
-              onTap: (){},
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisSize: MainAxisSize.min,
-                children: const [
-                  Icon(Icons.visibility_outlined, color: Colors.blue, size: 16,),
-                  SizedBox(width: 5,),
-                  Text("voir plus de produit", style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline)),
-                ],
-              ),
-            ),
-            const SizedBox(height: 5,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisSize: MainAxisSize.min,
@@ -283,7 +332,6 @@ class StoreDescription extends StatelessWidget {
               "${store.description}",
               style: TextStyle(color: Colors.black),
               maxLines: 3,overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.justify,
             ),
           ),
           GestureDetector(
@@ -303,10 +351,86 @@ class StoreDescription extends StatelessWidget {
   }
 }
 
+// méthode pour voir un exemple d'image de produit dans taille plus grande
+void showProduct({required BuildContext context,required Product product}) {
+  Read read = Read();
+  showDialog(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 100),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.8)
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: Image.asset(
+                        product.images[0],
+                      fit: BoxFit.fill,
+                      width: double.infinity,
+                    ),
+                  ),
+                  const SizedBox(height: 10,),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        //mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                            width: getProportionateScreenWidth(130),
+                            child: Wrap(
+                              children: [
+                                ('${product.minPrice}'!='${product.maxPrice}')?Text('${product.minPrice}-', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),):Text(''),
+                                Text('${product.maxPrice} f', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),)
+                              ],
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GestureDetector(
+                                onTap: (){},
+                                child: (product.nbLike>0)?const Icon(Icons.favorite, color: Colors.white,):const Icon(Icons.favorite_border, color: Colors.white,),
+                              ),
+                              Text('${product.nbLike}', style: TextStyle(color: Colors.white),)
+                            ],
+                          )
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        //mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(
+                              width: getProportionateScreenWidth(130),
+                              child: Text('${product.name}', overflow: TextOverflow.ellipsis, maxLines: 2, style: TextStyle(color: Colors.white, fontSize: 18),)
+                          ),
+                          (read.getIsProductPopular(productId: product.productId))?SvgPicture.asset('assets/icons/badge.svg', color: Colors.blue.withOpacity(0.8),):SizedBox()
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 10,)
+                ],
+              ),
+          ),
+        );
+      }
+  );
+}
+
 void showInfo(BuildContext context, Store store) {
   showGeneralDialog(
-      barrierLabel: 'Constactes',
-      barrierColor: Colors.black.withOpacity(0.5),
+    barrierLabel: 'Constactes',
+    barrierColor: Colors.black.withOpacity(0.5),
     context: context,
     pageBuilder: (context,__,___){
       return Material(
@@ -326,23 +450,25 @@ void showInfo(BuildContext context, Store store) {
               const SizedBox(height: 10),
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10)
                   ),
                   child: Column(
                       children: [
+                        buildInfo2(infos: {'Pays': '${store.country.flag} ${store.country.name}'}),
+                        const Divider(thickness: 1.2),
                         buildInfo2(infos: {'Repère': store.morePrecision}),
-                        Divider(thickness: 1.2),
-                        buildInfo2(infos: {'Téléphone 1': '(+223) ${store.numTel1}'}),
-                        Divider(thickness: 1.2),
-                        buildInfo2(infos: {'Téléphone 2': store.numTel2}),
-                        Divider(thickness: 1.2),
+                        const Divider(thickness: 1.2),
+                        buildInfo2(infos: {'Téléphone 1': store.numTel1.completeNumber}),
+                        const Divider(thickness: 1.2),
+                        buildInfo2(infos: {'Téléphone 2': store.numTel2?.completeNumber}),
+                        const Divider(thickness: 1.2),
                         buildInfo2(infos: {'Email': store.email}, isLink: true),
-                        Divider(thickness: 1.2),
+                        const Divider(thickness: 1.2),
                         buildInfo2(infos: {'Géolocalisation': store.geolocation}, isLink: true),
-                        Divider(thickness: 1.2),
+                        const Divider(thickness: 1.2),
                       ],
                     ),
                 ),

@@ -36,22 +36,37 @@ class SignInOrSignUp extends StatelessWidget {
               const SizedBox(height: 10,),
               const Text("Un espace où vous pouvez faire connaitre vos produits à de nouveau client potentiel partout dans le pays sans quitter chez-vous", style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal, color: Colors.white), textAlign: TextAlign.center,),
               const SizedBox(height: 50,),
-              NextButton(
-                textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
-                text: "Se connecté",
-                press: (){
-                  Navigator.pushNamed(context, SignInType.routeName);
-                },
-                color: kRoundedCategoryColor,
-              ),
-              const SizedBox(height: 30,),
-              NextButton(
-                textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
-                text: "S'inscrire",
-                press: (){
-                  Navigator.pushNamed(context, SignUpType.routeName);
-                },
-                color: kSecondaryColor,
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: getProportionateScreenWidth(300),
+                    child: NextButton(
+                      borderRadius: 5,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+                      text: "Se connecté",
+                      press: (){
+                        Navigator.pushNamed(context, SignInType.routeName);
+                      },
+                      color: kRoundedCategoryColor,
+                    ),
+                  ),
+                  const SizedBox(height: 30,),
+                  SizedBox(
+                    width: getProportionateScreenWidth(300),
+                    child: NextButton(
+                      borderRadius: 5,
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+                      text: "S'inscrire",
+                      press: (){
+                        Navigator.pushNamed(context, SignUpType.routeName);
+                      },
+                      color: kSecondaryColor,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

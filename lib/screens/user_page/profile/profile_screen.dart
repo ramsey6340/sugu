@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: kAppBarColor,
         iconTheme: IconThemeData(color: Colors.white),
-        title: const Text("Profile", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
+        title: const Text("Profile"),
       ),
       body: Body(),
     );

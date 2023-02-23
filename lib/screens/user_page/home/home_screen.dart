@@ -14,15 +14,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackground,
       appBar: AppBar(
-        backgroundColor: kAppBarColor,
-        iconTheme: IconThemeData(color: Colors.white),
-        elevation: 1,
-        centerTitle: true,
-        title: const Text("Accueil", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
+        title: const Text("Accueil",),
         actions: [
           IconButton(
               onPressed: (){Navigator.pushNamed(context, FilterBy.routeName);},
-              icon: Icon(Icons.filter_list)
+              icon: const Icon(Icons.filter_list)
           ),
         ],
       ),

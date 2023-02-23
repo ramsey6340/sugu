@@ -16,7 +16,14 @@ class Body extends StatelessWidget {
               children: [
                 const ProductAddForm(),
                 SizedBox(height: getProportionateScreenHeight(30),),
-                NextButton(text: 'Ajouter', press: (){}, color: kRoundedCategoryColor, textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                NextButton(
+                  borderRadius: 5,
+                  padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 8),
+                  text: 'Ajouter',
+                  press: (){},
+                  color: kRoundedCategoryColor,
+                  textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
                 SizedBox(height: getProportionateScreenHeight(60),),
               ],
             ),

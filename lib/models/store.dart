@@ -1,5 +1,9 @@
 // Modèle pour le magasin
 
+import 'package:intl_phone_field/countries.dart';
+import 'package:intl_phone_field/phone_number.dart';
+
+
 class Store {
   String storeId; // l'id du magasin
   String sellerId; // le vendeur
@@ -19,10 +23,10 @@ class Store {
   // "Près de l'hopital Gabriel Touré", etc.
 
   String image; // profile image du magasin
-  String numTel1; // prémier numero de téléphone du magasin
-  String? numTel2; // second numero de téléphone du magasin
+  PhoneNumber numTel1; // prémier numero de téléphone du magasin
+  PhoneNumber? numTel2; // second numero de téléphone du magasin
   String? email; // email du magasin
-  String country; // pays du magasin
+  Country country; // pays du magasin
   String state; // région ou etat du magasin
   String city; // ville ou quartier du magasin
   String? geolocation; // géolocalisation par Map du magasin
@@ -60,11 +64,18 @@ class Store {
     this.nbPostProduct=0,
     this.morePrecision='',
     this.image='',
-    this.numTel1='',
-    this.country='',
+    this.numTel1=const PhoneNumber(countryISOCode: '', countryCode: '', number: ''),
+    this.country=const Country(
+        name: '',
+        flag: '',
+        code: '',
+        dialCode: '',
+        minLength: 0,
+        maxLength: 0
+    ),
     this.state='',
     this.city='',
-    this.numTel2='',
+    this.numTel2=const PhoneNumber(countryISOCode: '', countryCode: '', number: ''),
     this.email='',
     this.isPopular=false,
     this.size = 5,
@@ -123,16 +134,16 @@ class Store {
   set setImage(String value) {
     image = value;
   }
-  set setNumTel1(String value) {
+  set setNumTel1(PhoneNumber value) {
     numTel1 = value;
   }
-  set setNumTel2(String value) {
+  set setNumTel2(PhoneNumber value) {
     numTel1 = value;
   }
   set setEmail(String value) {
     email = value;
   }
-  set setCountry(String value) {
+  set setCountry(Country value) {
     country = value;
   }
   set setState(String value) {

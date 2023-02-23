@@ -21,73 +21,85 @@ class SignInType extends StatelessWidget {
         leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: (){Navigator.pushNamedAndRemoveUntil(context, SignInOrSignUp.routeName, (route) => false);},),
         title: const Text("Connexion"),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [
-            const FormImage(
-              imageUrl: "assets/images/Secure login-bro.png",
-            ),
-            //Image.asset("assets/images/Secure login-bro.png", width: getProportionateScreenWidth(320), height: getProportionateScreenHeight(320),),
-            const Text("Comment voulez-vous vous connecté ?", style: TextStyle(fontSize: 20, color: Colors.white),),
-            const SizedBox(height: 20,),
-            NextButton(
-              elevation: 5,
-              press: (){
-                Navigator.pushNamed(context, SignInScreen.routeName, arguments: LogType.phone);
-              },
-              color: Colors.green,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: getProportionateScreenWidth(50),
-                      child: const Icon(Icons.call, color: Colors.white,)),
-                  SizedBox(
-                    width: getProportionateScreenWidth(200),
-                      child: const Center(child: Text("Avec mon numéro", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20,),)))
-                ],
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              const FormImage(
+                imageUrl: "assets/images/Secure login-bro.png",
               ),
-            ),
-            const SizedBox(height: 20,),
-            NextButton(
-              elevation: 5,
-              press: (){
-                Navigator.pushNamed(context, SignInScreen.routeName, arguments: LogType.email);
-              },
-              color: const Color(0xFFD14A3E),//kSecondaryColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: getProportionateScreenWidth(50),
-                      child: const Icon(Icons.email, color: Colors.white,)),
-                  SizedBox(
-                    width: getProportionateScreenWidth(200),
-                      child: const Center(child: Text("Avec mon email", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),)))
-                ],
+              const Text("Comment voulez-vous vous connecté ?", style: TextStyle(fontSize: 20, color: Colors.white),),
+              const SizedBox(height: 20,),
+              NextButton(
+                borderRadius: 5,
+                padding: EdgeInsets.symmetric(vertical: 8),
+                elevation: 5,
+                press: (){
+                  Navigator.pushNamed(context, SignInScreen.routeName, arguments: LogType.phone);
+                },
+                color: Colors.green,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: const [
+                    Text("Avec mon numéro", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20, color: Colors.white)),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(Icons.call, color: Colors.white,),
+                      ),
+                    ),
+                  ],
+                )
               ),
-            ),
-            const SizedBox(height: 20,),
-            NextButton(
-              elevation: 5,
-              press: (){
-                //Navigator.pushNamed(context, SignInScreen.routeName, arguments: LogType.google);
-              },
-              color: Colors.white,//Color(0xFFD14A3E),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: getProportionateScreenWidth(50),
-                      child: SvgPicture.asset("assets/icons/google-icon.svg", width: 24, height: 24,)),
-                  SizedBox(
-                    width: getProportionateScreenWidth(200),
-                      child: const Center(child: Text("Avec Google", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20, color: Colors.black87),)))
-                ],
+              const SizedBox(height: 20,),
+              NextButton(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                borderRadius: 5,
+                elevation: 5,
+                press: (){
+                  Navigator.pushNamed(context, SignInScreen.routeName, arguments: LogType.email);
+                },
+                color: const Color(0xFFD14A3E),//kSecondaryColor,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: const [
+                    Text("Avec mon email", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20, color: Colors.white)),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(Icons.email, color: Colors.white,),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 20,),
+              NextButton(
+                padding: EdgeInsets.symmetric(vertical: 8),
+                borderRadius: 5,
+                elevation: 5,
+                press: (){},
+                color: Colors.white,//Color(0xFFD14A3E),
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    const Text("Avec Google", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20, color: Colors.black)),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: SvgPicture.asset("assets/icons/google-icon.svg", width: 24, height: 24,),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

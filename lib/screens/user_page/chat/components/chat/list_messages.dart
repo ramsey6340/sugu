@@ -82,6 +82,8 @@ class _ListMessagesState extends State<ListMessages> {
               ),
             ),
           ),
+          Divider(color: Colors.black.withOpacity(0.5), height: 0,),
+
           Expanded(
             child: (selectedIndex == 0)?
             ListView.builder(

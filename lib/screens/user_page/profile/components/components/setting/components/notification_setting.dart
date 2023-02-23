@@ -45,7 +45,7 @@ class _NotificationSettingState extends State<NotificationSetting> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 50,),
+            const SizedBox(height: 10,),
             const Text("\tRécevoir les notifications de:", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),),
             Column(
               children: [

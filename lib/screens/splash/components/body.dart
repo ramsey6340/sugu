@@ -58,11 +58,13 @@ class _BodyState extends State<Body>{
                     ),
                     Spacer(flex: 3),
                     NextButton(
-                        text: 'Continue',
-                        press:(){
-                          Navigator.pushNamedAndRemoveUntil(
-                              context, SignInOrSignUp.routeName, (route) => false);
-                        }
+                      borderRadius: 5,
+                      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                      text: 'Continue',
+                      press:(){
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, SignInOrSignUp.routeName, (route) => false);
+                      }
                     ),
                     Spacer(),
                   ],

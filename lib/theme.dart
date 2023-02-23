@@ -22,7 +22,7 @@ AppBarTheme appBarTheme()
     centerTitle: true,
     systemOverlayStyle: SystemUiOverlayStyle.light,
     iconTheme: IconThemeData(color: Colors.white),//IconThemeData(color: Colors.black),
-    titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+    titleTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
   );
 }
 
@@ -37,16 +37,22 @@ TextTheme textTheme()
 InputDecorationTheme inputDecorationTheme()
 {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(28),
-    borderSide: const BorderSide(color: kTextColor),
-    gapPadding:10,
+    borderRadius: BorderRadius.circular(10),
+    borderSide: const BorderSide(color: Colors.black),
+  );
+  OutlineInputBorder errorOutlineInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: const BorderSide(color: Colors.transparent),
   );
 
   return InputDecorationTheme(
+
     floatingLabelBehavior: FloatingLabelBehavior.always,//permet d'avoir "Email" ecrit sur la bordure et "Entrer votre email" à l'interieur
-    contentPadding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),//pour le padding à l'interieur
+    contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
     enabledBorder: outlineInputBorder,
     focusedBorder: outlineInputBorder,//Pour avoir la même forme quand on clique sur le champ
     border: outlineInputBorder,
+    errorBorder: errorOutlineInputBorder,
+    focusedErrorBorder: errorOutlineInputBorder,
   );
 }

@@ -18,6 +18,6 @@ List<Notification> notifications = [
   Notification(
       notificationType: NotificationType.abonnement,
       title: "Attention !",
-      content: "Votre abonnement vas expirer dans 2 jours.\n Penser à vous réabonner pour que vos produits soient toujour accessible par les clients"
+      content: "Votre abonnement vas expirer dans 2 jours.\nPenser à vous réabonner pour que vos produits soient toujour accessible par les clients"
   ),
 ];

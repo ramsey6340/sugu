@@ -13,20 +13,22 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Center(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            const SizedBox(height: 10,),
-            ProfileImg(profileImg: currentStore.image, pressShowImg: (){},),
-            const SizedBox(height: 50,),
-            NextInteraction(leading: const Icon(Icons.account_circle, color: kPrimaryColor,), text: 'Mon compte', press: (){Navigator.pushNamed(context, Account.routeName, arguments: currentSeller);},),
-            NextInteraction(leading: const Icon(Icons.settings, color: kPrimaryColor,), text: 'Parametres', press: (){Navigator.pushNamed(context, Setting.routeName);},),
-            NextInteraction(leading: const Icon(Icons.help, color: kPrimaryColor,), text: 'Aide', press: (){Navigator.pushNamed(context, Help.routeName);},),
-            NextInteraction(leading: const Icon(Icons.logout, color: kPrimaryColor,), text: 'Deconnexion', press: (){showDialog(context: context, builder: (context) => alertDialog(context), barrierDismissible: false);},),
-          ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Center(
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const SizedBox(height: 10,),
+              ProfileImg(profileImg: currentStore.image, pressShowImg: (){},),
+              const SizedBox(height: 50,),
+              NextInteraction(leading: const Icon(Icons.account_circle, color: kPrimaryColor,), text: 'Mon compte', press: (){Navigator.pushNamed(context, Account.routeName, arguments: currentSeller);},),
+              NextInteraction(leading: const Icon(Icons.settings, color: kPrimaryColor,), text: 'Parametres', press: (){Navigator.pushNamed(context, Setting.routeName);},),
+              NextInteraction(leading: const Icon(Icons.help, color: kPrimaryColor,), text: 'Aide', press: (){Navigator.pushNamed(context, Help.routeName);},),
+              NextInteraction(leading: const Icon(Icons.logout, color: kPrimaryColor,), text: 'Deconnexion', press: (){showDialog(context: context, builder: (context) => alertDialog(context), barrierDismissible: false);},),
+            ],
+          ),
         ),
       ),
     );

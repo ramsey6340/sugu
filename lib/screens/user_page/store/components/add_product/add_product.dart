@@ -11,7 +11,7 @@ class AddProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      //backgroundColor: kPrimaryColor,
       appBar: AppBar(
         //elevation: 1,
         backgroundColor: kAppBarColor,

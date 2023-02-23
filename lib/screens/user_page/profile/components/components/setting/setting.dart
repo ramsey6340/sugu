@@ -17,7 +17,7 @@ class Setting extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 50,),
+            const SizedBox(height: 10,),
             Column(
               children: [
                 NextInteraction(text: "Notifications", press: (){Navigator.pushNamed(context, NotificationSetting.routeName);}, radiusBottomLeft: 0, radiusBottomRight: 0, radiusTopRight: 0, radiusTopLeft: 0,verticalPadding: 0,),

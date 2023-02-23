@@ -131,4 +131,26 @@ class Read {
     return allProducts;
   }
 
+  // obtenir l'attribue isPopular d'un magasin
+  bool getIsStorePopular({required String storeId}) {
+    bool isPopular = true;
+    for(Store store in stores){
+      if(store.storeId == storeId){
+        isPopular = store.isPopular;
+      }
+    }
+    return isPopular;
+  }
+
+
+  // obtenir l'attribue isPopular d'un magasin
+  bool getIsProductPopular({required String productId}) {
+    bool isPopular = true;
+    for(Product product in products){
+      if(product.productId == productId){
+        isPopular = product.isPopular;
+      }
+    }
+    return isPopular;
+  }
 }

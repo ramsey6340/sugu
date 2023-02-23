@@ -76,9 +76,6 @@ class _SignUpFormState extends State<SignUpForm>{
               }
             },
           ),
-
-          SizedBox(height: getProportionateScreenHeight(20)),
-
           TextFormFieldCustom(
             isPassword: true,
             hintText: 'Mot de passe',
@@ -208,6 +205,8 @@ class _SignUpFormState extends State<SignUpForm>{
 
           // Bouton de validation
           NextButton(
+            borderRadius: 5,
+            padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(100), vertical: getProportionateScreenHeight(10)),
             color: kRoundedCategoryColor,
             textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             text: 'Continuer',

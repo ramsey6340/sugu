@@ -80,7 +80,7 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
-
+        Divider(color: Colors.black.withOpacity(0.5), height: 0,),
         Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),

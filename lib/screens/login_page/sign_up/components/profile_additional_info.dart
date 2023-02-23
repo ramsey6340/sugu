@@ -44,7 +44,6 @@ class _ProfileAdditionalInfoState extends State<ProfileAdditionalInfo> {
               return null;
             },
           ),
-          const SizedBox(height: 10,),
           TextFormFieldCustom(
             textInputType: TextInputType.text,
             hintText: ProfileDataType.nom,
@@ -66,7 +65,6 @@ class _ProfileAdditionalInfoState extends State<ProfileAdditionalInfo> {
               return null;
             },
           ),
-          const SizedBox(height: 10,),
           TextFormFieldCustom(
             textInputType: TextInputType.datetime,
             hintText: '${ProfileDataType.dateDeNaissance}: JJ/MM/AAAA',
@@ -140,6 +138,8 @@ class _ProfileAdditionalInfoState extends State<ProfileAdditionalInfo> {
           ),
           SizedBox(height: getProportionateScreenHeight(20),),
           NextButton(
+            borderRadius: 5,
+            padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(100), vertical: getProportionateScreenHeight(10)),
             color: kRoundedCategoryColor,
             textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             text: 'Continuer',

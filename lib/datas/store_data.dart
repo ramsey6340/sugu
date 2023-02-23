@@ -1,7 +1,7 @@
 // Exemple de magasin
 
-import 'package:sugu/datas/sub_categories.dart';
-import 'package:sugu/datas/product_data.dart';
+import 'package:intl_phone_field/countries.dart';
+import 'package:intl_phone_field/phone_number.dart';
 import 'package:sugu/datas/seller_data.dart';
 import '../models/store.dart';
 import 'global_category.dart';
@@ -26,17 +26,13 @@ List<Store> stores = [
     storeId: "1",
     sellerId: sellers[0].sellerId,
     name: "Hassan Tissu",
-    /*
-    categories: [
-      Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure,
-      Categories.beaute, Categories.vieillard, Categories.enfant,
-      Categories.accessoire, Categories.couture],*/
     nbPostProduct: 2,
+    isPopular: true,
     description: descriptions[0],
     morePrecision: "A côté du status de Soundjata",
     image: "assets/images/Profile Image.png",
-    numTel1: '99235643',
-    numTel2: '65342112',
+    numTel1: const PhoneNumber(countryISOCode: 'ML', countryCode: '+223', number: '99657643'),
+    numTel2: const PhoneNumber(countryISOCode: 'ML', countryCode: '+223', number: '65342112'),
     email: 'hassan65@gmail.com',
     globalCat: [
       GlobalCategory.maison,
@@ -44,20 +40,26 @@ List<Store> stores = [
       GlobalCategory.enfant,
       GlobalCategory.vieillard
     ],
-    country: 'Mali',
+    country: const Country(
+        name: 'Mali',
+        code: 'ML',
+        dialCode: '223',
+        flag: '🇲🇱',
+        maxLength: 8,
+        minLength: 8
+    ),
     state: 'Sikasso',
-    city: 'Sikasso ville'
+    city: 'Sikasso ville',
   ),
   Store(
     storeId: "2",
     sellerId: sellers[1].sellerId,
     name: "SankShop",
-    //categories: [Categories.tout, Categories.homme, Categories.vetement, Categories.chaussure],
     nbPostProduct: 5,
     description: descriptions[1],
     morePrecision: "Près du super marché Hasard",
     image: "assets/images/chaussure2.png",
-    numTel1: '71896753',
+    numTel1: const PhoneNumber(countryISOCode: 'ML', countryCode: '+223', number: '71896753'),
     email: 'madousankare88@gmail.com',
     globalCat: [
       GlobalCategory.homme,
@@ -65,7 +67,14 @@ List<Store> stores = [
       GlobalCategory.sport,
       GlobalCategory.femme
     ],
-    country: 'Mali',
+    country: const Country(
+        name: 'Mali',
+        code: 'ML',
+        dialCode: '223',
+        flag: '🇲🇱',
+        maxLength: 8,
+        minLength: 8
+    ),
     state: 'Bamako',
     city: 'Daouda Bougou'
   ),
@@ -73,13 +82,13 @@ List<Store> stores = [
     storeId: "3",
     sellerId: sellers[2].sellerId,
     name: "Lainy-Love Tissu",
-    //categories: [Categories.tout, Categories.femme, Categories.enfant],
     nbPostProduct: 4,
+    isPopular: true,
     description: descriptions[2],
     morePrecision: "Près de la Mosqué 759",
     image: "assets/images/chaussure3.jpg",
-    numTel1: '44789090',
-    numTel2: '785633210',
+    numTel1: const PhoneNumber(countryISOCode: 'ML', countryCode: '+223', number: '44789090'),
+    numTel2: const PhoneNumber(countryISOCode: 'ML', countryCode: '+223', number: '785633210'),
     email: 'kadidiatou66@gmail.com',
     globalCat: [
       GlobalCategory.electronique,
@@ -88,7 +97,14 @@ List<Store> stores = [
       GlobalCategory.garcon,
       GlobalCategory.jeux
     ],
-    country: 'Mali',
+    country: const Country(
+        name: 'Mali',
+        code: 'ML',
+        dialCode: '223',
+        flag: '🇲🇱',
+        maxLength: 8,
+        minLength: 8
+    ),
     state: 'Bamako',
     city: 'Yirimadjo'
   ),

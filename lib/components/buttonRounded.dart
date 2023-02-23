@@ -34,8 +34,8 @@ class ButtonRounded extends StatelessWidget {
       onTap: press as void Function(),
       child: Chip(
         backgroundColor: (isSelected)? selectedBackground: backgroundColor,
-        side: (isBorder)?BorderSide(color: (isSelected)?Colors.transparent:Colors.black):BorderSide(color: Colors.transparent),
-        label: Text(text, style: TextStyle(fontWeight: FontWeight.bold,),),
+        side: (isBorder)?BorderSide(color: (isSelected)?Colors.transparent:Colors.black):const BorderSide(color: Colors.transparent),
+        label: Text(text, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
         labelStyle: TextStyle(color: (isSelected)?selectedTextColor:textColor),
         avatar: (isSelected)? selectedLeading: leading,
       ),

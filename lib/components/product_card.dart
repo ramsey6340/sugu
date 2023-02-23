@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
-
 import '../CRUD/read.dart';
+import '../constantes.dart';
 import '../models/product.dart';
 import '../size_config.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key, required this.product, required this.press,}) : super(key: key);
+  const ProductCard({
+    Key? key,
+    required this.product,
+    required this.press,
+    this.isSeller=false
+  }) : super(key: key);
   final Product product;
   final Function press;
+  final bool isSeller;
 
   @override
   Widget build(BuildContext context) {
     Read read = Read();
-    TextStyle priceStyle = const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.black);
     return GestureDetector(
       onTap: press as void Function(),
       child: Container(
@@ -25,15 +31,17 @@ class ProductCard extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              children: [
-                CircleAvatar(
-                  radius: getProportionateScreenWidth(13),
-                  backgroundImage: AssetImage(read.getStoreImg(storeId: product.storeId)),
+                  children: [
+                    CircleAvatar(
+                      radius: getProportionateScreenWidth(13),
+                      backgroundImage: AssetImage(read.getStoreImg(storeId: product.storeId)),
+                    ),
+                    const SizedBox(width: 10,),
+                    Text(
+                      read.getStoreName(storeId: product.storeId),
+                      style: TextStyle(fontSize: getProportionateScreenWidth(12)))
+                  ],
                 ),
-                const SizedBox(width: 10,),
-                Text(read.getStoreName(storeId: product.storeId))
-              ],
-            ),
             const SizedBox(height: 5,),
             Flexible(
               child: Container(
@@ -65,23 +73,27 @@ class ProductCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    //Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-\n${product.maxPrice} f',
-                      //style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),maxLines: 2,),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
                             onTap: (){},
-                            child: const Icon(Icons.favorite_border),
+                            child: const Icon(Icons.favorite_border, size: 20,),
                         ),
-                        Text('${product.nbLike}')
+                        Text('${product.nbLike}', style: TextStyle(fontSize: 12),)
                       ],
                     )
                   ],
                 ),
-                Text('${product.name}', overflow: TextOverflow.ellipsis,),
-                Text("${read.getNbFollowers(storeId: product.storeId)} followers")
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: getProportionateScreenWidth(130),
+                        child: Text('${product.name}', overflow: TextOverflow.ellipsis, maxLines: 2, style: TextStyle(fontSize: getProportionateScreenWidth(14)),)),
+                    (read.getIsProductPopular(productId: product.productId))?SvgPicture.asset('assets/icons/badge.svg', color: Colors.blue.withOpacity(0.8), width: 16, height: 16,):SizedBox()
+                  ],
+                ),
               ],
             )
           ],

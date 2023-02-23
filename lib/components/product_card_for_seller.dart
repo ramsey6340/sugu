@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-
 import '../models/product.dart';
 
 
 class ProductCardForSeller extends StatelessWidget {
-  const ProductCardForSeller({Key? key, required this.product, required this.press,}) : super(key: key);
+  const ProductCardForSeller({
+    Key? key,
+    required this.product,
+    required this.press,
+  }) : super(key: key);
   final Product product;
   final Function press;
 
@@ -13,7 +16,7 @@ class ProductCardForSeller extends StatelessWidget {
     return GestureDetector(
       onTap: press as void Function(),
       child: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         height: MediaQuery.of(context).size.height/2.22,
         width: MediaQuery.of(context).size.width/2.2,
         decoration: BoxDecoration(
@@ -23,18 +26,18 @@ class ProductCardForSeller extends StatelessWidget {
         child: Column(
           children: [
         Flexible(
-        child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            image: AssetImage(
-              product.images[0],
+            child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage(
+                  product.images[0],
+                ),
+                fit: BoxFit.fill,
+              )
             ),
-            fit: BoxFit.fill,
-          )
-      ),
-    ),
-    ),
+          ),
+        ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

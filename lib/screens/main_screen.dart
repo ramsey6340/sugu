@@ -75,36 +75,41 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       backgroundColor: Colors.white54.withOpacity(1),
       body: _currentScreen,
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: '',),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: '',),
-          BottomNavigationBarItem(icon: Icon(Icons.storefront), label: '', ),
-          BottomNavigationBarItem(
-            icon: Badge(
-              badgeStyle: BadgeStyle(
-                padding: EdgeInsets.all(4)
+      bottomNavigationBar: SizedBox(
+        height: getProportionateScreenHeight(50),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(icon: Icon(Icons.home,), label: 'Accueil',),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Conseils',),
+            BottomNavigationBarItem(icon: Icon(Icons.storefront), label: 'Boutique', ),
+            BottomNavigationBarItem(
+              icon: Badge(
+                badgeStyle: BadgeStyle(
+                  padding: EdgeInsets.all(2)
+                ),
+                badgeContent: Text('12',style: TextStyle(color: Colors.white, fontSize: 12),),
+                badgeAnimation: BadgeAnimation.slide(toAnimate: false),
+                child: Icon(Icons.mail)
               ),
-              badgeContent: Text('12',style: TextStyle(color: Colors.white),),
-              badgeAnimation: BadgeAnimation.slide(toAnimate: false),
-              child: Icon(Icons.mail)
+              label: 'Message',
             ),
-            label: '',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp), label: '',),
-        ],
-        selectedItemColor: kPrimaryColor,
-        currentIndex: currentMenuIndex,
-        onTap: _onItemTapped,
-        iconSize: 30.0,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        unselectedItemColor: Colors.grey,
-        selectedFontSize: 0.0,
-        unselectedFontSize: 0.0,
-        elevation: 0,
-        type: BottomNavigationBarType.fixed,
-        enableFeedback: false,
+            BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp,), label: 'Compte',),
+          ],
+          selectedItemColor: kPrimaryColor,
+          currentIndex: currentMenuIndex,
+          onTap: _onItemTapped,
+          iconSize: 22,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          unselectedItemColor: Colors.grey,
+          selectedFontSize: 0,
+          //selectedLabelStyle: TextStyle(color: Colors.red),
+          //unselectedLabelStyle: TextStyle(color: Colors.red),
+          unselectedFontSize: 8,
+          elevation: 0,
+          type: BottomNavigationBarType.fixed,
+          enableFeedback: false,
+        ),
       ),
     );
   }

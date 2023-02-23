@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sugu/constantes.dart';
 import '../../../components/nb_appreciation.dart';
-import '../../../components/rounded_icon_btn.dart';
 import '../../../models/product.dart';
 import 'components/body.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class DetailsProductScreen extends StatelessWidget {
@@ -15,9 +15,7 @@ class DetailsProductScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          NbAppreciation(
-            icon: (product.isPopular)?Icon(Icons.star, color: Colors.yellow,):Icon(Icons.star_border),
-          ),
+          (product.isPopular)?SvgPicture.asset('assets/icons/badge.svg', color: Colors.blue.withOpacity(0.5),):SizedBox(),
           NbAppreciation(
             nb_star: '${product.nbLike}',
             icon: (product.nbLike>0)?Icon(Icons.favorite, color: Colors.red,size: 20,):Icon(Icons.favorite_border, size: 20,)

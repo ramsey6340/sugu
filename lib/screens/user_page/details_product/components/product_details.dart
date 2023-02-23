@@ -15,9 +15,9 @@ class ProductDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.name, style: const TextStyle(fontSize: 18, overflow: TextOverflow.ellipsis),),
-          Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-${product.maxPrice} f',style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 24),),
-          const Text("Description", style: TextStyle(color: kPrimaryColor, fontSize: 18)),
+          Text(product.name, style: const TextStyle(fontSize: 16, overflow: TextOverflow.ellipsis),),
+          Text(('${product.minPrice}'=='${product.maxPrice}')?'${product.maxPrice} f':'${product.minPrice}-${product.maxPrice} f',style: const TextStyle(fontWeight: FontWeight.bold, color: kRoundedCategoryColor, fontSize: 20),),
+          const Text("Description", style: TextStyle(color: kPrimaryColor, fontSize: 16)),
           Text(
             "${product.description}",
             maxLines: 2,overflow: TextOverflow.ellipsis,

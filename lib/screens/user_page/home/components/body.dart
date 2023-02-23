@@ -45,7 +45,6 @@ class _BodyState extends State<Body> {
 
     return Column(
       children: [
-
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -58,10 +57,10 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
-
+        Divider(color: Colors.black.withOpacity(0.5),height: 0, thickness: 0.5,),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
             child: (selectedIndex == 0)?
             GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -100,7 +99,6 @@ class _BodyState extends State<Body> {
   ButtonRounded showType(int index) {
     return ButtonRounded(
       isBorder: false,
-      //backgroundColor: Colors.white,
       selectedBackground: kRoundedCategoryColor,
       isSelected: selectedIndex == index,
       press: (){onItemTapped(index);},

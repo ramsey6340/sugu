@@ -74,9 +74,6 @@ class _SignInFormState extends State<SignInForm>{
               }
             },
           ),
-
-          SizedBox(height: getProportionateScreenHeight(20)),
-
           TextFormFieldCustom(
             isPassword: true,
             hintText: 'Mot de passe',
@@ -125,11 +122,6 @@ class _SignInFormState extends State<SignInForm>{
               }
             },
           ),
-
-
-          SizedBox(height: getProportionateScreenHeight(20)),
-
-
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -146,6 +138,8 @@ class _SignInFormState extends State<SignInForm>{
 
           // Bouton de validation
           NextButton(
+            borderRadius: 5,
+            padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(100), vertical: getProportionateScreenHeight(10)),
             color: kRoundedCategoryColor,
             textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             text: 'Continuer',
@@ -157,7 +151,6 @@ class _SignInFormState extends State<SignInForm>{
               }
             },
           ),
-
         ],
       ),
     );

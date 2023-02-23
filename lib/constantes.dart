@@ -20,11 +20,13 @@ const kFourColor = Color(0xFFF5F6F9);
 const kTextFieldOpacity = 0.7;
 const kAnimationDuration = Duration(milliseconds: 200);
 
+TextStyle priceStyle = const TextStyle(fontWeight: FontWeight.bold, fontSize: 14, color: kRoundedCategoryColor);
 double buttonWidth = getProportionateScreenWidth(300);
 double buttonHeight = getProportionateScreenHeight(70);
 const int kPasswordMaxLength = 4;
 const int kFirstNameMinLength = 2;
 const int kLastNameMinLength = 2;
+const int maxLengthOfExampleProduct = 12;
 // les différents type de notification
 enum NotificationType {
   info,

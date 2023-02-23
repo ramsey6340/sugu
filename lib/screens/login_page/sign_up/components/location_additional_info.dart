@@ -69,6 +69,8 @@ class _LocationAdditionalInfoState extends State<LocationAdditionalInfo> {
                 ),
                 SizedBox(height: getProportionateScreenHeight(45),),
                 NextButton(
+                  borderRadius: 5,
+                  padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(100), vertical: getProportionateScreenHeight(10)),
                   color: kRoundedCategoryColor,
                   textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   text: 'Continuer',

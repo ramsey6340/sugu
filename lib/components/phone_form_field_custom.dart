@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
+import 'package:intl_phone_field/phone_number.dart';
 import '../constantes.dart';
 
 
@@ -18,6 +19,9 @@ class PhoneFormFieldCustom extends StatelessWidget {
     this.hintTextColor=kTextColor,
     this.cursorColor=Colors.blue,
     this.inputTextColor=Colors.black,
+    this.onCountryChanged,
+    this.onChanged,
+    this.onSaved,
   }) : super(key: key);
 
   final String? initialCountryCode;
@@ -31,6 +35,9 @@ class PhoneFormFieldCustom extends StatelessWidget {
   final Color hintTextColor;
   final Color cursorColor;
   final Color inputTextColor;
+  final void Function(Country)? onCountryChanged;
+  final void Function(PhoneNumber)? onChanged;
+  final Function(PhoneNumber?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +50,7 @@ class PhoneFormFieldCustom extends StatelessWidget {
       style: TextStyle(color: inputTextColor),
       cursorColor: cursorColor,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+        contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         filled: true,
         fillColor: fillColor,
         hintText: hintText,
@@ -67,6 +74,9 @@ class PhoneFormFieldCustom extends StatelessWidget {
       ),
       initialCountryCode: 'ML',
       initialValue: initialValue,
+      onCountryChanged: onCountryChanged,
+      onSaved: onSaved,
+      onChanged: onChanged,
     );
   }
 }

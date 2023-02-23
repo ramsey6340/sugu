@@ -26,20 +26,10 @@ class Body extends StatelessWidget{
                   (logType == LogType.phone)?
                   const FormImage(
                     imageUrl: "assets/images/Mobile login-bro.png",
-                  )
-                  /*Image.asset(
-                    "assets/images/Mobile login-bro.png",
-                    width: getProportionateScreenWidth(320),
-                    height: getProportionateScreenHeight(320),
-                  )*/:
+                  ) :
                   const FormImage(
                     imageUrl: "assets/images/Computer login-rafiki.png",
-                  )
-                  /*Image.asset(
-                    "assets/images/Computer login-rafiki.png",
-                    width: getProportionateScreenWidth(320),
-                    height: getProportionateScreenHeight(320),
-                  )*/,
+                  ),
                   SizedBox(height: getProportionateScreenHeight(10),),
                   SignInForm(logType: logType,),
                   SizedBox(height: getProportionateScreenHeight(20),),

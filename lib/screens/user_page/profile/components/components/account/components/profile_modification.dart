@@ -7,10 +7,23 @@ import 'package:sugu/constantes.dart';
 import '../../../../../../../../datas/profile_data_type.dart';
 
 
-class ProfileModification extends StatelessWidget {
+class ProfileModification extends StatefulWidget {
   const ProfileModification({Key? key, required this.profileDataType, required this.data}) : super(key: key);
   final String profileDataType;
   final dynamic data;
+
+  @override
+  State<ProfileModification> createState() => _ProfileModificationState();
+}
+
+class _ProfileModificationState extends State<ProfileModification> {
+  bool obscureText = true;
+
+  void onTapHiddenButton(){
+    setState(() {
+      obscureText = !obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +42,45 @@ class ProfileModification extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            Text(profileDataType, style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
+            Text(widget.profileDataType, style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),),
             const SizedBox(height: 20,),
-            (profileDataType == ProfileDataType.identifiant)?PhoneFormFieldCustom(initialValue: data,):(profileDataType==ProfileDataType.motDePasse)?TextFormFieldCustom(initialValue: data, isPassword: true,):TextFormFieldCustom(initialValue: data,),
+            (widget.profileDataType == ProfileDataType.identifiant)?
+            PhoneFormFieldCustom(initialValue: widget.data,):
+            (widget.profileDataType==ProfileDataType.motDePasse)?
+            TextFormField(
+              initialValue: widget.data,
+              obscureText: obscureText,
+              decoration: InputDecoration(
+                suffixIcon:(obscureText)?
+                IconButton(
+                  icon: Icon(
+                    Icons.visibility_outlined,
+                    color: Colors.black.withOpacity(0.8),
+                  ),
+                  onPressed: (){onTapHiddenButton();},
+                  enableFeedback: false,
+                ):
+                IconButton(
+                    icon: Icon(
+                      Icons.visibility_off_outlined,
+                      color: Colors.black.withOpacity(0.8),
+                    ),
+                    onPressed: (){onTapHiddenButton();},
+                    enableFeedback: false
+                )
+              ),
+            ):
+            TextFormField(
+              initialValue: widget.data,
+            ),
             const SizedBox(height: 50,),
-            NextButton(text: "Enregistrer", press: (){}, color: kRoundedCategoryColor,)
+            NextButton(
+              borderRadius: 5,
+              padding: EdgeInsets.symmetric(horizontal: 80),
+              text: "Enregistrer",
+              press: (){},
+              color: kRoundedCategoryColor,
+            )
           ],
         ),
       ),

@@ -22,15 +22,16 @@ class StoreCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Text('${store.name}', style: TextStyle(color: kPrimaryColor, fontSize: 18),),
+            Text('${store.name}', style: TextStyle(color: kPrimaryColor, fontSize: 14),),
             CircleAvatar(
-              radius: 60,
+              radius: 40,
               backgroundImage: AssetImage(read.getStoreImg(storeId: store.storeId)),
             ),
             Column(
               children: [
-                Text('${read.getNbFollowers(storeId: store.storeId)}k abonnés', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),),
-                Text('${store.nbPostProduct} produits', style: TextStyle(color: Colors.black, fontSize: 18,))
+                Text('${read.getNbFollowers(storeId: store.storeId)}k abonnés', style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),),
+                Text('${store.nbPostProduct} produits', style: TextStyle(color: Colors.black, fontSize: 14,)),
+                (read.getIsStorePopular(storeId: store.storeId))?const Icon(Icons.star, color: Colors.yellow,):const SizedBox(),
               ],
             )
           ],

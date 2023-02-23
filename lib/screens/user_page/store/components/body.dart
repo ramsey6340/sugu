@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../CRUD/read.dart';
 import '../../../../components/buttonRounded.dart';
-import '../../../../components/product_card_for_seller.dart';
+import '../../../../components/product_card.dart';
 import '../../../../constantes.dart';
 import '../../../../datas/global_category.dart';
-import '../../../../datas/sub_categories.dart';
-import '../../../../datas/product_data.dart';
 import '../../../../models/product.dart';
 import '../../../../models/store.dart';
 import '../../../../size_config.dart';
@@ -101,7 +99,6 @@ class _BodyState extends State<Body> {
 
     return Column(
       children: [
-
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -127,6 +124,7 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
+        Divider(color: Colors.black.withOpacity(0.5), height: 0,),
 
         Expanded(
           child: Padding(
@@ -141,7 +139,8 @@ class _BodyState extends State<Body> {
               itemCount: productsOfCategory.length,
               itemBuilder: (context, index){
                 final item = productsOfCategory[index];
-                return ProductCardForSeller(
+                return ProductCard(
+                  isSeller: true,
                   product: item,
                   press: () => Navigator.pushNamed(context, DetailsProductScreen.routeName, arguments: item),
                 );

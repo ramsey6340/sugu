@@ -72,7 +72,7 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Téléphone 1", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              PhoneFormFieldCustom(initialValue: widget.store.numTel1,)
+              PhoneFormFieldCustom(initialValue: widget.store.numTel1.countryISOCode,)
             ],
           ),
           const SizedBox(height: 10,),
@@ -83,7 +83,7 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Téléphone 2", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              PhoneFormFieldCustom(initialValue: widget.store.numTel2,)
+              PhoneFormFieldCustom(initialValue: widget.store.numTel2?.countryISOCode,)
             ],
           ),
           const SizedBox(height: 10,),

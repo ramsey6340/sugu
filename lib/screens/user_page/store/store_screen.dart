@@ -22,7 +22,7 @@ class StoreScreen extends StatelessWidget {
         backgroundColor: kBackground,
       appBar: AppBar(
         leading: (isCurrentUser)?IconButton(onPressed: (){Navigator.pushNamed(context, AddProduct.routeName, /*arguments: store*/);}, icon: const Icon(Icons.add_circle_outline_rounded)): null,
-        title: Text('${store.name}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white),),
+        title: Text('${store.name}'),
         actions: [
           (isCurrentUser)? getLeadingShopPage(context, store):const SizedBox(),
           (isCurrentUser)? SizedBox(width: getProportionateScreenWidth(20),):const SizedBox(),
