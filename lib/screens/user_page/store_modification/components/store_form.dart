@@ -32,8 +32,8 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Nom", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              TextFormFieldCustom(
-                textInputType: TextInputType.text,
+              TextFormField(
+                keyboardType: TextInputType.text,
                 initialValue: widget.store.name,
               ),
             ],
@@ -45,8 +45,8 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Adresse", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              TextFormFieldCustom(
-                textInputType: TextInputType.text,
+              TextFormField(
+                keyboardType: TextInputType.text,
                 initialValue: widget.store.morePrecision,
               ),
             ],
@@ -58,8 +58,8 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Email", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              TextFormFieldCustom(
-                textInputType: TextInputType.emailAddress,
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 initialValue: widget.store.email,
               ),
             ],
@@ -72,7 +72,7 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Téléphone 1", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              PhoneFormFieldCustom(initialValue: widget.store.numTel1.countryISOCode,)
+              PhoneFormFieldCustom(initialValue: widget.store.numTel1.number,)
             ],
           ),
           const SizedBox(height: 10,),
@@ -83,7 +83,7 @@ class _StoreFormState extends State<StoreForm> {
             children: [
               const Text("Téléphone 2", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
               const SizedBox(height: 5,),
-              PhoneFormFieldCustom(initialValue: widget.store.numTel2?.countryISOCode,)
+              PhoneFormFieldCustom(initialValue: widget.store.numTel2?.number,)
             ],
           ),
           const SizedBox(height: 10,),
@@ -92,19 +92,20 @@ class _StoreFormState extends State<StoreForm> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Description", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-              SizedBox(height: 5,),
-              TextFormFieldCustom(
-                textInputType: TextInputType.multiline,
-                maxLine: 4,
+              const Text("Description", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+              const SizedBox(height: 5,),
+              TextFormField(
+                keyboardType: TextInputType.multiline,
+                maxLines: 5,
                 initialValue: widget.store.description,
               ),
             ],
           ),
           const SizedBox(height: 30,),
-
           //8
           NextButton(
+            borderRadius: 5,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
             text: 'Choisier des catégories',
             press: (){
               Navigator.push(

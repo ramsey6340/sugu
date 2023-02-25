@@ -1,11 +1,11 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:sugu/datas/datas_current.dart';
 import 'package:sugu/size_config.dart';
 import '../../../../../components/Next_button.dart';
-import '../../../../../components/text_form_field_custom.dart';
 import '../../../../../constantes.dart';
 import '../choose_categories/choose_categories.dart';
-import '../../../../../components/price_form_field_custom.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class ProductAddForm extends StatefulWidget {
@@ -17,6 +17,29 @@ class ProductAddForm extends StatefulWidget {
 
 class _ProductAddFormState extends State<ProductAddForm> {
   final formKey = GlobalKey<FormState>();
+  File imageFile = File('');
+  List<File>? multiImageFile;
+  dynamic pickImageError;
+
+  /// Selectionner une image en fonction de la source
+  /// La source peut être la gallery ou le camera
+  getImageFromGallery({required ImageSource source}) async {
+    PickedFile pickedFile = (await ImagePicker().getImage(source: source))!;
+    setState(() {
+      imageFile = File(pickedFile.path);
+    });
+  }
+
+
+  getMultiImageFromGallery({required ImageSource source}) async {
+    List<PickedFile>? pickedMultiFile = await ImagePicker().getMultiImage();
+    setState(() {
+      if(pickedMultiFile!.isNotEmpty) {
+        imageFile = File(pickedMultiFile.toList()[0].path);
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,27 +68,6 @@ class _ProductAddFormState extends State<ProductAddForm> {
                   return null;
                 },
               ),
-              /*TextFormFieldCustom(
-                textInputType: TextInputType.text,
-                hintText: 'Lenovo S430',
-                fillColor: Colors.grey,
-                focusBorderSideColor: Colors.transparent,
-                borderSideColor: Colors.transparent,
-                hintTextColor: Colors.white.withOpacity(kTextFieldOpacity),
-                cursorColor: kRoundedCategoryColor,
-                suffixColor: Colors.black54,
-                inputTextColor: Colors.white,
-
-                validator: (value){
-                  if(value!.isEmpty){
-                    return "Entrer le nom du produit";
-                  }
-                  else if(value.length<kLastNameMinLength){
-                    return "Entrer un nom qui soit comprehenssible";
-                  }
-                  return null;
-                },
-              ),*/
             ],
           ),
           const SizedBox(height: 10,),
@@ -74,7 +76,6 @@ class _ProductAddFormState extends State<ProductAddForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text("Prix (fcfa)", style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
-              //const SizedBox(height: 5,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -111,41 +112,6 @@ class _ProductAddFormState extends State<ProductAddForm> {
                       },
                     ),
                   ),
-                  /*PriceFormFieldCustom(
-                    hintText: '1000',
-                    textInputType: TextInputType.number,
-                    fillColor: Colors.white,
-                    focusBorderSideColor: Colors.black,
-                    borderSideColor: Colors.black,
-                    hintTextColor: Colors.white.withOpacity(kTextFieldOpacity),
-                    cursorColor: kRoundedCategoryColor,
-                    suffixColor: Colors.black54,
-                    inputTextColor: Colors.white,
-
-                    validator: (value){
-                      if(value!.isEmpty){
-                        return "Entrer le prix minimum";
-                      }
-                      return null;
-                    },
-                  ),*/
-                  /*PriceFormFieldCustom(
-                    hintText: '2000',
-                    textInputType: TextInputType.number,
-                    fillColor: Colors.grey,
-                    focusBorderSideColor: Colors.transparent,
-                    borderSideColor: Colors.transparent,
-                    hintTextColor: Colors.white.withOpacity(kTextFieldOpacity),
-                    cursorColor: kRoundedCategoryColor,
-                    suffixColor: Colors.black54,
-                    inputTextColor: Colors.white,
-                    validator: (value){
-                      if(value!.isEmpty){
-                        return "Entrer le prix maximum";
-                      }
-                      return null;
-                    },
-                  ),*/
                 ],
               ),
             ]
@@ -179,7 +145,10 @@ class _ProductAddFormState extends State<ProductAddForm> {
             padding: EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(37), vertical: 8),
             text: 'Choisier des images',
             textStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            press: (){},
+            press: (){
+              // méthode qui va selectionner des images
+              getImageFromGallery(source: ImageSource.gallery);
+            },
             color: kSecondaryColor,
           ),
           const SizedBox(height: 20,),
@@ -203,5 +172,20 @@ class _ProductAddFormState extends State<ProductAddForm> {
         ],
       ),
     );
+  }
+
+  // Visualuser une image
+  Widget showImage() {
+    if (imageFile != null) {
+      return AlertDialog(
+        content: Image.file(imageFile),
+      );
+    }
+    else if(pickImageError != null) {
+      return Text("Error $pickImageError");
+    }
+    else {
+      return const Text("Aucune image selectionner");
+    }
   }
 }

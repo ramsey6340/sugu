@@ -10,7 +10,7 @@ import '../CRUD/read.dart';
 import '../datas/datas_current.dart';
 import '../models/store.dart';
 import '../size_config.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 
 
 class MainScreen extends StatefulWidget
@@ -83,12 +83,12 @@ class _MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Conseils',),
             BottomNavigationBarItem(icon: Icon(Icons.storefront), label: 'Boutique', ),
             BottomNavigationBarItem(
-              icon: Badge(
-                badgeStyle: BadgeStyle(
+              icon: badges.Badge(
+                badgeStyle: badges.BadgeStyle(
                   padding: EdgeInsets.all(2)
                 ),
                 badgeContent: Text('12',style: TextStyle(color: Colors.white, fontSize: 12),),
-                badgeAnimation: BadgeAnimation.slide(toAnimate: false),
+                badgeAnimation: badges.BadgeAnimation.slide(toAnimate: false),
                 child: Icon(Icons.mail)
               ),
               label: 'Message',

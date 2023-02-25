@@ -39,7 +39,6 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         SingleChildScrollView(
@@ -54,10 +53,10 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
-        Divider(color: Colors.black.withOpacity(0.5), height: 0,),
+        Divider(color: Colors.black.withOpacity(0.5), height: 0, thickness: 0.5,),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: (selectedIndex == 0)?
             GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

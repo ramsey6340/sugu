@@ -42,7 +42,6 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         SingleChildScrollView(

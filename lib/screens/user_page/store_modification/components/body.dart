@@ -21,13 +21,13 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             StoreForm(store: store),
-            SizedBox(height: getProportionateScreenHeight(80),),
+            SizedBox(height: getProportionateScreenHeight(30),),
             NextButton(
+              borderRadius: 5,
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 8),
               text: 'Enregister',
               press: (){
                 currentStore.setStore = oldStore;
-                print(currentStore.globalCat);
-                print("=========================");
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(builder: (context) => DetailsStoreScreen(store: store,)),

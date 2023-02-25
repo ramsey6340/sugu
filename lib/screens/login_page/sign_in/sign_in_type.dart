@@ -3,9 +3,7 @@ import 'package:sugu/components/next_button.dart';
 import 'package:sugu/constantes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sugu/screens/login_page/sign_in/sign_in_screen.dart';
-
 import '../../../components/form_image.dart';
-import '../../../size_config.dart';
 import '../../splash/sign_in_or_sign_up.dart';
 
 

@@ -25,11 +25,6 @@ class CreateStoreScreen extends StatelessWidget {
           child: Column(
             children: [
               FormImage(imageUrl: "assets/images/Opened-store.png",),
-              /*Image.asset(
-                "assets/images/Opened-store.png",
-                width: getProportionateScreenWidth(320),
-                height: getProportionateScreenHeight(320),
-              ),*/
               (storeFormType == StoreFormType.profile)?ProfileStoreForm():(storeFormType == StoreFormType.contact)?ContactInfoStoreForm():LocationStoreForm(),
             ],
           )

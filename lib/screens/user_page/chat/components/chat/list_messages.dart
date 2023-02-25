@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart'  as badges;
 import 'package:flutter/material.dart';
 import '../../../../../CRUD/read.dart';
 import '../../../../../components/buttonRounded.dart';
@@ -8,7 +9,6 @@ import '../../../../../datas/notification_data.dart';
 import '../../../../../datas/store_data.dart';
 import '../../../../../size_config.dart';
 import 'inbox.dart';
-import 'package:badges/badges.dart';
 
 
 class ListMessages extends StatefulWidget {
@@ -100,10 +100,10 @@ class _ListMessagesState extends State<ListMessages> {
                         backgroundImage: AssetImage(read.getStoreImg(storeId: item.storeId))
                       ),
                       subTitle: 'Ok, on fait comme ça',
-                      trailing: Badge(
+                      trailing: badges.Badge(
                         badgeContent: Text('$nbInboxMessage', style: TextStyle(color: Colors.white),),
                         showBadge: nbInboxMessage>0,
-                        badgeAnimation: const BadgeAnimation.slide(toAnimate: false),
+                        badgeAnimation: const badges.BadgeAnimation.slide(toAnimate: false),
                       ),
                     ): const SizedBox(),
                     const Divider(height: 0, color: Colors.black, indent: 50,),
@@ -136,11 +136,11 @@ class _ListMessagesState extends State<ListMessages> {
     );
   }
 
-  Badge showType(int index) {
-    return Badge(
+  badges.Badge showType(int index) {
+    return badges.Badge(
       showBadge: (nbMessage>0)?(selectedIndex != index)?true:false:false,
       badgeContent: Text((nbMessage>=100)?'+99':'$nbMessage', style: const TextStyle(color: Colors.white),),
-      badgeAnimation: const BadgeAnimation.slide(toAnimate: false),
+      badgeAnimation: const badges.BadgeAnimation.slide(toAnimate: false),
       child: ButtonRounded(
         isBorder: false,
         selectedBackground: kRoundedCategoryColor,

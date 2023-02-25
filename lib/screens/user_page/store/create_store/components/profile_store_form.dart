@@ -28,7 +28,7 @@ class _ProfileStoreFormState extends State<ProfileStoreForm> {
           SizedBox(height: getProportionateScreenHeight(50),),
           TextFormFieldCustom(
             textInputType: TextInputType.emailAddress,
-            hintText: 'Ex: Guinta 2',
+            hintText: 'Ex: Aoua Patisserie',
             fillColor: Colors.grey,
             focusBorderSideColor: Colors.transparent,
             borderSideColor: Colors.transparent,
@@ -43,7 +43,7 @@ class _ProfileStoreFormState extends State<ProfileStoreForm> {
 
         TextFormFieldCustom(
           textInputType: TextInputType.emailAddress,
-          hintText: 'Près de ...',
+          hintText: 'Près de la Mosquée Rahman',
           fillColor: Colors.grey,
           focusBorderSideColor: Colors.transparent,
           borderSideColor: Colors.transparent,
