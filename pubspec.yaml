@@ -41,6 +41,7 @@ dependencies:
   image_picker: ^0.8.6+3
   country_state_city_pro: ^0.0.3
   custom_pop_up_menu: ^1.2.4
+  file_picker: ^5.2.5
 
 dev_dependencies:
   flutter_test:
